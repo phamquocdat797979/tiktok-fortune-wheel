@@ -1,0 +1,51 @@
+{
+  "name": "tiktok-fortune-wheel",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "tsx watch server.ts",
+    "build": "next build",
+    "start": "NODE_ENV=production tsx server.ts",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "@prisma/client": "^5.22.0",
+    "@tsparticles/plugin-emitters": "^3.9.1",
+    "@tsparticles/plugin-motion": "^3.9.1",
+    "@tsparticles/preset-confetti": "^3.2.0",
+    "@tsparticles/preset-fireworks": "^3.2.0",
+    "@tsparticles/react": "^3.0.0",
+    "@tsparticles/shape-line": "^3.9.1",
+    "@tsparticles/slim": "^3.9.1",
+    "@tsparticles/updater-roll": "^3.9.1",
+    "@tsparticles/updater-wobble": "^3.9.1",
+    "bullmq": "^5.72.0",
+    "edge-tts-node": "^1.5.7",
+    "google-tts-api": "^2.0.2",
+    "ioredis": "^5.10.1",
+    "lucide-react": "^1.7.0",
+    "motion": "^12.38.0",
+    "next": "14.2.35",
+    "next-auth": "^5.0.0-beta.30",
+    "react": "^18",
+    "react-dom": "^18",
+    "socket.io": "^4.8.3",
+    "socket.io-client": "^4.8.3",
+    "tiktok-live-connector": "^2.1.1-beta1",
+    "tiktok-tts": "^1.1.17",
+    "tsparticles": "^3.9.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.35",
+    "postcss": "^8",
+    "prisma": "^5.22.0",
+    "tailwindcss": "^3.4.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5"
+  }
+}

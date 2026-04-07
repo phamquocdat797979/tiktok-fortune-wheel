@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Người xem TikTok (Không cần đăng nhập, lưu qua TikTok ID)
+model Viewer {
+  id              String          @id @default(cuid())
+  tiktokId        String          @unique
+  uniqueId        String
+  nickname        String
+  dailyCoinCount  Int             @default(0)
+  dailyTier       String          @default("Đồng")
+  dailyResetAt    DateTime?       
+  monthlyCoins    Int             @default(0) 
+  vipTitle        String?
+  streakCount     Int             @default(0)
+  lastStreakDate  DateTime?
+  gifts           GiftRecord[]
+  results         FortuneResult[]
+  createdAt       DateTime        @default(now())
+}
+
+// Lịch sử tặng quà
+model GiftRecord {
+  id           String   @id @default(cuid())
+  viewerId     String
+  giftName     String
+  diamondCount Int
+  tier         String
+  createdAt    DateTime @default(now())
+  viewer       Viewer   @relation(fields: [viewerId], references: [id])
+}
+
+// Lịch sử kết quả quay
+model FortuneResult {
+  id        String   @id @default(cuid())
+  viewerId  String
+  result    String // Lưu dưới dạng String (JSON.stringify) vì SQLite không hỗ trợ JSON
+  tier      String
+  seed      String
+  createdAt DateTime @default(now())
+  viewer    Viewer   @relation(fields: [viewerId], references: [id])
+}
