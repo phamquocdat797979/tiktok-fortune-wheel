@@ -191,7 +191,7 @@ export default function GameScreen() {
         </div>
 
         <div className="absolute inset-0 pointer-events-none" style={{ mixBlendMode: 'screen', opacity: 0.65 }}>
-            <video src="/rain.mp4" autoPlay loop muted playsInline className="w-full h-full object-cover" />
+            <video src="https://files.catbox.moe/qqx22p.mp4" autoPlay loop muted playsInline className="w-full h-full object-cover" />
         </div>
 
         <div className="absolute inset-0 bg-black/40" />
