@@ -313,7 +313,7 @@ export default function GameScreen() {
                 </h2>
                 
                 <div className="flex gap-4 mb-6 uppercase tracking-widest text-[28px] font-medium text-amber-200">
-                   {astro.conGiap && <span className="bg-white/10 px-4 py-2 rounded-xl">Tuổi {astro.conGiap}</span>}
+                   {astro.canChi ? <span className="bg-white/10 px-4 py-2 rounded-xl">Tuổi {astro.canChi}</span> : astro.conGiap && <span className="bg-white/10 px-4 py-2 rounded-xl">Tuổi {astro.conGiap}</span>}
                    {astro.cungHoangDao && <span className="bg-white/10 px-4 py-2 rounded-xl">Cung {astro.cungHoangDao}</span>}
                    {astro.nguHanh && <span className="bg-white/10 px-4 py-2 rounded-xl">Mệnh {astro.nguHanh}</span>}
                 </div>

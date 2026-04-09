@@ -167,8 +167,8 @@ app.prepare().then(() => {
           return;
       }
       
-      if (Object.keys(astroData).length === 0) {
-         socket.emit('tiktok_status', { status: 'error', error: `[LỖI] Không thể phân tích ngày sinh: ${dobString}` });
+      if (!astroData.conGiap && !astroData.cungHoangDao) {
+         socket.emit('tiktok_status', { status: 'error', error: `[LỖI] Dữ liệu ngày sinh không hợp lệ hoặc ngoài phạm vi bộ nhớ Wiki (Cung/Giáp): ${dobString}` });
          return;
       }
 
@@ -269,7 +269,7 @@ app.prepare().then(() => {
                 
                 // KIỂM TRA TRÙNG LẶP & COOLDOWN XONG -> KIỂM TRA NGÀY SINH CÓ TRONG TƯƠNG LAI KHÔNG
                 const testAstro = calculateAstrology(dobString);
-                if (Object.keys(testAstro).length === 0) return;
+                if (!testAstro.conGiap && !testAstro.cungHoangDao) return;
 
                 const now = new Date();
                 const curYear = now.getFullYear();

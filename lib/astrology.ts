@@ -1,61 +1,21 @@
-import { NguHanh, AstrologyData } from './types';
+import * as fs from 'fs';
+import * as path from 'path';
+import { AstrologyData } from './types';
 
-const CAN_ARR = ['Canh', 'Tân', 'Nhâm', 'Quý', 'Giáp', 'Ất', 'Bính', 'Đinh', 'Mậu', 'Kỷ'];
-const CHI_ARR = ['Thân', 'Dậu', 'Tuất', 'Hợi', 'Tý', 'Sửu', 'Dần', 'Mão', 'Thìn', 'Tỵ', 'Ngọ', 'Mùi'];
-const CON_GIAP_ARR = ['Thân', 'Dậu', 'Tuất', 'Hợi', 'Tý', 'Sửu', 'Dần', 'Mão', 'Thìn', 'Tỵ', 'Ngọ', 'Mùi'];
-
-// Giá trị ngũ hành của Can
-const CAN_VALUE: Record<string, number> = {
-  'Giáp': 1, 'Ất': 1,
-  'Bính': 2, 'Đinh': 2,
-  'Mậu': 3, 'Kỷ': 3,
-  'Canh': 4, 'Tân': 4,
-  'Nhâm': 5, 'Quý': 5
-};
-
-// Giá trị ngũ hành của Chi
-const CHI_VALUE: Record<string, number> = {
-  'Tý': 0, 'Sửu': 0, 'Ngọ': 0, 'Mùi': 0,
-  'Dần': 1, 'Mão': 1, 'Thân': 1, 'Dậu': 1,
-  'Thìn': 2, 'Tỵ': 2, 'Tuất': 2, 'Hợi': 2
-};
-
-const NGU_HANH_VALUE: Record<number, NguHanh> = {
-  1: 'Kim',
-  2: 'Thủy',
-  3: 'Hỏa',
-  4: 'Thổ',
-  5: 'Mộc'
-};
-
-export function tinhCanChi(year: number) {
-  const can = CAN_ARR[year % 10];
-  const chi = CHI_ARR[year % 12];
-  const conGiap = CON_GIAP_ARR[year % 12];
-  return { can, chi, conGiap };
+// Hàm helper đọc JSON an toàn (đồng bộ)
+function loadJsonDict(filename: string) {
+  try {
+    const fullPath = path.join(__dirname, '../data/static_wiki', filename);
+    const content = fs.readFileSync(fullPath, 'utf8');
+    return JSON.parse(content);
+  } catch (err) {
+    console.error(`Không thể đọc từ điển ${filename}:`, err);
+    return {};
+  }
 }
 
-export function tinhNguHanh(can: string, chi: string): NguHanh {
-  let val = CAN_VALUE[can] + CHI_VALUE[chi];
-  if (val > 5) val -= 5;
-  return NGU_HANH_VALUE[val];
-}
-
-export function tinhCungHoangDao(day: number, month: number): string | null {
-  if (month === 3 && day >= 21 || month === 4 && day <= 19) return 'Bạch Dương';
-  if (month === 4 && day >= 20 || month === 5 && day <= 20) return 'Kim Ngưu';
-  if (month === 5 && day >= 21 || month === 6 && day <= 21) return 'Song Tử';
-  if (month === 6 && day >= 22 || month === 7 && day <= 22) return 'Cự Giải';
-  if (month === 7 && day >= 23 || month === 8 && day <= 22) return 'Sư Tử';
-  if (month === 8 && day >= 23 || month === 9 && day <= 22) return 'Xử Nữ';
-  if (month === 9 && day >= 23 || month === 10 && day <= 23) return 'Thiên Bình';
-  if (month === 10 && day >= 24 || month === 11 && day <= 22) return 'Bọ Cạp';
-  if (month === 11 && day >= 23 || month === 12 && day <= 21) return 'Nhân Mã';
-  if (month === 12 && day >= 22 || month === 1 && day <= 19) return 'Ma Kết';
-  if (month === 1 && day >= 20 || month === 2 && day <= 18) return 'Bảo Bình';
-  if (month === 2 && day >= 19 || month === 3 && day <= 20) return 'Song Ngư';
-  return null;
-}
+const zodiacDict = loadJsonDict('zodiac_dict.json');
+const canchiDict = loadJsonDict('canchi_dict.json');
 
 export function tinhSoChuDao(day: number, month: number, year: number): number {
   let sum = 0;
@@ -88,45 +48,47 @@ export function calculateAstrology(dobString: string): AstrologyData {
   let year: number | null = null;
 
   if (parts.length === 1) {
-    // Chỉ có năm
     year = parseInt(parts[0], 10);
     if (year < 100) year += (year < 30 ? 2000 : 1900);
   } else if (parts.length === 2) {
-    // DD/MM hoặc MM/YYYY
     const p2 = parseInt(parts[1], 10);
     if (p2 > 31) {
-      // Dạng MM/YYYY
       month = parseInt(parts[0], 10);
       year = p2;
     } else {
-      // Dạng DD/MM
       day = parseInt(parts[0], 10);
       month = parseInt(parts[1], 10);
     }
   } else if (parts.length >= 3) {
-    // DD/MM/YYYY
     day = parseInt(parts[0], 10);
     month = parseInt(parts[1], 10);
     year = parseInt(parts[2], 10);
   }
 
-  // Đảm bảo logic tính toán nếu số quá vô lý
   if (year && year < 100) year += (year < 30 ? 2000 : 1900);
   
+  // 1. Dò Dữ Liệu Theo Năm (Lục Thập Hoa Giáp)
   if (year && !isNaN(year)) {
-     // NOTE: Chúng ta đang dùng Dương Lịch tương đương năm để tính nhanh vì user nhập trên Tiktok
-     // thường không tra trước ngày âm lịch. Độ chính xác ~90% trừ những ngày đệm đầu năm.
-     const { can, chi, conGiap } = tinhCanChi(year);
-     result.canChi = `${can} ${chi}`;
-     result.conGiap = conGiap;
-     result.nguHanh = tinhNguHanh(can, chi);
+     const yearStr = year.toString();
+     const canchiInfo = canchiDict[yearStr];
+     if (canchiInfo) {
+       result.canChi = canchiInfo.canChi;
+       result.conGiap = canchiInfo.conGiap;
+       // Trả về Nạp Âm chi tiết (Ví dụ: Tuyền Trung Thủy)
+       result.nguHanh = canchiInfo.napAm as any; 
+     }
   }
 
+  // 2. Dò Dữ Liệu Theo Ngày Tháng (Cung Hoàng Đạo)
   if (day && month && !isNaN(day) && !isNaN(month)) {
-     const cung = tinhCungHoangDao(day, month);
-     if (cung) result.cungHoangDao = cung;
+     const key = `${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+     const zodiacInfo = zodiacDict[key];
+     if (zodiacInfo) {
+       result.cungHoangDao = zodiacInfo.name;
+     }
   }
 
+  // 3. Tính Số Chủ Đạo (Vẫn giữ vì đây là tính toán số học chuẩn)
   if (day && month && year && !isNaN(day) && !isNaN(month) && !isNaN(year)) {
      result.soChuDao = tinhSoChuDao(day, month, year);
   }

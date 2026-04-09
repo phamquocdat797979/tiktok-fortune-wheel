@@ -1,0 +1,728 @@
+{
+  "1930": {
+    "canChi": "Canh Ngọ",
+    "conGiap": "Ngọ",
+    "nguHanh": "Thổ",
+    "napAm": "Lộ Bàng Thổ"
+  },
+  "1931": {
+    "canChi": "Tân Mùi",
+    "conGiap": "Mùi",
+    "nguHanh": "Thổ",
+    "napAm": "Lộ Bàng Thổ"
+  },
+  "1932": {
+    "canChi": "Nhâm Thân",
+    "conGiap": "Thân",
+    "nguHanh": "Kim",
+    "napAm": "Kiếm Phong Kim"
+  },
+  "1933": {
+    "canChi": "Quý Dậu",
+    "conGiap": "Dậu",
+    "nguHanh": "Kim",
+    "napAm": "Kiếm Phong Kim"
+  },
+  "1934": {
+    "canChi": "Giáp Tuất",
+    "conGiap": "Tuất",
+    "nguHanh": "Hỏa",
+    "napAm": "Sơn Đầu Hỏa"
+  },
+  "1935": {
+    "canChi": "Ất Hợi",
+    "conGiap": "Hợi",
+    "nguHanh": "Hỏa",
+    "napAm": "Sơn Đầu Hỏa"
+  },
+  "1936": {
+    "canChi": "Bính Tý",
+    "conGiap": "Tý",
+    "nguHanh": "Thủy",
+    "napAm": "Giản Hạ Thủy"
+  },
+  "1937": {
+    "canChi": "Đinh Sửu",
+    "conGiap": "Sửu",
+    "nguHanh": "Thủy",
+    "napAm": "Giản Hạ Thủy"
+  },
+  "1938": {
+    "canChi": "Mậu Dần",
+    "conGiap": "Dần",
+    "nguHanh": "Thổ",
+    "napAm": "Thành Đầu Thổ"
+  },
+  "1939": {
+    "canChi": "Kỷ Mão",
+    "conGiap": "Mão",
+    "nguHanh": "Thổ",
+    "napAm": "Thành Đầu Thổ"
+  },
+  "1940": {
+    "canChi": "Canh Thìn",
+    "conGiap": "Thìn",
+    "nguHanh": "Kim",
+    "napAm": "Bạch Lạp Kim"
+  },
+  "1941": {
+    "canChi": "Tân Tỵ",
+    "conGiap": "Tỵ",
+    "nguHanh": "Kim",
+    "napAm": "Bạch Lạp Kim"
+  },
+  "1942": {
+    "canChi": "Nhâm Ngọ",
+    "conGiap": "Ngọ",
+    "nguHanh": "Mộc",
+    "napAm": "Dương Liễu Mộc"
+  },
+  "1943": {
+    "canChi": "Quý Mùi",
+    "conGiap": "Mùi",
+    "nguHanh": "Mộc",
+    "napAm": "Dương Liễu Mộc"
+  },
+  "1944": {
+    "canChi": "Giáp Thân",
+    "conGiap": "Thân",
+    "nguHanh": "Thủy",
+    "napAm": "Tuyền Trung Thủy"
+  },
+  "1945": {
+    "canChi": "Ất Dậu",
+    "conGiap": "Dậu",
+    "nguHanh": "Thủy",
+    "napAm": "Tuyền Trung Thủy"
+  },
+  "1946": {
+    "canChi": "Bính Tuất",
+    "conGiap": "Tuất",
+    "nguHanh": "Thổ",
+    "napAm": "Ốc Thượng Thổ"
+  },
+  "1947": {
+    "canChi": "Đinh Hợi",
+    "conGiap": "Hợi",
+    "nguHanh": "Thổ",
+    "napAm": "Ốc Thượng Thổ"
+  },
+  "1948": {
+    "canChi": "Mậu Tý",
+    "conGiap": "Tý",
+    "nguHanh": "Hỏa",
+    "napAm": "Tích Lịch Hỏa"
+  },
+  "1949": {
+    "canChi": "Kỷ Sửu",
+    "conGiap": "Sửu",
+    "nguHanh": "Hỏa",
+    "napAm": "Tích Lịch Hỏa"
+  },
+  "1950": {
+    "canChi": "Canh Dần",
+    "conGiap": "Dần",
+    "nguHanh": "Mộc",
+    "napAm": "Tùng Bách Mộc"
+  },
+  "1951": {
+    "canChi": "Tân Mão",
+    "conGiap": "Mão",
+    "nguHanh": "Mộc",
+    "napAm": "Tùng Bách Mộc"
+  },
+  "1952": {
+    "canChi": "Nhâm Thìn",
+    "conGiap": "Thìn",
+    "nguHanh": "Thủy",
+    "napAm": "Trường Lưu Thủy"
+  },
+  "1953": {
+    "canChi": "Quý Tỵ",
+    "conGiap": "Tỵ",
+    "nguHanh": "Thủy",
+    "napAm": "Trường Lưu Thủy"
+  },
+  "1954": {
+    "canChi": "Giáp Ngọ",
+    "conGiap": "Ngọ",
+    "nguHanh": "Kim",
+    "napAm": "Sa Trung Kim"
+  },
+  "1955": {
+    "canChi": "Ất Mùi",
+    "conGiap": "Mùi",
+    "nguHanh": "Kim",
+    "napAm": "Sa Trung Kim"
+  },
+  "1956": {
+    "canChi": "Bính Thân",
+    "conGiap": "Thân",
+    "nguHanh": "Hỏa",
+    "napAm": "Sơn Hạ Hỏa"
+  },
+  "1957": {
+    "canChi": "Đinh Dậu",
+    "conGiap": "Dậu",
+    "nguHanh": "Hỏa",
+    "napAm": "Sơn Hạ Hỏa"
+  },
+  "1958": {
+    "canChi": "Mậu Tuất",
+    "conGiap": "Tuất",
+    "nguHanh": "Mộc",
+    "napAm": "Bình Địa Mộc"
+  },
+  "1959": {
+    "canChi": "Kỷ Hợi",
+    "conGiap": "Hợi",
+    "nguHanh": "Mộc",
+    "napAm": "Bình Địa Mộc"
+  },
+  "1960": {
+    "canChi": "Canh Tý",
+    "conGiap": "Tý",
+    "nguHanh": "Thổ",
+    "napAm": "Bích Thượng Thổ"
+  },
+  "1961": {
+    "canChi": "Tân Sửu",
+    "conGiap": "Sửu",
+    "nguHanh": "Thổ",
+    "napAm": "Bích Thượng Thổ"
+  },
+  "1962": {
+    "canChi": "Nhâm Dần",
+    "conGiap": "Dần",
+    "nguHanh": "Kim",
+    "napAm": "Kim Bạch Kim"
+  },
+  "1963": {
+    "canChi": "Quý Mão",
+    "conGiap": "Mão",
+    "nguHanh": "Kim",
+    "napAm": "Kim Bạch Kim"
+  },
+  "1964": {
+    "canChi": "Giáp Thìn",
+    "conGiap": "Thìn",
+    "nguHanh": "Hỏa",
+    "napAm": "Phú Đăng Hỏa"
+  },
+  "1965": {
+    "canChi": "Ất Tỵ",
+    "conGiap": "Tỵ",
+    "nguHanh": "Hỏa",
+    "napAm": "Phú Đăng Hỏa"
+  },
+  "1966": {
+    "canChi": "Bính Ngọ",
+    "conGiap": "Ngọ",
+    "nguHanh": "Thủy",
+    "napAm": "Thiên Hà Thủy"
+  },
+  "1967": {
+    "canChi": "Đinh Mùi",
+    "conGiap": "Mùi",
+    "nguHanh": "Thủy",
+    "napAm": "Thiên Hà Thủy"
+  },
+  "1968": {
+    "canChi": "Mậu Thân",
+    "conGiap": "Thân",
+    "nguHanh": "Thổ",
+    "napAm": "Đại Trạch Thổ"
+  },
+  "1969": {
+    "canChi": "Kỷ Dậu",
+    "conGiap": "Dậu",
+    "nguHanh": "Thổ",
+    "napAm": "Đại Trạch Thổ"
+  },
+  "1970": {
+    "canChi": "Canh Tuất",
+    "conGiap": "Tuất",
+    "nguHanh": "Kim",
+    "napAm": "Thoa Xuyến Kim"
+  },
+  "1971": {
+    "canChi": "Tân Hợi",
+    "conGiap": "Hợi",
+    "nguHanh": "Kim",
+    "napAm": "Thoa Xuyến Kim"
+  },
+  "1972": {
+    "canChi": "Nhâm Tý",
+    "conGiap": "Tý",
+    "nguHanh": "Mộc",
+    "napAm": "Tang Đố Mộc"
+  },
+  "1973": {
+    "canChi": "Quý Sửu",
+    "conGiap": "Sửu",
+    "nguHanh": "Mộc",
+    "napAm": "Tang Đố Mộc"
+  },
+  "1974": {
+    "canChi": "Giáp Dần",
+    "conGiap": "Dần",
+    "nguHanh": "Thủy",
+    "napAm": "Đại Khê Thủy"
+  },
+  "1975": {
+    "canChi": "Ất Mão",
+    "conGiap": "Mão",
+    "nguHanh": "Thủy",
+    "napAm": "Đại Khê Thủy"
+  },
+  "1976": {
+    "canChi": "Bính Thìn",
+    "conGiap": "Thìn",
+    "nguHanh": "Thổ",
+    "napAm": "Sa Trung Thổ"
+  },
+  "1977": {
+    "canChi": "Đinh Tỵ",
+    "conGiap": "Tỵ",
+    "nguHanh": "Thổ",
+    "napAm": "Sa Trung Thổ"
+  },
+  "1978": {
+    "canChi": "Mậu Ngọ",
+    "conGiap": "Ngọ",
+    "nguHanh": "Hỏa",
+    "napAm": "Thiên Thượng Hỏa"
+  },
+  "1979": {
+    "canChi": "Kỷ Mùi",
+    "conGiap": "Mùi",
+    "nguHanh": "Hỏa",
+    "napAm": "Thiên Thượng Hỏa"
+  },
+  "1980": {
+    "canChi": "Canh Thân",
+    "conGiap": "Thân",
+    "nguHanh": "Mộc",
+    "napAm": "Thạch Lựu Mộc"
+  },
+  "1981": {
+    "canChi": "Tân Dậu",
+    "conGiap": "Dậu",
+    "nguHanh": "Mộc",
+    "napAm": "Thạch Lựu Mộc"
+  },
+  "1982": {
+    "canChi": "Nhâm Tuất",
+    "conGiap": "Tuất",
+    "nguHanh": "Thủy",
+    "napAm": "Đại Hải Thủy"
+  },
+  "1983": {
+    "canChi": "Quý Hợi",
+    "conGiap": "Hợi",
+    "nguHanh": "Thủy",
+    "napAm": "Đại Hải Thủy"
+  },
+  "1984": {
+    "canChi": "Giáp Tý",
+    "conGiap": "Tý",
+    "nguHanh": "Kim",
+    "napAm": "Hải Trung Kim"
+  },
+  "1985": {
+    "canChi": "Ất Sửu",
+    "conGiap": "Sửu",
+    "nguHanh": "Kim",
+    "napAm": "Hải Trung Kim"
+  },
+  "1986": {
+    "canChi": "Bính Dần",
+    "conGiap": "Dần",
+    "nguHanh": "Hỏa",
+    "napAm": "Lư Trung Hỏa"
+  },
+  "1987": {
+    "canChi": "Đinh Mão",
+    "conGiap": "Mão",
+    "nguHanh": "Hỏa",
+    "napAm": "Lư Trung Hỏa"
+  },
+  "1988": {
+    "canChi": "Mậu Thìn",
+    "conGiap": "Thìn",
+    "nguHanh": "Mộc",
+    "napAm": "Đại Lâm Mộc"
+  },
+  "1989": {
+    "canChi": "Kỷ Tỵ",
+    "conGiap": "Tỵ",
+    "nguHanh": "Mộc",
+    "napAm": "Đại Lâm Mộc"
+  },
+  "1990": {
+    "canChi": "Canh Ngọ",
+    "conGiap": "Ngọ",
+    "nguHanh": "Thổ",
+    "napAm": "Lộ Bàng Thổ"
+  },
+  "1991": {
+    "canChi": "Tân Mùi",
+    "conGiap": "Mùi",
+    "nguHanh": "Thổ",
+    "napAm": "Lộ Bàng Thổ"
+  },
+  "1992": {
+    "canChi": "Nhâm Thân",
+    "conGiap": "Thân",
+    "nguHanh": "Kim",
+    "napAm": "Kiếm Phong Kim"
+  },
+  "1993": {
+    "canChi": "Quý Dậu",
+    "conGiap": "Dậu",
+    "nguHanh": "Kim",
+    "napAm": "Kiếm Phong Kim"
+  },
+  "1994": {
+    "canChi": "Giáp Tuất",
+    "conGiap": "Tuất",
+    "nguHanh": "Hỏa",
+    "napAm": "Sơn Đầu Hỏa"
+  },
+  "1995": {
+    "canChi": "Ất Hợi",
+    "conGiap": "Hợi",
+    "nguHanh": "Hỏa",
+    "napAm": "Sơn Đầu Hỏa"
+  },
+  "1996": {
+    "canChi": "Bính Tý",
+    "conGiap": "Tý",
+    "nguHanh": "Thủy",
+    "napAm": "Giản Hạ Thủy"
+  },
+  "1997": {
+    "canChi": "Đinh Sửu",
+    "conGiap": "Sửu",
+    "nguHanh": "Thủy",
+    "napAm": "Giản Hạ Thủy"
+  },
+  "1998": {
+    "canChi": "Mậu Dần",
+    "conGiap": "Dần",
+    "nguHanh": "Thổ",
+    "napAm": "Thành Đầu Thổ"
+  },
+  "1999": {
+    "canChi": "Kỷ Mão",
+    "conGiap": "Mão",
+    "nguHanh": "Thổ",
+    "napAm": "Thành Đầu Thổ"
+  },
+  "2000": {
+    "canChi": "Canh Thìn",
+    "conGiap": "Thìn",
+    "nguHanh": "Kim",
+    "napAm": "Bạch Lạp Kim"
+  },
+  "2001": {
+    "canChi": "Tân Tỵ",
+    "conGiap": "Tỵ",
+    "nguHanh": "Kim",
+    "napAm": "Bạch Lạp Kim"
+  },
+  "2002": {
+    "canChi": "Nhâm Ngọ",
+    "conGiap": "Ngọ",
+    "nguHanh": "Mộc",
+    "napAm": "Dương Liễu Mộc"
+  },
+  "2003": {
+    "canChi": "Quý Mùi",
+    "conGiap": "Mùi",
+    "nguHanh": "Mộc",
+    "napAm": "Dương Liễu Mộc"
+  },
+  "2004": {
+    "canChi": "Giáp Thân",
+    "conGiap": "Thân",
+    "nguHanh": "Thủy",
+    "napAm": "Tuyền Trung Thủy"
+  },
+  "2005": {
+    "canChi": "Ất Dậu",
+    "conGiap": "Dậu",
+    "nguHanh": "Thủy",
+    "napAm": "Tuyền Trung Thủy"
+  },
+  "2006": {
+    "canChi": "Bính Tuất",
+    "conGiap": "Tuất",
+    "nguHanh": "Thổ",
+    "napAm": "Ốc Thượng Thổ"
+  },
+  "2007": {
+    "canChi": "Đinh Hợi",
+    "conGiap": "Hợi",
+    "nguHanh": "Thổ",
+    "napAm": "Ốc Thượng Thổ"
+  },
+  "2008": {
+    "canChi": "Mậu Tý",
+    "conGiap": "Tý",
+    "nguHanh": "Hỏa",
+    "napAm": "Tích Lịch Hỏa"
+  },
+  "2009": {
+    "canChi": "Kỷ Sửu",
+    "conGiap": "Sửu",
+    "nguHanh": "Hỏa",
+    "napAm": "Tích Lịch Hỏa"
+  },
+  "2010": {
+    "canChi": "Canh Dần",
+    "conGiap": "Dần",
+    "nguHanh": "Mộc",
+    "napAm": "Tùng Bách Mộc"
+  },
+  "2011": {
+    "canChi": "Tân Mão",
+    "conGiap": "Mão",
+    "nguHanh": "Mộc",
+    "napAm": "Tùng Bách Mộc"
+  },
+  "2012": {
+    "canChi": "Nhâm Thìn",
+    "conGiap": "Thìn",
+    "nguHanh": "Thủy",
+    "napAm": "Trường Lưu Thủy"
+  },
+  "2013": {
+    "canChi": "Quý Tỵ",
+    "conGiap": "Tỵ",
+    "nguHanh": "Thủy",
+    "napAm": "Trường Lưu Thủy"
+  },
+  "2014": {
+    "canChi": "Giáp Ngọ",
+    "conGiap": "Ngọ",
+    "nguHanh": "Kim",
+    "napAm": "Sa Trung Kim"
+  },
+  "2015": {
+    "canChi": "Ất Mùi",
+    "conGiap": "Mùi",
+    "nguHanh": "Kim",
+    "napAm": "Sa Trung Kim"
+  },
+  "2016": {
+    "canChi": "Bính Thân",
+    "conGiap": "Thân",
+    "nguHanh": "Hỏa",
+    "napAm": "Sơn Hạ Hỏa"
+  },
+  "2017": {
+    "canChi": "Đinh Dậu",
+    "conGiap": "Dậu",
+    "nguHanh": "Hỏa",
+    "napAm": "Sơn Hạ Hỏa"
+  },
+  "2018": {
+    "canChi": "Mậu Tuất",
+    "conGiap": "Tuất",
+    "nguHanh": "Mộc",
+    "napAm": "Bình Địa Mộc"
+  },
+  "2019": {
+    "canChi": "Kỷ Hợi",
+    "conGiap": "Hợi",
+    "nguHanh": "Mộc",
+    "napAm": "Bình Địa Mộc"
+  },
+  "2020": {
+    "canChi": "Canh Tý",
+    "conGiap": "Tý",
+    "nguHanh": "Thổ",
+    "napAm": "Bích Thượng Thổ"
+  },
+  "2021": {
+    "canChi": "Tân Sửu",
+    "conGiap": "Sửu",
+    "nguHanh": "Thổ",
+    "napAm": "Bích Thượng Thổ"
+  },
+  "2022": {
+    "canChi": "Nhâm Dần",
+    "conGiap": "Dần",
+    "nguHanh": "Kim",
+    "napAm": "Kim Bạch Kim"
+  },
+  "2023": {
+    "canChi": "Quý Mão",
+    "conGiap": "Mão",
+    "nguHanh": "Kim",
+    "napAm": "Kim Bạch Kim"
+  },
+  "2024": {
+    "canChi": "Giáp Thìn",
+    "conGiap": "Thìn",
+    "nguHanh": "Hỏa",
+    "napAm": "Phú Đăng Hỏa"
+  },
+  "2025": {
+    "canChi": "Ất Tỵ",
+    "conGiap": "Tỵ",
+    "nguHanh": "Hỏa",
+    "napAm": "Phú Đăng Hỏa"
+  },
+  "2026": {
+    "canChi": "Bính Ngọ",
+    "conGiap": "Ngọ",
+    "nguHanh": "Thủy",
+    "napAm": "Thiên Hà Thủy"
+  },
+  "2027": {
+    "canChi": "Đinh Mùi",
+    "conGiap": "Mùi",
+    "nguHanh": "Thủy",
+    "napAm": "Thiên Hà Thủy"
+  },
+  "2028": {
+    "canChi": "Mậu Thân",
+    "conGiap": "Thân",
+    "nguHanh": "Thổ",
+    "napAm": "Đại Trạch Thổ"
+  },
+  "2029": {
+    "canChi": "Kỷ Dậu",
+    "conGiap": "Dậu",
+    "nguHanh": "Thổ",
+    "napAm": "Đại Trạch Thổ"
+  },
+  "2030": {
+    "canChi": "Canh Tuất",
+    "conGiap": "Tuất",
+    "nguHanh": "Kim",
+    "napAm": "Thoa Xuyến Kim"
+  },
+  "2031": {
+    "canChi": "Tân Hợi",
+    "conGiap": "Hợi",
+    "nguHanh": "Kim",
+    "napAm": "Thoa Xuyến Kim"
+  },
+  "2032": {
+    "canChi": "Nhâm Tý",
+    "conGiap": "Tý",
+    "nguHanh": "Mộc",
+    "napAm": "Tang Đố Mộc"
+  },
+  "2033": {
+    "canChi": "Quý Sửu",
+    "conGiap": "Sửu",
+    "nguHanh": "Mộc",
+    "napAm": "Tang Đố Mộc"
+  },
+  "2034": {
+    "canChi": "Giáp Dần",
+    "conGiap": "Dần",
+    "nguHanh": "Thủy",
+    "napAm": "Đại Khê Thủy"
+  },
+  "2035": {
+    "canChi": "Ất Mão",
+    "conGiap": "Mão",
+    "nguHanh": "Thủy",
+    "napAm": "Đại Khê Thủy"
+  },
+  "2036": {
+    "canChi": "Bính Thìn",
+    "conGiap": "Thìn",
+    "nguHanh": "Thổ",
+    "napAm": "Sa Trung Thổ"
+  },
+  "2037": {
+    "canChi": "Đinh Tỵ",
+    "conGiap": "Tỵ",
+    "nguHanh": "Thổ",
+    "napAm": "Sa Trung Thổ"
+  },
+  "2038": {
+    "canChi": "Mậu Ngọ",
+    "conGiap": "Ngọ",
+    "nguHanh": "Hỏa",
+    "napAm": "Thiên Thượng Hỏa"
+  },
+  "2039": {
+    "canChi": "Kỷ Mùi",
+    "conGiap": "Mùi",
+    "nguHanh": "Hỏa",
+    "napAm": "Thiên Thượng Hỏa"
+  },
+  "2040": {
+    "canChi": "Canh Thân",
+    "conGiap": "Thân",
+    "nguHanh": "Mộc",
+    "napAm": "Thạch Lựu Mộc"
+  },
+  "2041": {
+    "canChi": "Tân Dậu",
+    "conGiap": "Dậu",
+    "nguHanh": "Mộc",
+    "napAm": "Thạch Lựu Mộc"
+  },
+  "2042": {
+    "canChi": "Nhâm Tuất",
+    "conGiap": "Tuất",
+    "nguHanh": "Thủy",
+    "napAm": "Đại Hải Thủy"
+  },
+  "2043": {
+    "canChi": "Quý Hợi",
+    "conGiap": "Hợi",
+    "nguHanh": "Thủy",
+    "napAm": "Đại Hải Thủy"
+  },
+  "2044": {
+    "canChi": "Giáp Tý",
+    "conGiap": "Tý",
+    "nguHanh": "Kim",
+    "napAm": "Hải Trung Kim"
+  },
+  "2045": {
+    "canChi": "Ất Sửu",
+    "conGiap": "Sửu",
+    "nguHanh": "Kim",
+    "napAm": "Hải Trung Kim"
+  },
+  "2046": {
+    "canChi": "Bính Dần",
+    "conGiap": "Dần",
+    "nguHanh": "Hỏa",
+    "napAm": "Lư Trung Hỏa"
+  },
+  "2047": {
+    "canChi": "Đinh Mão",
+    "conGiap": "Mão",
+    "nguHanh": "Hỏa",
+    "napAm": "Lư Trung Hỏa"
+  },
+  "2048": {
+    "canChi": "Mậu Thìn",
+    "conGiap": "Thìn",
+    "nguHanh": "Mộc",
+    "napAm": "Đại Lâm Mộc"
+  },
+  "2049": {
+    "canChi": "Kỷ Tỵ",
+    "conGiap": "Tỵ",
+    "nguHanh": "Mộc",
+    "napAm": "Đại Lâm Mộc"
+  },
+  "2050": {
+    "canChi": "Canh Ngọ",
+    "conGiap": "Ngọ",
+    "nguHanh": "Thổ",
+    "napAm": "Lộ Bàng Thổ"
+  }
+}

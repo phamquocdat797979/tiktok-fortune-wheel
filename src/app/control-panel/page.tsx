@@ -271,6 +271,40 @@ export default function ControlPanel() {
           {/* ===== CỘT PHẢI ===== */}
           <div className="flex flex-col gap-4">
 
+            {/* Quản lý Dữ liệu Tử Vi (RAG) */}
+            <div className="border-[2px] border-blue-400/40 rounded-xl p-4 bg-blue-50/60 shadow-sm">
+              <h2 className="text-base font-bold text-blue-800 mb-3 flex items-center gap-2">📚 Trí Tuệ Nhân Tạo (LLM Wiki)</h2>
+              <div className="flex flex-col gap-2 relative">
+                <button 
+                  onClick={async (e) => {
+                    const btn = e.currentTarget;
+                    btn.disabled = true;
+                    btn.innerText = '⏳ Đang quét dữ liệu...';
+                    try {
+                      const res = await fetch('/api/admin/daily-update', { method: 'POST' });
+                      const json = await res.json();
+                      if (json.success) {
+                        btn.innerText = '✅ ' + json.message;
+                        setTimeout(() => { btn.innerText = '🔄 Cập Nhật Tử Vi Hàng Ngày (Crawler)'; btn.disabled = false; }, 3000);
+                      } else {
+                        btn.innerText = '❌ Lỗi: ' + json.error;
+                        setTimeout(() => { btn.innerText = '🔄 Cập Nhật Tử Vi Hàng Ngày (Crawler)'; btn.disabled = false; }, 3000);
+                      }
+                    } catch (err: any) {
+                      btn.innerText = '❌ Lỗi server';
+                      setTimeout(() => { btn.innerText = '🔄 Cập Nhật Tử Vi Hàng Ngày (Crawler)'; btn.disabled = false; }, 3000);
+                    }
+                  }}
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg text-sm transition-colors shadow flex justify-center items-center gap-2"
+                >
+                  🔄 Cập Nhật Tử Vi Hàng Ngày (Crawler)
+                </button>
+                <div className="text-xs text-blue-600/80 bg-blue-100 p-2 rounded text-justify">
+                  <strong>RAG Mode:</strong> Khi ấn nút này, Bot sẽ tự động lấy dữ liệu tử vi của 12 Cung và 12 Con Giáp cho ngày hôm nay từ các nguồn uy tín, ghi đè vào hệ thống (Daily Wiki). Gemini sẽ đọc các file này kết hợp với Cung/Mạng năm sinh tĩnh khi bói cho người xem!
+                </div>
+              </div>
+            </div>
+
             {/* Nhạc nền */}
             <div className="border-[2px] border-purple-400/40 rounded-xl p-4 bg-purple-50/60 shadow-sm">
               <h2 className="text-base font-bold text-purple-800 mb-3 flex items-center gap-2">🎵 Nhạc Nền Game</h2>

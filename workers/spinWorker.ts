@@ -7,6 +7,42 @@ import { SLOTS } from '../lib/slotsData';
 import { calculateAstrology } from '../lib/astrology';
 import { generateFortuneText } from '../lib/gemini';
 import * as https from 'https';
+import * as fs from 'fs';
+import * as path from 'path';
+
+const CUNG_MAP: Record<string, string> = {
+  'Bạch Dương': 'bach_duong', 'Kim Ngưu': 'kim_nguu', 'Song Tử': 'song_tu', 
+  'Cự Giải': 'cu_giai', 'Sư Tử': 'su_tu', 'Xử Nữ': 'xu_nu', 'Thiên Bình': 'thien_binh', 
+  'Bọ Cạp': 'bo_cap', 'Hổ Cáp': 'bo_cap', 'Nhân Mã': 'nhan_ma', 'Ma Kết': 'ma_ket', 
+  'Bảo Bình': 'bao_binh', 'Song Ngư': 'song_ngu'
+};
+
+const CON_GIAP_MAP: Record<string, string> = {
+  'Tý': 'ty', 'Sửu': 'suu', 'Dần': 'dan', 'Mão': 'mao', 'Thìn': 'thin', 
+  'Tỵ': 'ty_2', 'Tị': 'ty_2', 'Ngọ': 'ngo', 'Mùi': 'mui', 'Thân': 'than', 
+  'Dậu': 'dau', 'Tuất': 'tuat', 'Hợi': 'hoi'
+};
+
+function readDailyWiki(astroData: any): string {
+    let context = '';
+    const wikiDir = path.join(process.cwd(), 'data', 'daily_wiki');
+    
+    if (astroData.cungHoangDao && CUNG_MAP[astroData.cungHoangDao]) {
+        try {
+            const file = path.join(wikiDir, 'cung', `${CUNG_MAP[astroData.cungHoangDao]}.md`);
+            if (fs.existsSync(file)) context += "Tử vi Cung Hoàng Đạo Hôm Nay:\n" + fs.readFileSync(file, 'utf8') + "\n\n";
+        } catch (e) {}
+    }
+    
+    if (astroData.conGiap && CON_GIAP_MAP[astroData.conGiap]) {
+        try {
+            const file = path.join(wikiDir, 'tuoi', `${CON_GIAP_MAP[astroData.conGiap]}.md`);
+            if (fs.existsSync(file)) context += "Tử vi Con Giáp Hôm Nay:\n" + fs.readFileSync(file, 'utf8') + "\n\n";
+        } catch (e) {}
+    }
+    
+    return context.trim();
+}
 
 // Hàm gọi thẳng URL Google TTS và trả về base64 MP3
 function fetchGoogleTTS(text: string): Promise<string> {
@@ -77,9 +113,9 @@ export function startSpinWorker(io: Server) {
             astrologyData: astroData 
         });
 
-        // --- BƯỚC 4: GỌI GEMINI API CHẠY NGẦM ---
-        // Vòng quay chạy mất tầm 5-7 giây. Gemini thường mất 3-5 giây.
-        const fortuneTextPromise = generateFortuneText(astroData, data.nickname || 'bạn');
+        // --- BƯỚC 4: RAG - ĐỌC DAILY WIKI & GỌI GEMINI API CHẠY NGẦM ---
+        const dailyContext = readDailyWiki(astroData);
+        const fortuneTextPromise = generateFortuneText(astroData, data.nickname || 'bạn', dailyContext);
 
         // Lưu log lịch sử bói vào Prisma database (chạy bất đồng bộ)
         prisma.giftRecord.create({

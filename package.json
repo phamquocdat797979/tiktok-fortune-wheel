@@ -21,6 +21,7 @@
     "@tsparticles/updater-roll": "^3.9.1",
     "@tsparticles/updater-wobble": "^3.9.1",
     "bullmq": "^5.72.0",
+    "cheerio": "^1.2.0",
     "edge-tts-node": "^1.5.7",
     "google-tts-api": "^2.0.2",
     "ioredis": "^5.10.1",
