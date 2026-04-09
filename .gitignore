@@ -13,3 +13,4 @@ dev.db
 # Large media files that exceed GitHub limits (100MB+)
 public/rain.mp4
 public/diamond.mp4
+# medium.mp4 is OK (51MB) - tracked in git
