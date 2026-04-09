@@ -209,7 +209,7 @@ export function WheelCanvas({ segments = SLOTS, currentRotation = 0, isSpinning 
 
       {/* 2. KHUNG NẮP CHỤP BẰNG HÌNH THẬT (TĨNH) KẸP LÊN TRÊN */}
       <img 
-        src="/la-ban-overlay.PNG" 
+        src="/la-ban-overlay.png" 
         className="absolute inset-0 w-full h-full object-contain z-10 pointer-events-none drop-shadow-2xl" 
         style={{ transform: `translate(${PNG_OFFSET_X}px, ${PNG_OFFSET_Y}px)` }}
         alt="Mặt Đồng Hồ La Bàn" 
