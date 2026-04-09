@@ -289,7 +289,7 @@ export default function GameScreen() {
           <div className="absolute inset-0 pointer-events-none z-[50] flex justify-center items-center mix-blend-screen">
              <div className="relative w-[800px] h-[800px]" style={{ clipPath: 'circle(50%)' }}>
                  <video ref={wheelVideoRef} src="/thunder.mp4" autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover scale-110 opacity-70" />
-                 <video src="/rain.mp4" autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover scale-110 opacity-65 mix-blend-screen" />
+                 <video src="/medium.mp4" autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover scale-110 opacity-65 mix-blend-screen" />
              </div>
           </div>
           <WheelCanvas currentRotation={currentRotation} isSpinning={wheelStatus === 'spinning'} />
