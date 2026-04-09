@@ -33,11 +33,11 @@ const PNG_OFFSET_Y = -6;  // Dịch lên -6px
 
 // Bảng 5 màu Ngũ Hành (Tone Muted/Vintage) phù hợp với La Bàn cổ
 const NGU_HANH_COLORS: Record<string, [string, string]> = {
-  'Kim':  ['#4a4e59', '#8a8d91'], // Kim loại cũ rỉ mờ (Vintage Steel)
-  'Mộc':  ['#223a28', '#405c46'], // Gỗ chìm/ Rêu phong (Aged Olive)
+  'Kim': ['#4a4e59', '#8a8d91'], // Kim loại cũ rỉ mờ (Vintage Steel)
+  'Mộc': ['#223a28', '#405c46'], // Gỗ chìm/ Rêu phong (Aged Olive)
   'Thủy': ['#18273b', '#38506e'], // Xanh biển sâu phai màu (Navy Slate)
-  'Hỏa':  ['#5a1818', '#8a3131'], // Đỏ gạch nung/ Huyết dụ (Burnt Crimson)
-  'Thổ':  ['#603e19', '#96703b'], // Đồng cổ/ Đất nung (Antique Bronze/Ochre)
+  'Hỏa': ['#5a1818', '#8a3131'], // Đỏ gạch nung/ Huyết dụ (Burnt Crimson)
+  'Thổ': ['#603e19', '#96703b'], // Đồng cổ/ Đất nung (Antique Bronze/Ochre)
 };
 
 function buildOffscreenWheel(segments: WheelSegment[]): HTMLCanvasElement {
@@ -208,11 +208,17 @@ export function WheelCanvas({ segments = SLOTS, currentRotation = 0, isSpinning 
       />
 
       {/* 2. KHUNG NẮP CHỤP BẰNG HÌNH THẬT (TĨNH) KẸP LÊN TRÊN */}
+<<<<<<< Updated upstream
       <img 
         src="/la-ban-overlay.png" 
         className="absolute inset-0 w-full h-full object-contain z-10 pointer-events-none drop-shadow-2xl" 
+=======
+      <img
+        src="/la-ban-overlay.png"
+        className="absolute inset-0 w-full h-full object-contain z-10 pointer-events-none drop-shadow-2xl"
+>>>>>>> Stashed changes
         style={{ transform: `translate(${PNG_OFFSET_X}px, ${PNG_OFFSET_Y}px)` }}
-        alt="Mặt Đồng Hồ La Bàn" 
+        alt="Mặt Đồng Hồ La Bàn"
       />
     </div>
   );
