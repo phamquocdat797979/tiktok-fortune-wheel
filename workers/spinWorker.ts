@@ -26,21 +26,55 @@ const CON_GIAP_MAP: Record<string, string> = {
 function readDailyWiki(astroData: any): string {
     let context = '';
     const wikiDir = path.join(process.cwd(), 'data', 'daily_wiki');
-    
+    const staticDir = path.join(process.cwd(), 'data', 'static_wiki');
+    let foundCung = false;
+    let foundTuoi = false;
+
+    // --- Đọc DAILY WIKI: Cung hoàng đạo hôm nay ---
     if (astroData.cungHoangDao && CUNG_MAP[astroData.cungHoangDao]) {
         try {
             const file = path.join(wikiDir, 'cung', `${CUNG_MAP[astroData.cungHoangDao]}.md`);
-            if (fs.existsSync(file)) context += "Tử vi Cung Hoàng Đạo Hôm Nay:\n" + fs.readFileSync(file, 'utf8') + "\n\n";
+            if (fs.existsSync(file)) {
+                context += "[TỬ VI CUNG HOÀNG ĐẠO HÔM NAY]\n" + fs.readFileSync(file, 'utf8') + "\n\n";
+                foundCung = true;
+            }
         } catch (e) {}
     }
-    
+
+    // --- Đọc DAILY WIKI: Con giáp hôm nay ---
     if (astroData.conGiap && CON_GIAP_MAP[astroData.conGiap]) {
         try {
             const file = path.join(wikiDir, 'tuoi', `${CON_GIAP_MAP[astroData.conGiap]}.md`);
-            if (fs.existsSync(file)) context += "Tử vi Con Giáp Hôm Nay:\n" + fs.readFileSync(file, 'utf8') + "\n\n";
+            if (fs.existsSync(file)) {
+                context += "[TỬ VI CON GIÁP HÔM NAY]\n" + fs.readFileSync(file, 'utf8') + "\n\n";
+                foundTuoi = true;
+            }
         } catch (e) {}
     }
-    
+
+    // --- Đọc STATIC WIKI: Thông tin chi tiết cung/mệnh ---
+    try {
+        const zodiacFile = path.join(staticDir, 'zodiac_dict.json');
+        const canchiFile = path.join(staticDir, 'canchi_dict.json');
+        const zodiacData = fs.existsSync(zodiacFile) ? JSON.parse(fs.readFileSync(zodiacFile, 'utf8')) : null;
+        const canchiData = fs.existsSync(canchiFile) ? JSON.parse(fs.readFileSync(canchiFile, 'utf8')) : null;
+
+        if (zodiacData && astroData.cungHoangDao && zodiacData[astroData.cungHoangDao]) {
+            const entry = zodiacData[astroData.cungHoangDao];
+            context += `[ĐẶC TÍNH CUNG ${astroData.cungHoangDao.toUpperCase()}]\n${typeof entry === 'string' ? entry : JSON.stringify(entry, null, 2)}\n\n`;
+        }
+        if (canchiData && astroData.canChi && canchiData[astroData.canChi]) {
+            const entry = canchiData[astroData.canChi];
+            context += `[ĐẶC TÍNH TUỔI ${astroData.canChi.toUpperCase()}]\n${typeof entry === 'string' ? entry : JSON.stringify(entry, null, 2)}\n\n`;
+        }
+    } catch (e) { console.warn('⚠️ Không đọc được static_wiki:', e); }
+
+    if (!foundCung && !foundTuoi) {
+        console.warn(`⚠️ RAG: Không tìm được file wiki nào cho cung="${astroData.cungHoangDao}" tuoi="${astroData.conGiap}" - Gemini sẽ phán chung chung!`);
+    } else {
+        console.log(`✅ RAG: Đã load wiki cho cung="${astroData.cungHoangDao}" (${foundCung ? 'có' : 'thiếu'}) tuoi="${astroData.conGiap}" (${foundTuoi ? 'có' : 'thiếu'})`);
+    }
+
     return context.trim();
 }
 

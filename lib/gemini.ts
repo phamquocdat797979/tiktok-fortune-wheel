@@ -34,8 +34,13 @@ export async function generateFortuneText(astro: AstrologyData, nickname: string
   ].filter(Boolean).join(', ') || 'Không có thông tin, dùng năng lượng ngày hôm nay';
 
   const ragInstruction = dailyContext 
-    ? `\nĐÂY LÀ DỮ LIỆU TỬ VI (WIKI) DÀNH RIÊNG CHO NGÀY HÔM NAY TỪ HỆ THỐNG:\n"""\n${dailyContext}\n"""\nHãy chắt lọc và sử dụng dữ liệu trên làm cốt lõi cho lời phán của bạn.`
+    ? `\nĐÂY LÀ DỮ LIỆU TỬ VI (WIKI) ĐƯỢC TẢI TỰ ĐỘNG CHO NGÀY HÔM NAY:\n"""\n${dailyContext}\n"""\nQUAN TRỌNG: Bạn BẮT BUỘC phải dựa vào nội dung WIKI trên làm cốt lõi của lời phán. Không được phán những thông tin trái ngược với WIKI. Nếu WIKI đề cập Sự nghiệp, Tình cảm, Tài chính thì lời phán phải phản ánh đúng xu hướng đó.`
     : '';
+
+  // Nếu không có đủ context để phán chính xác => báo lỗi luôn
+  if (!dailyContext && !astro.conGiap && !astro.cungHoangDao) {
+    return `Chào ${nickname}, vận số hôm nay của bạn tôi không thể đoán được do thiếu dữ liệu tử vi. Hệ thống đang kiểm tra lại nguồn dữ liệu, bạn vui lòng thử lại sau nhé!`;
+  }
 
   const prompt = `
 Bạn là một thầy tử vi và phong thủy uyên bác đang phán thẻ vận mệnh NGAY HÔM NAY cho người xem tên "${nickname}".
@@ -50,8 +55,9 @@ YÊU CẦU BẮT BUỘC:
    - Tình cảm / Mối quan hệ: Tương tác với người xung quanh sẽ thế nào?
 3. ĐƯA RA LỜI KHUYÊN HÀNH ĐỘNG CỤ THỂ, đừng nói chung chung.
 4. TUYỆT ĐỐI VIẾT ĐOẠN VĂN DÀI TỐI THIỂU 100-120 TỪ! Đây là bắt buộc để thời gian chưng cất vừa đủ cho âm thanh đọc. Nếu viết ngắn hơn 100 từ sẽ bị lỗi hệ thống.
-5. Văn xuôi mượt mà, không gạch đầu dòng, không in đậm, không markdown. Viết tự nhiên như nói chuyện.
-6. Kết thúc bằng 1 con số may mắn, 1 màu sắc may mắn và lời chào hẹn gặp lại ngày mai ngắn gọn.
+5. Nếu WIKI cung cấp đủ thông tin nhưng bạn KHÔNG dùng nó => trả về text: "vận số hôm nay của bạn tôi không thể đoán được".
+6. Văn xuôi mượt mà, không gạch đầu dòng, không in đậm, không markdown. Viết tự nhiên như nói chuyện.
+7. Kết thúc bằng 1 con số may mắn, 1 màu sắc may mắn và lời chào hẹn gặp lại ngày mai ngắn gọn.
 
 Bắt đầu phán:
 `;
