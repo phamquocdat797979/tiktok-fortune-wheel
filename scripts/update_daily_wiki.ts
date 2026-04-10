@@ -43,21 +43,48 @@ function cleanDir(dir: string) {
 }
 
 async function fetchHtml(url: string): Promise<string> {
-  const res = await fetch(url + '?t=' + Date.now().toString(), {
-    headers: { 'User-Agent': 'Mozilla/5.0' }
-  });
-  if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-  return await res.text();
+  const controller = new AbortController();
+  const id = setTimeout(() => controller.abort(), 10000);
+  
+  try {
+      const res = await fetch(url + '?t=' + Date.now().toString(), {
+        headers: { 'User-Agent': 'Mozilla/5.0' },
+        signal: controller.signal
+      });
+      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+      return await res.text();
+  } finally {
+      clearTimeout(id);
+  }
 }
 
 function cleanTextString(txt: string) {
-    return txt.replace(/\s+/g, ' ')
-              .replace(/\(adsbygoogle=window\.adsbygoogle\|\|\[\]\)\.push\(\{\}\);/g, '')
-              .replace(/arfAsync\.push\([^)]+\);/g, '')
-              .replace(/([.:!?”\)★])([A-Z])/g, '$1 $2')
-              // Xử lý riêng các block rác bị dính sát từ do HTML mất tag
-              .replace(/(Sự nghiệp:|Tài lộc:|Sức khỏe:|Tình cảm:|Giờ tốt:|Màu sắc cát tường:|Quý nhân phù trợ:|Các chỉ số trong ngày:)/g, ' $1')
-              .trim();
+    let cleantxt = txt.replace(/\(adsbygoogle=window\.adsbygoogle\|\|\[\]\)\.push\(\{\}\);/g, '')
+                      .replace(/arfAsync\.push\([^)]+\);/g, '');
+                      
+    // Xóa rác mạng xã hội và các dòng không cần thiết ở cuối bài
+    cleantxt = cleantxt.replace(/\d+\s*Thích\s*Trả lời\s*Chia sẻ/gi, '')
+                       .replace(/Thích\s*Trả lời\s*Chia sẻ/gi, '')
+                       .replace(/^Xem thêm:.*$/gim, '')
+                       .replace(/^III\. Video.*$/gim, '')
+                       .replace(/Hổ Cáp/g, 'Bọ Cạp');
+                       
+    // Tách các đoạn tử vi từng tuổi dính liền nhau (nếu trang gốc viết dính)
+    cleantxt = cleantxt.replace(/([.:!?])\s*(Tử vi tuổi)/g, '$1\n- $2');
+                       
+    // Xóa các ký tự Tab, canh chỉnh lại từng dòng
+    cleantxt = cleantxt.split('\n')
+                       .map(line => line.trim().replace(/\s+/g, ' ').replace(/^-$/, ''))
+                       .filter(line => line.length > 0)
+                       .join('\n\n');
+                       
+    // Trang trí chuẩn Markdown cho các đề mục
+    cleantxt = cleantxt.replace(/(Sự nghiệp:|Tài lộc:|Tài chính:|Sức khỏe:|Tình cảm:|Giờ tốt:|Màu sắc cát tường:|Quý nhân phù trợ:|Các chỉ số trong ngày:)/g, '\n- **$1** ')
+                       .replace(/\n\n\n/g, '\n\n')
+                       .replace(/\n\n- \*\*/g, '\n- **')
+                       .replace(/\n-\s*\n- \*\*/g, '\n- **');
+                       
+    return cleantxt.replace(/\n{3,}/g, '\n\n').trim();
 }
 
 function extractSections(text: string, arr: {name: string, key: string}[], dir: string, isGiap: boolean) {
@@ -119,6 +146,8 @@ function extractSections(text: string, arr: {name: string, key: string}[], dir: 
                                   .trim();
                                   
          if (sectionText.length > 50) {
+            // Loại bỏ hoàn toàn dòng cuối cùng nếu là tiêu đề bị dính sang file khác
+            sectionText = sectionText.replace(/\d+\.\s*Tử vi ngày.*?$/gi, '').trim();
             fs.writeFileSync(path.join(dir, `${current.key}.md`), sectionText, 'utf8');
             searchOffset = endIdx; 
          }
@@ -135,9 +164,9 @@ async function scrapeCungDaily() {
   
   console.log(`Tiến hành cào 12 Cung tại: ${url}`);
   const htmlRaw = await fetchHtml(url);
-  // Add spaces to HTML blocks to prevent text gluing when Cheerio extracts text
-  const html = htmlRaw.replace(/<\/(p|div|h1|h2|h3|h4|li|td|th)>/gi, ' </$1> ')
-                      .replace(/<br\s*\/?>/gi, ' ');
+  // Thay thế block tags và br bằng newline để cheerio tách dòng chính xác
+  const html = htmlRaw.replace(/<br\s*\/?>/gi, '\n')
+                      .replace(/<\/(p|div|h1|h2|h3|h4|li|td|th|ul)>/gi, '\n');
   const $ = cheerio.select ? cheerio.load(html) : (cheerio as any).load(html);
   
   // Xóa rác HTML
@@ -169,9 +198,9 @@ async function scrapeTuoiDaily() {
 
   console.log(`Tiến hành cào 12 Giáp tại: ${targetUrl}`);
   const htmlRaw = await fetchHtml(targetUrl);
-  // Add spaces to HTML blocks to prevent text gluing when Cheerio extracts text
-  const html = htmlRaw.replace(/<\/(p|div|h1|h2|h3|h4|li|td|th)>/gi, ' </$1> ')
-                      .replace(/<br\s*\/?>/gi, ' ');
+  // Thay thế block tags và br bằng newline để cheerio tách dòng chính xác
+  const html = htmlRaw.replace(/<br\s*\/?>/gi, '\n')
+                      .replace(/<\/(p|div|h1|h2|h3|h4|li|td|th|ul)>/gi, '\n');
   const $ = cheerio.select ? cheerio.load(html) : (cheerio as any).load(html);
   
   $('script, style, noscript, iframe, nav, header, footer').remove();
