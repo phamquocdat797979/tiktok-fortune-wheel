@@ -50,6 +50,13 @@ async function fetchHtml(url: string): Promise<string> {
   return await res.text();
 }
 
+function cleanTextString(txt: string) {
+    return txt.replace(/\s+/g, ' ')
+              .replace(/\(adsbygoogle=window\.adsbygoogle\|\|\[\]\)\.push\(\{\}\);/g, '')
+              .replace(/arfAsync\.push\([^)]+\);/g, '')
+              .trim();
+}
+
 function extractSections(text: string, arr: {name: string, key: string}[], dir: string, isGiap: boolean) {
    let searchOffset = 0;
    
@@ -67,7 +74,7 @@ function extractSections(text: string, arr: {name: string, key: string}[], dir: 
          startIdx = text.indexOf(current.name, searchOffset);
      }
      
-     // Bỏ qua các mục lục (Menu/Navigation) bằng cách kiểm tra khoảng cách tới mục tiếp theo
+     // Bỏ qua các mục lục
      let endIdx = -1;
      while (startIdx !== -1) {
          let tempEnd = -1;
@@ -76,23 +83,41 @@ function extractSections(text: string, arr: {name: string, key: string}[], dir: 
              if (tempEnd === -1) tempEnd = text.indexOf(next.name, startIdx + 10);
          }
          
-         // Nếu là mục cuối hoặc khoảng cách giữa 2 mục lớn hơn 100 ký tự thì đây chính là bài viết thật
          if (!next || (tempEnd !== -1 && (tempEnd - startIdx) > 100)) {
-             endIdx = next ? tempEnd : text.indexOf('(adsbygoogle', startIdx);
-             if (endIdx === -1 && !next) endIdx = text.length; // Fallback cho giáp cuối
+             if (next) {
+                 endIdx = tempEnd;
+             } else {
+                 // Item cuối cùng: cắt rác footer bằng cách tìm marker xuất hiện sớm nhất
+                 endIdx = text.length;
+                 const markers = ['Bình luận', 'Mời các bạn', 'Mời bạn đọc', 'Tin cùng chuyên mục', 'Đọc nhiều', 'Tử vi các ngày khác', 'Thích trang'];
+                 for (const m of markers) {
+                     const mIdx = text.indexOf(m, startIdx + 50);
+                     if (mIdx !== -1 && mIdx < endIdx) {
+                         endIdx = mIdx;
+                     }
+                 }
+                 // Dự phòng nếu ko tìm thấy các marker kia thì cắt adsbygoogle (nếu còn sót)
+                 const adIdx = text.indexOf('(adsbygoogle', startIdx);
+                 if (adIdx !== -1 && adIdx < endIdx) endIdx = adIdx;
+             }
              break;
          }
          
-         // Nếu không, tìm kết quả `anchorCurrent` ở đoạn tiếp theo
          startIdx = text.indexOf(anchorCurrent, startIdx + 1);
          if (startIdx === -1) startIdx = text.indexOf(current.name, startIdx + 1);
      }
      
      if (startIdx !== -1 && endIdx > startIdx) {
          let sectionText = text.substring(startIdx, endIdx).trim();
+         // Xóa đuôi rác như "2. Tử vi" hoặc "3. Tử vi tuổi"
+         sectionText = sectionText.replace(/\d+\.\s*Tử vi\s*$/i, '')
+                                  .replace(/\d+\.\s*Tử vi tuổi\s*$/i, '')
+                                  .replace(/Tử vi thứ \d+ ngày.*?của 12 con giáp.*?$/gi, '')
+                                  .trim();
+                                  
          if (sectionText.length > 50) {
             fs.writeFileSync(path.join(dir, `${current.key}.md`), sectionText, 'utf8');
-            searchOffset = endIdx; // Đẩy offset tới phần tiếp theo
+            searchOffset = endIdx; 
          }
      }
    }
@@ -109,7 +134,10 @@ async function scrapeCungDaily() {
   const html = await fetchHtml(url);
   const $ = cheerio.select ? cheerio.load(html) : (cheerio as any).load(html);
   
-  const text = $('body').text().replace(/\s+/g, ' ');
+  // Xóa rác HTML
+  $('script, style, noscript, iframe, nav, header, footer').remove();
+  
+  const text = cleanTextString($('body').text());
   extractSections(text, CUNG_NAMES, CUNG_DIR, false);
 }
 
@@ -137,7 +165,9 @@ async function scrapeTuoiDaily() {
   const html = await fetchHtml(targetUrl);
   const $ = cheerio.select ? cheerio.load(html) : (cheerio as any).load(html);
   
-  const text = $('body').text().replace(/\s+/g, ' ');
+  $('script, style, noscript, iframe, nav, header, footer').remove();
+  
+  const text = cleanTextString($('body').text());
   extractSections(text, TUOI_NAMES, TUOI_DIR, true);
 }
 
