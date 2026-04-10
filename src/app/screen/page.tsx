@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { io, Socket } from 'socket.io-client';
 import { WheelCanvas } from '../../../components/WheelCanvas';
+import { Lunar } from 'lunar-javascript';
 
 export default function GameScreen() {
   const [socket, setSocket] = useState<Socket | null>(null);
@@ -336,7 +337,45 @@ export default function GameScreen() {
           );
         })()}
 
+        {/* LUNAR/SOLAR DATE DISPLAY */}
+        <div className="absolute bottom-[40px] left-0 right-0 flex justify-center z-50 pointer-events-none">
+           <DateDisplay />
+        </div>
+
       </div>
+    </div>
+  );
+}
+
+function DateDisplay() {
+  const [now, setNow] = useState(new Date());
+
+  useEffect(() => {
+    // Cập nhật 1 phút 1 lần để theo dõi qua ngày mới
+    const timer = setInterval(() => {
+      setNow(new Date());
+    }, 60000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const lunar = Lunar.fromDate(now);
+  
+  const hN = String(now.getDate()).padStart(2, '0');
+  const hT = String(now.getMonth() + 1).padStart(2, '0');
+  const hNyo = now.getFullYear();
+  
+  const aN = String(lunar.getDay()).padStart(2, '0');
+  const aT = String(lunar.getMonth()).padStart(2, '0');
+  const aNyo = lunar.getYear();
+  
+  return (
+    <div className="flex flex-col items-center gap-1 bg-black/60 backdrop-blur-md px-10 py-4 rounded-[30px] border-[2px] border-amber-500/30 text-center shadow-[0_0_30px_rgba(245,158,11,0.2)]">
+       <span className="text-white/90 font-bold text-[32px] tracking-wide uppercase flex items-center gap-2">
+          <span className="text-amber-400">☀️</span> Dương Lịch: <span className="text-amber-200">{hN}/{hT}/{hNyo}</span>
+       </span>
+       <span className="text-white/80 font-medium text-[24px] tracking-wider flex items-center gap-3 mt-1">
+          <span className="text-indigo-300">🌙</span> Âm Lịch: <span className="text-indigo-200">{aN}/{aT}/{aNyo}</span> <span className="text-amber-500/80 italic">({lunar.getYearInGanZhi()})</span>
+       </span>
     </div>
   );
 }
