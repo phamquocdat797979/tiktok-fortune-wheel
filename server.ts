@@ -113,6 +113,17 @@ app.prepare().then(() => {
        }
     });
 
+    socket.on('ping_gemini', async () => {
+        console.log('[Gemini] Đang kiểm tra kết nối API...');
+        try {
+            const testText = await generateFortuneText({ canChi: 'Giáp Thân' }, 'Admin', 'Đây là bản tin test kết nối.');
+            socket.emit('gemini_ping_result', { success: true, message: 'Kết nối thành công!', preview: testText.substring(0, 50) + '...' });
+        } catch (err: any) {
+            console.error('[Gemini] Ping thất bại:', err);
+            socket.emit('gemini_ping_result', { success: false, error: err.message || 'Lỗi không xác định' });
+        }
+    });
+
     // Relay lệnh phát giọng nói từ Screen sang Control Panel (để đồng bộ hóa hình/tiếng)
     socket.on('request_tts_play', (data) => {
        io.emit('start_tts_play', data);

@@ -1,10 +1,21 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { AstrologyData } from './types';
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
+let genAI: GoogleGenerativeAI | null = null;
+
+function getGenAI() {
+  const key = process.env.GEMINI_API_KEY;
+  if (!key) {
+    console.warn("⚠️ Cảnh báo: GEMINI_API_KEY đang bị trống trong process.env!");
+  }
+  if (!genAI) {
+    genAI = new GoogleGenerativeAI(key || '');
+  }
+  return genAI;
+}
 
 export async function generateFortuneText(astro: AstrologyData, nickname: string = 'bạn', dailyContext: string = ''): Promise<string> {
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+  const model = getGenAI().getGenerativeModel({ model: "gemini-2.0-flash" });
 
   const today = new Date();
   const dateStr = `${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}`;

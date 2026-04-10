@@ -127,11 +127,18 @@ export default function ControlPanel() {
         setGeminiStatus(data);
     });
 
+    s.on('gemini_ping_result', (data: any) => {
+        setGeminiPingResult(data);
+        setIsPinging(false);
+    });
+
     setSocket(s);
     return () => { s.disconnect(); };
   }, [musicVolume]);
 
   const [geminiStatus, setGeminiStatus] = useState<{ status: 'ready' | 'missing', keyPreview: string | null }>({ status: 'missing', keyPreview: null });
+  const [geminiPingResult, setGeminiPingResult] = useState<{ success?: boolean, message?: string, preview?: string, error?: string } | null>(null);
+  const [isPinging, setIsPinging] = useState(false);
 
   const testInjectMock = async () => {
     if (!socket) return;
@@ -288,30 +295,56 @@ export default function ControlPanel() {
                 </span>
               </div>
               <div className="flex flex-col gap-2 relative">
-                <button 
-                  onClick={async (e) => {
-                    const btn = e.currentTarget;
-                    btn.disabled = true;
-                    btn.innerText = '⏳ Đang quét dữ liệu...';
-                    try {
-                      const res = await fetch('/api/admin/daily-update', { method: 'POST' });
-                      const json = await res.json();
-                      if (json.success) {
-                        btn.innerText = '✅ ' + json.message;
-                        setTimeout(() => { btn.innerText = '🔄 Cập Nhật Tử Vi Hàng Ngày (Crawler)'; btn.disabled = false; }, 3000);
-                      } else {
-                        btn.innerText = '❌ Lỗi: ' + json.error;
-                        setTimeout(() => { btn.innerText = '🔄 Cập Nhật Tử Vi Hàng Ngày (Crawler)'; btn.disabled = false; }, 3000);
+                <div className="flex gap-2">
+                  <button 
+                    disabled={isPinging || !socket}
+                    onClick={() => { setIsPinging(true); socket?.emit('ping_gemini'); }}
+                    className="flex-1 bg-amber-500 hover:bg-amber-600 disabled:bg-amber-300 text-white font-bold py-2 rounded-lg text-sm transition-all shadow"
+                  >
+                    {isPinging ? '⏳ Đang thử...' : '🔍 Kiểm Tra API'}
+                  </button>
+                  <button 
+                    onClick={async (e) => {
+                      const btn = e.currentTarget;
+                      btn.disabled = true;
+                      btn.innerText = '⏳ Đang quét dữ liệu...';
+                      try {
+                        const res = await fetch('/api/admin/daily-update', { method: 'POST' });
+                        const json = await res.json();
+                        if (json.success) {
+                          btn.innerText = '✅ ' + json.message;
+                          setTimeout(() => { btn.innerText = '🔄 Cập Nhật Wiki'; btn.disabled = false; }, 3000);
+                        } else {
+                          btn.innerText = '❌ Lỗi: ' + json.error;
+                          setTimeout(() => { btn.innerText = '🔄 Cập Nhật Wiki'; btn.disabled = false; }, 3000);
+                        }
+                      } catch (err: any) {
+                        btn.innerText = '❌ Lỗi server';
+                        setTimeout(() => { btn.innerText = '🔄 Cập Nhật Wiki'; btn.disabled = false; }, 3000);
                       }
-                    } catch (err: any) {
-                      btn.innerText = '❌ Lỗi server';
-                      setTimeout(() => { btn.innerText = '🔄 Cập Nhật Tử Vi Hàng Ngày (Crawler)'; btn.disabled = false; }, 3000);
-                    }
-                  }}
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg text-sm transition-colors shadow flex justify-center items-center gap-2"
-                >
-                  🔄 Cập Nhật Tử Vi Hàng Ngày (Crawler)
-                </button>
+                    }}
+                    className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-lg text-sm transition-colors shadow"
+                  >
+                    🔄 Cập Nhật Wiki
+                  </button>
+                </div>
+
+                {geminiPingResult && (
+                  <div className={`text-[11px] p-2 rounded border ${
+                    geminiPingResult.success ? 'bg-emerald-50 border-emerald-200 text-emerald-700' : 'bg-rose-50 border-rose-200 text-rose-700'
+                  }`}>
+                    {geminiPingResult.success ? (
+                      <div>
+                        <strong>✅ Kết nối OK!</strong> Model 2.0 đã phản hồi: 
+                        <em className="block mt-1 opacity-70">"{geminiPingResult.preview}"</em>
+                      </div>
+                    ) : (
+                      <div>
+                        <strong>❌ Lỗi:</strong> {geminiPingResult.error}
+                      </div>
+                    )}
+                  </div>
+                )}
                 <div className="text-xs text-blue-600/80 bg-blue-100 p-2 rounded text-justify">
                   <strong>RAG Mode:</strong> Khi ấn nút này, Bot sẽ tự động lấy dữ liệu tử vi của 12 Cung và 12 Con Giáp cho ngày hôm nay từ các nguồn uy tín, ghi đè vào hệ thống (Daily Wiki). Gemini sẽ đọc các file này kết hợp với Cung/Mạng năm sinh tĩnh khi bói cho người xem!
                 </div>
