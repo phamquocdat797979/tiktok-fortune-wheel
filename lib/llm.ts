@@ -4,8 +4,8 @@ import { AstrologyData } from './types';
 // ===== HỆ THỐNG LUÂN CHUYỂN 3 API KEY =====
 // Lấy tất cả key hợp lệ từ env, theo thứ tự ưu tiên
 const RAW_KEYS = [
-  process.env.GROQ_API_KEY,
-  process.env.GROQ_SCRAPER_API_KEY,
+  process.env.GROQ_API_KEY_1,
+  process.env.GROQ_API_KEY_2,
   process.env.GROQ_API_KEY_3,
 ];
 
