@@ -163,60 +163,68 @@ export function startSpinWorker(io: Server) {
             astrologyData: astroData 
         });
 
-        // --- BƯỚC 4: RAG - ĐỌC DAILY WIKI & GỌI GEMINI API CHẠY NGẦM ---
+        // --- BƯỚC 4: RAG - ĐỌC DAILY WIKI & GỌI AI CHẠY NGẦM ---
         const dailyContext = readDailyWiki(astroData);
-        const fortuneTextPromise = generateFortuneText(astroData, data.nickname || 'bạn', dailyContext);
 
-        // Lưu log lịch sử bói vào Prisma database (chạy bất đồng bộ)
-        prisma.giftRecord.create({
-          data: {
-             viewer: {
-                connectOrCreate: {
-                   where: { tiktokId: data.userId },
-                   create: {
-                      tiktokId: data.userId,
-                      uniqueId: data.uniqueId,
-                      nickname: data.nickname,
-                      dailyCoinCount: data.diamondCount || 0
-                   }
-                }
-             },
-             giftName: `Donate: ${data.diamondCount}`,
-             diamondCount: data.diamondCount || 0,
-             tier: 'Đồng' // Fallback for DB schema if required
-          }
-        }).catch(err => console.error("Prisma error:", err));
+        // Nếu không có wiki (người xem bình luận thiếu thông tin ngày sinh hoặc
+        // file wiki chưa được cập nhật hôm nay) → hiển thị thông báo ngay, không gọi API
+        if (!dailyContext) {
+            const noWikiText = `Chào ${data.nickname || 'bạn'}, vận mệnh hôm nay của bạn tôi không đoán được do thiếu dữ liệu tử vi. Bạn vui lòng bình luận đầy đủ ngày tháng năm sinh để tôi có thể xem vận cho bạn nhé!`;
+            io.emit('deliver_fortune_text', { jobId, fortuneText: noWikiText, donor: data });
+        } else {
+            const fortuneTextPromise = generateFortuneText(astroData, data.nickname || 'bạn', dailyContext);
 
-        // --- BƯỚC 5: ĐỢI API VÀ VÒNG QUAY XONG ---
-        const result = await fortuneTextPromise;
-        const fortuneText = result.text;
-        
-        // Đẩy dữ liệu thống kê về cho server chính thông qua EventBus
-        if (result.usage || result.limits) {
-          globalEventBus.emit('llm_usage_update', { usage: result.usage, limits: result.limits });
-        }
+            // Lưu log lịch sử bói vào Prisma database (chạy bất đồng bộ)
+            prisma.giftRecord.create({
+              data: {
+                 viewer: {
+                    connectOrCreate: {
+                       where: { tiktokId: data.userId },
+                       create: {
+                          tiktokId: data.userId,
+                          uniqueId: data.uniqueId,
+                          nickname: data.nickname,
+                          dailyCoinCount: data.diamondCount || 0
+                       }
+                    }
+                 },
+                 giftName: `Donate: ${data.diamondCount}`,
+                 diamondCount: data.diamondCount || 0,
+                 tier: 'Đồng' // Fallback for DB schema if required
+              }
+            }).catch(err => console.error("Prisma error:", err));
 
-        // Phát text lên cho UI hiển thị và Control Panel đọc TTS
-        io.emit('deliver_fortune_text', { jobId, fortuneText, donor: data });
-
-        // Chờ Frontend xác nhận đã đọc xong chữ (Hoặc cho circuitbreaker 30s)
-        await new Promise<void>((resolve) => {
-          const onSpinComplete = (payload: any) => {
-            if (payload.jobId === jobId) {
-              globalEventBus.removeListener('spin_completed', onSpinComplete);
-              clearTimeout(circuitBreaker);
-              resolve();
+            // --- BƯỚC 5: ĐỢI API VÀ VÒNG QUAY XONG ---
+            const result = await fortuneTextPromise;
+            const fortuneText = result.text;
+            
+            // Đẩy dữ liệu thống kê về cho server chính thông qua EventBus
+            if (result.usage || result.limits) {
+              globalEventBus.emit('llm_usage_update', { usage: result.usage, limits: result.limits });
             }
-          };
-          
-          globalEventBus.on('spin_completed', onSpinComplete);
-          
-          const circuitBreaker = setTimeout(() => {
-            globalEventBus.removeListener('spin_completed', onSpinComplete);
-            console.warn(`⏳ Job timeout for ${jobId} - skipped to prevent queue blocking`);
-            resolve();
-          }, 35000); // Popup chừng 25s, thêm 10s dự trù 
-        });
+
+            // Phát text lên cho UI hiển thị và Control Panel đọc TTS
+            io.emit('deliver_fortune_text', { jobId, fortuneText, donor: data });
+
+            // Chờ Frontend xác nhận đã đọc xong chữ (Hoặc cho circuitbreaker 30s)
+            await new Promise<void>((resolve) => {
+              const onSpinComplete = (payload: any) => {
+                if (payload.jobId === jobId) {
+                  globalEventBus.removeListener('spin_completed', onSpinComplete);
+                  clearTimeout(circuitBreaker);
+                  resolve();
+                }
+              };
+              
+              globalEventBus.on('spin_completed', onSpinComplete);
+              
+              const circuitBreaker = setTimeout(() => {
+                globalEventBus.removeListener('spin_completed', onSpinComplete);
+                console.warn(`⏳ Job timeout for ${jobId} - skipped to prevent queue blocking`);
+                resolve();
+              }, 35000); // Popup chừng 25s, thêm 10s dự trù 
+            });
+        } // end else (có wiki)
      }
      isProcessing = false;
   });
