@@ -123,9 +123,15 @@ export default function ControlPanel() {
         setValidChats(logs); // Nạp đống lịch sử cũ từ Nodejs qua khi vừa kết nối
     });
 
+    s.on('gemini_status', (data: any) => {
+        setGeminiStatus(data);
+    });
+
     setSocket(s);
     return () => { s.disconnect(); };
   }, [musicVolume]);
+
+  const [geminiStatus, setGeminiStatus] = useState<{ status: 'ready' | 'missing', keyPreview: string | null }>({ status: 'missing', keyPreview: null });
 
   const testInjectMock = async () => {
     if (!socket) return;
@@ -273,7 +279,14 @@ export default function ControlPanel() {
 
             {/* Quản lý Dữ liệu Tử Vi (RAG) */}
             <div className="border-[2px] border-blue-400/40 rounded-xl p-4 bg-blue-50/60 shadow-sm">
-              <h2 className="text-base font-bold text-blue-800 mb-3 flex items-center gap-2">📚 Trí Tuệ Nhân Tạo (LLM Wiki)</h2>
+              <div className="flex justify-between items-center mb-3">
+                <h2 className="text-base font-bold text-blue-800 flex items-center gap-2">📚 Trí Tuệ Nhân Tạo (LLM Wiki)</h2>
+                <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase text-white ${
+                  geminiStatus.status === 'ready' ? 'bg-blue-500' : 'bg-rose-500 animate-pulse'
+                }`}>
+                  {geminiStatus.status === 'ready' ? `🟢 AI Sẵn Sàng (${geminiStatus.keyPreview})` : '🔴 AI Chưa Nạp Key'}
+                </span>
+              </div>
               <div className="flex flex-col gap-2 relative">
                 <button 
                   onClick={async (e) => {

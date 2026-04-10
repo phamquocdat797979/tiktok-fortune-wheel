@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { createServer } from 'http';
 import { parse } from 'url';
 import next from 'next';
@@ -66,6 +67,13 @@ app.prepare().then(() => {
     // Gửi ngay trạng thái hiện tại khi client mới join
     emitQueueUpdate(socket);
     socket.emit('valid_chat_history', CHAT_LOGS);
+    
+    // Kiểm tra trạng thái Gemini API
+    const hasGeminiKey = !!process.env.GEMINI_API_KEY;
+    socket.emit('gemini_status', { 
+      status: hasGeminiKey ? 'ready' : 'missing',
+      keyPreview: hasGeminiKey ? `${process.env.GEMINI_API_KEY?.substring(0, 6)}...` : null
+    });
     
     // Helpers defined in connection scope for access by all handlers
     const getUserState = (uniqueId: string) => {
