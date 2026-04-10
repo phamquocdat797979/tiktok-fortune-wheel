@@ -23,6 +23,14 @@ const CON_GIAP_MAP: Record<string, string> = {
   'Dậu': 'dau', 'Tuất': 'tuat', 'Hợi': 'hoi'
 };
 
+/**
+ * Phân nhánh Wiki theo thông tin người xem bình luận:
+ *  - Đủ ngày/tháng/năm  → cung (daily_wiki) + tuoi (daily_wiki) + cả 2 static
+ *  - Chỉ ngày + tháng   → chỉ cung (daily_wiki) + static zodiac   [conGiap = undefined]
+ *  - Chỉ năm hoặc tháng/năm → chỉ tuoi (daily_wiki) + static canchi  [cungHoangDao = undefined]
+ * Logic hoạt động tự nhiên vì astrology.ts chỉ set cungHoangDao khi có ngày+tháng,
+ * và chỉ set conGiap khi có năm sinh.
+ */
 function readDailyWiki(astroData: any): string {
     let context = '';
     const wikiDir = path.join(process.cwd(), 'data', 'daily_wiki');
@@ -30,7 +38,7 @@ function readDailyWiki(astroData: any): string {
     let foundCung = false;
     let foundTuoi = false;
 
-    // --- Đọc DAILY WIKI: Cung hoàng đạo hôm nay ---
+    // === CUNG: chỉ đọc khi người dùng bình luận có ngày+tháng ===
     if (astroData.cungHoangDao && CUNG_MAP[astroData.cungHoangDao]) {
         try {
             const file = path.join(wikiDir, 'cung', `${CUNG_MAP[astroData.cungHoangDao]}.md`);
@@ -39,9 +47,19 @@ function readDailyWiki(astroData: any): string {
                 foundCung = true;
             }
         } catch (e) {}
+
+        // Static zodiac chỉ kèm theo khi có cung
+        try {
+            const zodiacFile = path.join(staticDir, 'zodiac_dict.json');
+            const zodiacData = fs.existsSync(zodiacFile) ? JSON.parse(fs.readFileSync(zodiacFile, 'utf8')) : null;
+            if (zodiacData && zodiacData[astroData.cungHoangDao]) {
+                const entry = zodiacData[astroData.cungHoangDao];
+                context += `[ĐẶC TÍNH CUNG ${astroData.cungHoangDao.toUpperCase()}]\n${typeof entry === 'string' ? entry : JSON.stringify(entry, null, 2)}\n\n`;
+            }
+        } catch (e) {}
     }
 
-    // --- Đọc DAILY WIKI: Con giáp hôm nay ---
+    // === TUOI: chỉ đọc khi người dùng bình luận có năm sinh ===
     if (astroData.conGiap && CON_GIAP_MAP[astroData.conGiap]) {
         try {
             const file = path.join(wikiDir, 'tuoi', `${CON_GIAP_MAP[astroData.conGiap]}.md`);
@@ -50,29 +68,27 @@ function readDailyWiki(astroData: any): string {
                 foundTuoi = true;
             }
         } catch (e) {}
+
+        // Static canchi chỉ kèm theo khi có tuổi
+        try {
+            const canchiFile = path.join(staticDir, 'canchi_dict.json');
+            const canchiData = fs.existsSync(canchiFile) ? JSON.parse(fs.readFileSync(canchiFile, 'utf8')) : null;
+            if (canchiData && astroData.canChi && canchiData[astroData.canChi]) {
+                const entry = canchiData[astroData.canChi];
+                context += `[ĐẶC TÍNH TUỔI ${astroData.canChi.toUpperCase()}]\n${typeof entry === 'string' ? entry : JSON.stringify(entry, null, 2)}\n\n`;
+            }
+        } catch (e) {}
     }
 
-    // --- Đọc STATIC WIKI: Thông tin chi tiết cung/mệnh ---
-    try {
-        const zodiacFile = path.join(staticDir, 'zodiac_dict.json');
-        const canchiFile = path.join(staticDir, 'canchi_dict.json');
-        const zodiacData = fs.existsSync(zodiacFile) ? JSON.parse(fs.readFileSync(zodiacFile, 'utf8')) : null;
-        const canchiData = fs.existsSync(canchiFile) ? JSON.parse(fs.readFileSync(canchiFile, 'utf8')) : null;
-
-        if (zodiacData && astroData.cungHoangDao && zodiacData[astroData.cungHoangDao]) {
-            const entry = zodiacData[astroData.cungHoangDao];
-            context += `[ĐẶC TÍNH CUNG ${astroData.cungHoangDao.toUpperCase()}]\n${typeof entry === 'string' ? entry : JSON.stringify(entry, null, 2)}\n\n`;
-        }
-        if (canchiData && astroData.canChi && canchiData[astroData.canChi]) {
-            const entry = canchiData[astroData.canChi];
-            context += `[ĐẶC TÍNH TUỔI ${astroData.canChi.toUpperCase()}]\n${typeof entry === 'string' ? entry : JSON.stringify(entry, null, 2)}\n\n`;
-        }
-    } catch (e) { console.warn('⚠️ Không đọc được static_wiki:', e); }
-
+    // Log rõ chế độ đang chạy để dễ giám sát
+    const mode = foundCung && foundTuoi ? 'ĐẦY ĐỦ (ngày+tháng+năm)'
+               : foundCung              ? 'CHỈ CUNG (ngày+tháng)'
+               : foundTuoi             ? 'CHỈ TUỔI (năm sinh)'
+               : 'KHÔNG CÓ WIKI';
     if (!foundCung && !foundTuoi) {
-        console.warn(`⚠️ RAG: Không tìm được file wiki nào cho cung="${astroData.cungHoangDao}" tuoi="${astroData.conGiap}" - Gemini sẽ phán chung chung!`);
+        console.warn(`⚠️ RAG [${mode}]: cung="${astroData.cungHoangDao}" tuoi="${astroData.conGiap}" → Gemini sẽ phán chung chung!`);
     } else {
-        console.log(`✅ RAG: Đã load wiki cho cung="${astroData.cungHoangDao}" (${foundCung ? 'có' : 'thiếu'}) tuoi="${astroData.conGiap}" (${foundTuoi ? 'có' : 'thiếu'})`);
+        console.log(`✅ RAG [${mode}]: cung="${astroData.cungHoangDao}" tuoi="${astroData.conGiap}"`);
     }
 
     return context.trim();
