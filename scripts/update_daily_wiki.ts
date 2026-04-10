@@ -173,6 +173,7 @@ async function scrapeCungDaily() {
   $('script, style, noscript, iframe, nav, header, footer').remove();
   
   const text = cleanTextString($('body').text());
+  cleanDir(CUNG_DIR);
   extractSections(text, CUNG_NAMES, CUNG_DIR, false);
 }
 
@@ -206,13 +207,12 @@ async function scrapeTuoiDaily() {
   $('script, style, noscript, iframe, nav, header, footer').remove();
   
   const text = cleanTextString($('body').text());
+  cleanDir(TUOI_DIR);
   extractSections(text, TUOI_NAMES, TUOI_DIR, true);
 }
 
 export async function runDailyScraper() {
   console.log('Bắt đầu tải Dữ liệu Tử Vi Hôm Nay (Daily Wiki)...');
-  cleanDir(CUNG_DIR);
-  cleanDir(TUOI_DIR);
   
   try {
      await scrapeCungDaily();
