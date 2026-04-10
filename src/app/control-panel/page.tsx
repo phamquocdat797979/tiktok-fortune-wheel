@@ -140,9 +140,9 @@ export default function ControlPanel() {
     return () => { s.disconnect(); };
   }, [musicVolume]);
 
-  const [llmStatus, setLlmStatus] = useState<{ status: 'ready' | 'missing', keyPreview: string | null }>({ status: 'missing', keyPreview: null });
+  const [llmStatus, setLlmStatus] = useState<{ status: 'ready' | 'missing', keyCount?: number, keyPreview: string | null }>({ status: 'missing', keyPreview: null });
   const [llmPingResult, setLlmPingResult] = useState<{ success?: boolean, message?: string, preview?: string, error?: string } | null>(null);
-  const [llmStats, setLlmStats] = useState<{ totalTokensUsed: number, lastUsage?: any, limits?: any } | null>(null);
+  const [llmStats, setLlmStats] = useState<{ totalTokensUsed: number, lastUsage?: any, limits?: any, totalKeys?: number } | null>(null);
   const [isPinging, setIsPinging] = useState(false);
 
   const testInjectMock = async () => {
@@ -296,7 +296,9 @@ export default function ControlPanel() {
                 <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase text-white ${
                   llmStatus.status === 'ready' ? 'bg-emerald-500 animate-pulse' : 'bg-rose-500'
                 }`}>
-                  {llmStatus.status === 'ready' ? `🟢 AI Sẵn Sàng (${llmStatus.keyPreview})` : '🔴 AI Chưa Nạp Key'}
+                  {llmStatus.status === 'ready' 
+                    ? `🟢 AI Sẵn Sàng (${llmStatus.keyCount || 1}/3 key)` 
+                    : '🔴 AI Chưa Nạp Key'}
                 </span>
               </div>
               <div className="flex flex-col gap-2 relative">
@@ -357,6 +359,13 @@ export default function ControlPanel() {
                       <div className="text-[10px] text-slate-500 uppercase font-bold">Tổng Token Đã Dùng</div>
                       <div className="text-sm font-black text-slate-700">{llmStats.totalTokensUsed.toLocaleString()}</div>
                     </div>
+                    <div className="bg-indigo-50 p-2 rounded border border-indigo-100">
+                      <div className="text-[10px] text-indigo-500 uppercase font-bold">Key Đang Dùng</div>
+                      <div className="text-sm font-black text-indigo-700">
+                        #{llmStats.limits?.activeKeyIndex || 1}
+                        <span className="text-[10px] font-normal ml-1 opacity-60">/ {llmStats.totalKeys || llmStatus.keyCount || 3} key</span>
+                      </div>
+                    </div>
                     <div className="bg-blue-50 p-2 rounded border border-blue-100">
                       <div className="text-[10px] text-blue-500 uppercase font-bold">Lượt Còn Lại (RPM)</div>
                       <div className="text-sm font-black text-blue-700">
@@ -365,11 +374,11 @@ export default function ControlPanel() {
                       </div>
                     </div>
                     {llmStats.limits?.remainingTokens && (
-                      <div className="col-span-2 bg-amber-50 p-2 rounded border border-amber-100 flex justify-between items-center">
-                        <div className="text-[10px] text-amber-600 uppercase font-bold">Token Còn Lại (Phút)</div>
+                      <div className="bg-amber-50 p-2 rounded border border-amber-100">
+                        <div className="text-[10px] text-amber-600 uppercase font-bold">Token Còn Lại</div>
                         <div className="text-xs font-bold text-amber-700">
                           {Number(llmStats.limits.remainingTokens).toLocaleString()} 
-                          <span className="text-[9px] font-normal ml-1 opacity-60">reset in {llmStats.limits.resetTokens || '--'}</span>
+                          <span className="text-[9px] font-normal ml-1 opacity-60">reset {llmStats.limits.resetTokens || '--'}</span>
                         </div>
                       </div>
                     )}

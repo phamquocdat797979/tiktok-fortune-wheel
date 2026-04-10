@@ -108,18 +108,26 @@ app.prepare().then(() => {
     emitQueueUpdate(socket);
     socket.emit('valid_chat_history', CHAT_LOGS);
     
-    // Kiểm tra trạng thái LLM (Groq)
-    const hasGroqKey = !!process.env.GROQ_API_KEY;
+    // Kiểm tra trạng thái LLM (3 Groq Keys)
+    const groqKeys = [
+      process.env.GROQ_API_KEY_1,
+      process.env.GROQ_API_KEY_2,
+      process.env.GROQ_API_KEY_3,
+    ].filter((k): k is string => typeof k === 'string' && k.startsWith('gsk_'));
+    
+    const hasGroqKey = groqKeys.length > 0;
     socket.emit('llm_status', { 
       status: hasGroqKey ? 'ready' : 'missing',
-      keyPreview: hasGroqKey ? `${process.env.GROQ_API_KEY?.substring(0, 7)}...` : null
+      keyCount: groqKeys.length,
+      keyPreview: hasGroqKey ? `${groqKeys[0].substring(0, 7)}...` : null
     });
 
     // Gửi thống kê hiện tại ngay khi vừa kết nối
     socket.emit('llm_stats_update', { 
         totalTokensUsed, 
         lastUsage: null,
-        limits: lastLimits 
+        limits: lastLimits,
+        totalKeys: groqKeys.length,
     });
     
     // Helpers defined in connection scope for access by all handlers
