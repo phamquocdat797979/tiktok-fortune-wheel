@@ -55,6 +55,8 @@ function cleanTextString(txt: string) {
               .replace(/\(adsbygoogle=window\.adsbygoogle\|\|\[\]\)\.push\(\{\}\);/g, '')
               .replace(/arfAsync\.push\([^)]+\);/g, '')
               .replace(/([.:!?”\)★])([A-Z])/g, '$1 $2')
+              // Xử lý riêng các block rác bị dính sát từ do HTML mất tag
+              .replace(/(Sự nghiệp:|Tài lộc:|Sức khỏe:|Tình cảm:|Giờ tốt:|Màu sắc cát tường:|Quý nhân phù trợ:|Các chỉ số trong ngày:)/g, ' $1')
               .trim();
 }
 
