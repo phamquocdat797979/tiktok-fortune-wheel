@@ -8,6 +8,8 @@ import { WebcastPushConnection } from 'tiktok-live-connector';
 import { spinQueue, MOCK_QUEUE } from './lib/queue';
 import { calculateAstrology } from './lib/astrology';
 import { generateFortuneText } from './lib/llm';
+import path from 'path';
+import fs from 'fs';
 
 let tiktokConnection: WebcastPushConnection | null = null;
 
