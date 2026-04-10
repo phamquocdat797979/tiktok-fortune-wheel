@@ -43,7 +43,7 @@ function nodeToMarkdown($: cheerio.CheerioAPI, el: cheerio.Element): string {
   return text;
 }
 
-async function scrapeTuoi() {
+export async function scrapeTuoi() {
   const indexUrl = `https://lichngaytot.com/boi-vui-12-con-giap-c277-p0.html`;
   const htmlIndex = await fetchHtml(indexUrl);
   const $index = cheerio.load(htmlIndex);
@@ -144,4 +144,5 @@ async function scrapeTuoi() {
   console.log(`\n✅ Hoàn tất 12 Con Giáp.`);
 }
 
-scrapeTuoi().catch(console.error);
+// Chạy trực tiếp khi dùng lệnh tsx
+if (require.main === module) scrapeTuoi().catch(console.error);

@@ -25,7 +25,7 @@ async function fetchHtml(url: string): Promise<string> {
   return await res.text();
 }
 
-async function scrapeCung() {
+export async function scrapeCung() {
   const d = new Date();
   const day = d.getDate().toString().padStart(2, '0');
   const month = (d.getMonth() + 1).toString().padStart(2, '0');
@@ -112,4 +112,5 @@ async function scrapeCung() {
   console.log(`\n✅ Hoàn tất 12 Cung Hoàng Đạo.`);
 }
 
-scrapeCung().catch(console.error);
+// Chạy trực tiếp khi dùng lệnh tsx
+if (require.main === module) scrapeCung().catch(console.error);
