@@ -7,7 +7,7 @@ import { startSpinWorker, globalEventBus } from './workers/spinWorker';
 import { WebcastPushConnection } from 'tiktok-live-connector'; 
 import { spinQueue, MOCK_QUEUE } from './lib/queue';
 import { calculateAstrology } from './lib/astrology';
-import { generateFortuneText } from './lib/gemini';
+import { generateFortuneText } from './lib/llm';
 
 let tiktokConnection: WebcastPushConnection | null = null;
 
