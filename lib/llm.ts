@@ -1,23 +1,39 @@
 import Groq from 'groq-sdk';
 import { AstrologyData } from './types';
 
+// Danh sách các API Key để dự phòng (Fallback)
+const API_KEYS = [
+  process.env.GROQ_API_KEY,
+  process.env.GROQ_SCRAPER_API_KEY
+].filter(key => key && !key.includes('điền_key_'));
+
+let currentKeyIndex = 0;
 let groq: Groq | null = null;
 
-function getGroq() {
-  const key = process.env.GROQ_API_KEY;
-  if (!key) {
-    console.warn("⚠️ Cảnh báo: GROQ_API_KEY đang bị trống trong process.env!");
+function getGroq(forceNew = false) {
+  if (API_KEYS.length === 0) {
+    console.error("❌ LỖI: Không tìm thấy bất kỳ Groq API Key nào trong .env");
+    return new Groq({ apiKey: '' });
   }
-  if (!groq) {
+
+  if (!groq || forceNew) {
+    const key = API_KEYS[currentKeyIndex];
+    console.log(`🔌 Đang kết nối Groq với API Key #${currentKeyIndex + 1}...`);
     groq = new Groq({ apiKey: key || '' });
   }
   return groq;
 }
 
+function rotateKey() {
+  if (API_KEYS.length <= 1) return false;
+  currentKeyIndex = (currentKeyIndex + 1) % API_KEYS.length;
+  console.log(`🔄 Tự động chuyển sang API Key dự phòng #${currentKeyIndex + 1}...`);
+  getGroq(true);
+  return true;
+}
+
 export async function generateFortuneText(astro: AstrologyData, nickname: string = 'bạn', dailyContext: string = ''): Promise<{ text: string, usage?: any, limits?: any }> {
   const modelName = process.env.GROQ_MODEL || "llama-3.3-70b-versatile";
-  const groqInstance = getGroq();
-
   const today = new Date();
   const dateStr = `${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}`;
   const dayOfWeek = ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'][today.getDay()];
@@ -56,31 +72,40 @@ YÊU CẦU QUAN TRỌNG VỀ PHONG CÁCH:
 Bắt đầu phán:
 `;
 
-  try {
-    const { data, response } = await groqInstance.chat.completions.create({
-      messages: [{ role: 'user', content: prompt }],
-      model: modelName,
-      temperature: 0.7,
-      max_tokens: 500,
-    }).withResponse();
-    
-    const text = data.choices[0]?.message?.content?.trim() || `Chào ${nickname}, vận số hôm nay của bạn tôi không đoán được.`;
-    
-    // Bóc tách hạn mức từ Headers
-    const limits = {
-      remainingRequests: response.headers.get('x-ratelimit-remaining-requests'),
-      remainingTokens: response.headers.get('x-ratelimit-remaining-tokens'),
-      resetRequests: response.headers.get('x-ratelimit-reset-requests'),
-      resetTokens: response.headers.get('x-ratelimit-reset-tokens'),
-    };
+  async function tryRequest(): Promise<any> {
+    const groqInstance = getGroq();
+    try {
+        const { data, response } = await groqInstance.chat.completions.create({
+          messages: [{ role: 'user', content: prompt }],
+          model: modelName,
+          temperature: 0.7,
+          max_tokens: 500,
+        }).withResponse();
+        
+        const text = data.choices[0]?.message?.content?.trim() || `Chào ${nickname}, vận số hôm nay của bạn tôi không đoán được.`;
+        
+        const limits = {
+          remainingRequests: response.headers.get('x-ratelimit-remaining-requests'),
+          remainingTokens: response.headers.get('x-ratelimit-remaining-tokens'),
+          resetRequests: response.headers.get('x-ratelimit-reset-requests'),
+          resetTokens: response.headers.get('x-ratelimit-reset-tokens'),
+        };
 
-    return { 
-      text, 
-      usage: data.usage, // { prompt_tokens, completion_tokens, total_tokens }
-      limits 
-    };
+        return { text, usage: data.usage, limits };
+    } catch (err: any) {
+        // Nếu lỗi 429 (Rate Limit) và còn Key khác thì xoay key
+        if (err?.status === 429 && rotateKey()) {
+            console.warn("⚠️ Chạm giới hạn Groq, đang thử lại bằng Key dự phòng...");
+            return await tryRequest();
+        }
+        throw err;
+    }
+  }
+
+  try {
+    return await tryRequest();
   } catch (err: any) {
-    console.error('❌ Groq API Error:', err?.message || err);
-    return { text: `Chào ${nickname}, vận số hôm nay của bạn tôi không đoán được.` };
+    console.error('❌ Groq API Final Error:', err?.message || err);
+    return { text: `Chào ${nickname}, vận số hôm nay của bạn tôi không đoán được. Hệ thống đang bận, bạn vui lòng đợi ít phút nhé!` };
   }
 }

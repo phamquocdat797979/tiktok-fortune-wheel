@@ -1,1 +1,9 @@
-Bảo Bình (20/1-18/2) Thứ 6 của Bảo Bình (10/4/2026) Bảo Bình bước vào ngày thứ 6 với một tinh thần tự do và tràn đầy những ý tưởng sáng tạo độc đáo đến bất ngờ. Bạn không thích đi theo những lối mòn cũ kỹ mà luôn muốn tìm kiếm những giải pháp mới mẻ cho mọi vấn đề trong cuộc sống. -  Sự nghiệp: Bạn hãy kiên trì theo đuổi những dự án hoặc ý tưởng mà bạn cảm thấy thực sự hứng thú, dù ban đầu chúng có vẻ hơi khác biệt. Những nỗ lực nhỏ nhoi của bạn ở hiện tại sẽ mang lại những phần thưởng giá trị và bền vững trong tương lai dài hạn. Đừng ngại bứt phá khỏi vùng an toàn vì vũ trụ đang ủng hộ những bước đi tiên phong và đầy táo bạo của bạn. -  Tình cảm: Trong mối quan hệ tình cảm, việc tôn trọng quyền tự do cá nhân của nhau là yếu tố quan trọng để duy trì hạnh phúc bền lâu. Bạn và người ấy nên cho nhau những khoảng không gian riêng tư cần thiết để cả hai cảm thấy thoải mái và không bị gò bó. - Tài chính: Tình hình tài chính của bạn hiện đang ở mức ổn định, tuy nhiên bạn cần phải hết sức cảnh giác với những lợi ích nhỏ trước mắt. Đừng để lòng tham dẫn dắt khiến bạn đưa ra những quyết định sai lầm gây thất thoát những khoản tiền lớn hơn trong tương lai.
+### Tử vi ngày 11/04/2026 của Bảo Bình
+
+Bảo Bình thể hiện sự sáng tạo, trí tuệ và ý thức cá nhân mạnh mẽ. Chòm sao này là những người suy nghĩ sâu sắc và hay mơ mộng trong ngày có Mặt Trăng quá cảnh.
+
+- Sự nghiệp: Hãy dừng mọi việc bạn đang làm và nhìn nhận thật kỹ những tham vọng mà bạn ấp ủ nhất. Theo vị trí các vì sao, thời gian gần đây bạn đã đặt mục tiêu quá thấp và giờ bạn cần phải nâng cao tầm nhìn, nâng cao trình độ và tạo ra sự thay đổi mạnh mẽ.
+
+- Tình cảm: Hôm nay là ngày của sự thay đổi. Bạn có thể gặp gỡ người nào đó mang đến những thay đổi đáng kể trong cuộc sống của bạn, hoặc giới thiệu bạn với những người khác có thể tạo ra sự thay đổi.
+
+- Sức khỏe: Chòm sao này đừng ngồi một chỗ và cắm mặt vào màn hình điện thoại hay máy tính quá lâu.

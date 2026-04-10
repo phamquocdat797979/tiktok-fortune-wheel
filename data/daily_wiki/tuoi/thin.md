@@ -1,1 +1,21 @@
-tuổi Thìn ngày 10/4/2026 Sự xuất hiện của cát tinh Thiên Tài mang lại những cơ hội bất ngờ nhưng cũng đặt ra cho người tuổi Thìn những bài toán khó về việc ra quyết định. Bản mệnh có thể cảm thấy đôi chút do dự trước các lựa chọn, vì vậy việc tham khảo ý kiến chuyên gia là điều cần thiết. Vận trình tài lộc có dấu hiệu khởi sắc nhưng đòi hỏi bạn phải có cái nhìn sâu sắc và nghiên cứu kỹ các chi tiết của dự án đầu tư. Hãy tránh xa những quyết định mang tính bốc đồng hoặc chạy theo đám đông để bảo vệ nguồn vốn của mình một cách an toàn nhất. Với các cặp đôi, sự chủ động trong việc duy trì kết nối và chia sẻ cảm xúc sẽ giúp mối quan hệ giữa bạn và người ấy trở nên khăng khít hơn. Những cử chỉ quan tâm nhỏ bé nhưng chân thành sẽ có sức mạnh to lớn trong việc củng cố tình cảm và tạo dựng sự gắn kết bền vững. Vận số của từng tuổi Thìn trong ngày: Tử vi tuổi Canh Thìn (2000 - Kim): Một khi đã xác định được mục tiêu, bạn hãy mạnh dạn thực hiện với sự quyết tâm cao nhất để không bỏ lỡ vận may đang đến gần. Tử vi tuổi Mậu Thìn (1988 - Mộc): Bạn cần tuân thủ các nguyên tắc trong công việc nhưng đồng thời cũng phải duy trì sự linh hoạt để thích ứng với hoàn cảnh mới. Tử vi tuổi Bính Thìn (1976 - Thổ): Sự kiên định với lý tưởng của mình nhưng vẫn lắng nghe ý kiến đóng góp của đồng nghiệp sẽ giúp bạn nhận được sự tôn trọng và ủng hộ từ tập thể. Tử vi tuổi Giáp Thìn (1964 - Hỏa): Một tinh thần lạc quan và lối sống tích cực sẽ giúp bạn cảm thấy cuộc sống luôn tràn đầy màu sắc và ý nghĩa mỗi ngày. Tử vi tuổi Nhâm Thìn (1952, 2012 - Thủy): Người lớn nên chú trọng vào việc giữ gìn sức khỏe và tận hưởng sự an nhàn, hạnh phúc bên gia đình và con cháu.  Các chỉ số trong ngày:  Sự nghiệp: ★★★★  Tài lộc: ★★★★  Sức khỏe: ★★★  Tình cảm: ★★★★  Giờ tốt: 23h đến 1h Màu sắc cát tường: Vàng, nâu Quý nhân phù trợ: Dậu, Tý, Thân
+### Tử vi ngày 11/4/2026 tuổi Thìn
+
+Tử vi hàng ngày 11/4/2026 của 12 con giáp, Tương Hại gây ảnh hưởng không tốt tới công việc khiến tuổi Thìn mệt mỏi xử lý chúng và có xu hướng đặt công việc lên trước chuyện tình cảm. Vì thế, cần cân bằng thời gian và chú ý đến cảm xúc của người yêu hoặc gia đình để tránh những rạn nứt không đáng có.   Điểm sáng lúc này đó là có nhiều tín hiệu tích cực về tiền bạc, nhờ đó mà bản mệnh cũng cảm thấy tự tin hơn vào cuối ngày. Không chỉ thu nhập chính ổn định, họ còn có thêm nguồn thu phụ bất ngờ.  Ngũ hành xung khắc nhắc nhở bản mệnh thận trọng hơn khi hợp tác làm ăn, có nhiều bất đồng nên không thể đi tới thống nhất. Vấn đề không ở việc họ phải làm theo ý của bạn mà ở chỗ cả hai nên học cách lắng nghe và hỗ trợ nhau vì mục tiêu chung.  Đừng bỏ lỡ: Top con giáp có bước chuyển mình trong 2 tháng tới dưới đây, đây chính là thời điểm vàng
+
+Vận số của từng tuổi Thìn trong ngày:
+
+- Tử vi tuổi Mậu Thìn (1988 - Mộc): Sự nghiệp của bản mệnh đang cải thiện, có cơ hội để bạn có thể bứt phá mạnh mẽ, tiền vào đều tay từ nhiều nguồn khác nhau.
+- Tử vi tuổi Bính Thìn (1976 - Thổ): Bạn mong có được chút bình yên vào thời điểm này nhưng khó đạt được khi mà có nhiều thay đổi liên tiếp xuất hiện trong thời gian ngắn làm bạn phân tâm, nghĩ ngợi nhiều.
+- Tử vi tuổi Giáp Thìn (1964 - Hỏa): Thôi nghĩ quá nhiều vào kết quả trong khi chính bạn còn chưa bắt đầu, sau đó lại hối thúc mọi người khiến họ càng lo lắng và hoang mang nhiều thêm nữa.
+- Tử vi tuổi Canh Thìn (2000 - Kim): Đọc cuốn sách hay, lắng nghe những lời khuyên có giá trị của những người đi trước bạn cảm thấy rõ ràng hơn về con đường mình sắp đi trong thời gian tới.
+- Tử vi tuổi Nhâm Thìn (1952, 2012 - Thủy): Đừng tức giận trong ngày hôm nay vì nó ảnh hưởng tới sức khỏe của bạn. Việc của người khác để họ tự lo lắng lấy bạn nhé.
+
+Các chỉ số trong ngày:
+
+- Sự nghiệp: ★★★
+- Tài lộc: ★★★
+- Sức khỏe: ★★★★
+- Tình cảm: ★★★★
+- Giờ tốt: 19h-21h
+- Màu sắc cát tường: Trắng, đen
+- Quý nhân phù trợ: Ghi xám, hồng

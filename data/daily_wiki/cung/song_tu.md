@@ -1,1 +1,9 @@
-Song Tử (21/5-21/6) Thứ 6 của Song Tử (10/4/2026) Song Tử sẽ trải qua một ngày thứ 6 đầy hứng khởi khi trí óc của bạn trở nên minh mẫn và linh hoạt hơn bao giờ hết. Khả năng giao tiếp thiên bẩm giúp bạn dễ dàng kết nối với mọi người xung quanh và tạo ra những cuộc hội thoại vô cùng thú vị. -  Sự nghiệp: Đây là thời điểm tuyệt vời để bạn tập trung vào việc mở rộng kinh doanh hoặc học hỏi thêm những kỹ năng chuyên môn mới. Tư duy mạch lạc và khả năng nắm bắt vấn đề nhanh chóng sẽ giúp bạn ghi điểm tuyệt đối trong mắt đồng nghiệp và đối tác. Bạn đừng ngần ngại thể hiện quan điểm cá nhân vì những đóng góp của bạn thực sự mang lại giá trị lớn cho tập thể. -  Tình cảm: Những Song Tử đang yêu nên chủ động tạo ra những không gian mới mẻ hoặc tham gia vào các hoạt động thú vị để hâm nóng tình cảm. Sự thay đổi nhỏ trong cách quan tâm sẽ giúp mối quan hệ của bạn thoát khỏi sự nhàm chán thường thấy. Người độc thân sẽ trở thành tâm điểm của các buổi tiệc tùng và dễ dàng tìm thấy những tâm hồn đồng điệu với mình. - Tài chính: Tình hình tài chính của bạn hiện tại chỉ ở mức trung bình, đòi hỏi bạn phải có kế hoạch chi tiêu cụ thể và khoa học hơn. Bạn hoàn toàn có thể chi tiền cho những sở thích cá nhân nhưng hãy nhớ giới hạn chúng trong một định mức nhất định để tránh thâm hụt ngân sách.
+### Tử vi ngày 11/04/2026 của Song Tử
+
+Sự giao hội của Mặt Trăng khi đi qua tiểu hành tinh Juno khiến Song Tử cảm thấy mất cân bằng, cảm giác an toàn của bạn trong ngày này gắn bó mật thiết với mong muốn có một mối quan hệ trọn vẹn và cân bằng.
+
+- Sự nghiệp: Tình hình tài chính hiện tại khá tốt, nhưng có nguy cơ bạn sẽ coi đó là cơ hội để tiêu tiền vào những thứ không cần thiết và cho những người không xứng đáng với lòng tốt của bạn.
+
+- Tình cảm: Cuộc sống sẽ dễ dàng hơn nhiều trong vài ngày tới nếu bạn chấp nhận thực tế rằng mình chỉ có thể kiểm soát mọi việc ở mức độ nào đó. Càng ít lo lắng về những gì đang xảy ra, mọi việc càng có nhiều khả năng diễn ra theo hướng có lợi cho bạn.
+
+- Sức khỏe: Ăn nhiều rau xanh, uống đủ nước, ngủ sớm và giảm căng thẳng là điều mà bạn nên làm trong thời gian này.  Xem thêm: 4 chòm sao tỏa sáng nhờ nhan sắc trong năm 2026

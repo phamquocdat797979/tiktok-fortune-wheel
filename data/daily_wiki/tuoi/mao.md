@@ -1,1 +1,21 @@
-tuổi Mão ngày 10/4/2026 Cục diện Tam Hội mang lại sự tự tin nhất định cho người tuổi Mão trong ngày thứ 6 này, tuy nhiên bạn cần tỉnh táo để không rơi vào trạng thái chủ quan, tự phụ. Thay vì đối đầu trực diện trong các cuộc tranh luận, bạn nên sử dụng kỹ năng giao tiếp khéo léo để thuyết phục đối tác và đồng nghiệp. Tình hình tài chính hiện ở mức trung bình, do đó bạn cần quản lý chi tiêu một cách chặt chẽ và thông minh hơn. Tuyệt đối không nên tham gia vào các dự án có độ rủi ro cao hoặc vượt quá khả năng chi trả của bản thân để tránh rơi vào tình trạng hối tiếc sau này. Sự hòa thuận trong tình yêu và hôn nhân đòi hỏi cả hai phải có sự nhường nhịn và thấu hiểu lẫn nhau một cách sâu sắc. Hãy giảm bớt những tranh cãi về những chuyện nhỏ nhặt và dùng thái độ nhẹ nhàng để xoa dịu những căng thẳng nếu có xảy ra. Vận số của từng tuổi Mão trong ngày: Tử vi tuổi Kỷ Mão (1999 - Thổ): Vận trình trong ngày có những thăng trầm nhất định, đòi hỏi bản mệnh phải linh hoạt trong cách ứng xử để bảo vệ thành quả của mình. Tử vi tuổi Đinh Mão (1987 - Hỏa): Một thái độ khiêm nhường và cầu thị sẽ giúp bạn tránh được những thị phi và rắc rối không đáng có từ môi trường xung quanh. Tử vi tuổi Ất Mão (1975 - Thủy): Việc ưu tiên bảo vệ lợi ích cốt lõi của bản thân và tổ chức khi làm việc với khách hàng sẽ giúp bạn nhận được sự đánh giá cao về tính chuyên nghiệp. Tử vi tuổi Quý Mão (1963 - Kim): Hãy duy trì lối sống giản dị, gần gũi với thiên nhiên để tâm hồn luôn thanh tịnh và sức khỏe được cải thiện tốt hơn mỗi ngày. Tử vi tuổi Tân Mão (1951, 2011 - Mộc): Bạn nên tránh những nơi ồn ào, thay vào đó hãy tìm kiếm không gian yên tĩnh để thư giãn và trò chuyện cùng những người thân yêu.  Các chỉ số trong ngày:  Sự nghiệp: ★★★★  Tài lộc: ★★★★  Sức khỏe: ★★★  Tình cảm: ★★★  Giờ tốt: 13h đến 15h Màu sắc cát tường: Đen, trắng Quý nhân phù trợ: Hợi, Mùi, Tuất
+### Tử vi ngày 11/4/2026 tuổi Mão
+
+Tiếp nối tử vi hàng ngày 10/4/2026 của 12 con giáp, ngày có Tỷ Kiên nhắc nhở tuổi Mão nên chú ý lời ăn tiếng nói, tránh tranh cãi không cần thiết với nửa kia. Mối quan hệ dễ “lung lay” nếu cả hai không giữ bình tĩnh và thông cảm lẫn nhau. Một số quyết định liên quan tới công việc không nên vội vàng, hãy chuẩn bị cho bản thân một số phương án nhất định và luôn có kế hoạch đề phòng. Nhớ rằng mọi thứ đều có thể thay đổi vào phút cuối, do đó nên thận trọng nhất có thể.    Sức khỏe và sự nghiệp của bạn sẽ đều được hưởng lợi từ sự cân bằng cuộc sống, đừng để tâm trí cũng như thể lực của bạn xuống dốc. Hãy nghỉ ngơi, nuôi dưỡng cơ thể và sử dụng trí óc một cách có mục đích.
+
+Vận số của từng tuổi Mão trong ngày:
+
+- Tử vi tuổi Đinh Mão (1987 - Hỏa): Cuộc sống của người khác đã đủ khó khăn rồi, đừng dùng lời vô tình khiến họ cảm thấy khó chịu hơn nữa. Nên biết khi nào nên nói và khi nào nên im lặng.
+- Tử vi tuổi Kỷ Mão (1999 - Thổ): Bạn cảm thấy nóng lòng muốn thấy thành quả từ một công việc mà bạn đã bỏ nhiều công sức nhưng xem ra mọi thứ chưa được như mong đợi ngay lúc này.
+- Tử vi tuổi Ất Mão (1975 - Thủy): Lòng chỉ cảm thấy bình yên khi bạn biết dừng lại đúng lúc, nhớ rằng lúc này không phù hợp cho các quyết định liều lĩnh nữa rồi.
+- Tử vi tuổi Quý Mão (1963 - Kim): Ngày hôm nay nên tập trung để cùng tạo nên những kỷ niệm đẹp cùng mọi người xung quanh mình bạn nhé. Ai cũng hào hứng muốn nghe những trải nghiệm trong quá khứ của bạn.
+- Tử vi tuổi Tân Mão (1951, 2011 - Mộc): Bạn hạnh phúc vì hôm nay có nhiều lời khuyên của bạn được con cháu trong nhà lắng nghe và làm theo, có được thành tích đáng kể.
+
+Các chỉ số trong ngày:
+
+- Sự nghiệp: ★★★★
+- Tài lộc: ★★★★
+- Sức khỏe: ★★★★
+- Tình cảm: ★★★
+- Giờ tốt: 9h-11h
+- Màu sắc cát tường: Đỏ, đen
+- Quý nhân phù trợ: Hợi, Tị

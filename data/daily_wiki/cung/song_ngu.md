@@ -1,1 +1,9 @@
-Song Ngư (19/2-20/3) Thứ 6 của Song Ngư (10/4/2026) Song Ngư vốn nhạy cảm và tinh ý, hôm nay bạn có thể cảm nhận rõ rệt những biến đổi tinh tế của dòng năng lượng xung quanh mình. Tuy nhiên, bạn cần học cách kiểm soát suy nghĩ để không rơi vào tình trạng lo âu vô căn cứ dẫn đến kiệt sức về mặt tinh thần. -  Sự nghiệp: Có thể sẽ có một vài thay đổi nhỏ diễn ra tại nơi làm việc khiến bạn cảm thấy hơi bối rối trong lúc ban đầu. Bạn đừng quá lo lắng hay hoảng sợ mà hãy giữ cho mình một sự bình tĩnh tuyệt đối để xử lý mọi tình huống phát sinh một cách khôn ngoan. -  Tình cảm: Sự tin tưởng chính là nền tảng cốt lõi giúp mối quan hệ của bạn vượt qua những nghi ngờ và rạn nứt không đáng có. Bạn hãy mở lòng chia sẻ với đối phương để cùng nhau xây dựng một tình yêu dựa trên sự chân thành và tôn trọng lẫn nhau. Những Song Ngư độc thân nên tận hưởng giai đoạn tìm hiểu ngọt ngào và đừng quá vội vàng cam kết khi chưa thực sự sẵn sàng. - Tài chính: Bạn đang có xu hướng chi tiêu khá mạnh tay cho những sở thích mang tính cảm xúc hoặc những món đồ xa xỉ không thực sự cần thiết. Hãy tập thói quen dừng lại ba phút để suy nghĩ thật kỹ trước khi quyết định rút ví cho bất kỳ món đồ nào để tránh hối tiếc về sau.
+### Tử vi ngày 11/04/2026 của Song Ngư
+
+Góc lục hợp giữa sao Hải Vương và Mặt Trăng trong ngày mới, Song Ngư sẽ tìm thấy sự hòa quyện hoàn hảo giữa sự thấu hiểu cảm xúc sâu sắc và nguồn cảm hứng sáng tạo dồi dào.
+
+- Sự nghiệp: Đã đến lúc ngừng mơ mộng hão huyền và bắt tay vào làm việc nghiêm túc. Hôm nay Ngư hãy quyết định điều bạn muốn đạt được rồi dốc toàn bộ sức lực để thực hiện nó.
+
+- Tình cảm: Hôm nay sẽ mang tới một cú hích lớn cho tình bạn nói chung và chuyện tình cảm nói riêng. Hãy nghĩ tốt về mọi người bạn gặp và họ sẽ đối đãi hết sức mình vì bạn.
+
+- Sức khỏe: Dạo gần đây làn da của bạn không được ổn cho lắm, bạn nên uống nhiều nước ấm và vệ sinh da thật sạch nhé.  Mời các bạn đón đọc Tử vi ngày 12/4/2026 của 12 cung hoàng đạo trên Lịch ngày tốt vào hồi 17h và fanpage Mật ngữ 12 chòm sao vào hồi 20h hàng ngày nhé.

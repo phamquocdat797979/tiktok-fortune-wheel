@@ -1,1 +1,9 @@
-Thiên Bình (23/9-23/10) Thứ 6 của Thiên Bình (10/4/2026) Ngày thứ 6 mang đến cho Thiên Bình những tín hiệu tích cực trong các mối quan hệ xã giao và tình cảm cá nhân. Bạn cảm thấy mình luôn được bao quanh bởi những người tốt bụng và sẵn sàng giúp đỡ khi bạn gặp khó khăn. -  Sự nghiệp: Sự hợp tác và làm việc nhóm chính là thế mạnh của bạn trong ngày hôm nay khi bạn có thể kết nối mọi người lại với nhau. Các dự án tập thể sẽ đạt được tiến triển vượt bậc nhờ vào khả năng điều phối và tinh thần trách nhiệm của tất cả các thành viên. Bạn hãy tích cực tham gia vào các cuộc thảo luận chung vì ý kiến của bạn sẽ mang lại cái nhìn đa chiều và hữu ích. -  Tình cảm: Mối quan hệ giữa bạn và người ấy đang có những bước tiến triển rất sâu sắc và đầy thấu hiểu. Đôi khi không cần nói ra nhưng hai bạn vẫn có thể cảm nhận được suy nghĩ và mong muốn của đối phương qua ánh mắt và cử chỉ. - Tài chính: Tình hình tài chính của bạn đang ở trạng thái lý tưởng khi các khoản thu và chi được kiểm soát một cách cân bằng nhất. Đây là thời điểm tốt để bạn lập ra một kế hoạch tiết kiệm dài hạn hoặc đầu tư vào việc nâng cao kiến thức bản thân.
+### Tử vi ngày 11/04/2026 của Thiên Bình
+
+Mặt Trời đi qua Điểm nút Bắc theo hướng ngược chiều, ngày mới Thiên Bình trở nên tỉnh ngộ, có nhận thức rõ hơn về những thay đổi cần thiết trong cuộc sống để hoàn thành sứ mệnh tâm hồn mình.
+
+- Sự nghiệp: Hãy thật quyết đoán với bản thân trong vài ngày tới. Loại bỏ tất cả những thứ bạn không còn cần nữa trong công việc sẽ giúp bạn tiến bộ nhanh hơn hẳn.
+
+- Tình cảm: Bầu không khí xung quanh bạn có thể trở nên mơ hồ và không chắc chắn, khiến bạn khó nắm bắt tình hình. Bạn cần hết sức thận trọng khi giao tiếp với những người nhạy cảm. Đây cũng là thời điểm cần đối mặt và đưa ra quyết định quan trọng trong tình yêu.
+
+- Sức khỏe: Bạn chỉ nên uống nước đun sôi và ăn thức ăn được nấu chín kỹ. Tránh thức ăn nhanh và nhiều dầu mỡ trong một thời gian nhé.

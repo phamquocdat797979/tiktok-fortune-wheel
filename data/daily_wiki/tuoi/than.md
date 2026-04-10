@@ -1,1 +1,23 @@
-tuổi Thân ngày 10/4/2026 Cục diện Tương Xung nhắc nhở người tuổi Thân cần giữ thái độ khách quan và tránh can thiệp quá sâu vào chuyện của người khác để không rước họa vào thân. Bản mệnh nên tập trung tối đa vào công việc cá nhân và giữ cho mình một tâm thế bình ổn trước những biến động xung quanh. Vận trình tài chính có thu có chi, nhưng bạn tuyệt đối không nên tin vào những tin đồn về các dự án đầu tư có lợi nhuận cao bất thường. Hãy tìm kiếm lời khuyên từ những chuyên gia uy tín hoặc những người có kinh nghiệm thực tế để đảm bảo sự an toàn cho tài sản của bạn. Trong giao tiếp với người yêu hay bạn đời, bạn cần đặc biệt cẩn thận với lời nói để tránh vô tình làm tổn thương lòng tự trọng của đối phương. Một chút tinh tế và sự nhường nhịn sẽ giúp bầu không khí giữa hai người bớt căng thẳng, từ đó duy trì được sự hòa hợp trong tình cảm. Vận số của từng tuổi Thân trong ngày: Tử vi tuổi Nhâm Thân (1992 - Kim): Việc chọn lọc thông tin và giữ gìn lời ăn tiếng nói sẽ giúp bạn tránh được những rắc rối pháp lý hoặc thị phi không đáng có. Tử vi tuổi Canh Thân (1980 - Mộc): Thông tin tại nơi làm việc trong ngày hôm nay khá phức tạp và đa chiều, đòi hỏi bạn phải có khả năng phân tích và lọc bỏ những tin sai lệch. Tử vi tuổi Mậu Thân (1968 - Thổ): Hãy tập trung hoàn thành tốt nhiệm vụ của mình và hạn chế tham gia vào các cuộc bàn tán nơi công sở để giảm thiểu sự xao nhãng không cần thiết. Tử vi tuổi Bính Thân (1956 - Hỏa): Sự ổn định trong gia đạo và sự hiếu thảo của con cái sẽ là niềm an ủi lớn giúp bạn cảm thấy cuộc sống trọn vẹn. Tử vi tuổi Giáp Thân (1944, 2004 - Thủy): Bạn trẻ nên học cách quản lý cảm xúc tốt hơn để không gây ảnh hưởng đến hiệu quả công việc cũng như các mối quan hệ cá nhân của mình.  Các chỉ số trong ngày:  Sự nghiệp: ★★★  Tài lộc: ★★★  Sức khỏe: ★★★  Tình cảm: ★★★  Giờ tốt: 9h đến 11h Màu sắc cát tường: Bạc, ánh kim Quý nhân phù trợ: Thìn, Tý, Tị
+### Tử vi ngày 11/4/2026 tuổi Thân
+
+Tuổi Thân có lợi hơn ở khía cạnh sự nghiệp thời gian này với sự nâng đỡ của Chính Quan. Đặc biệt, những ai đang kinh doanh hoặc làm tự do có thể nhận được nhiều đơn hàng, dự án hơn. Chuyện tình cảm khởi sắc, có nhiều người tuổi này có số đào hoa lúc này sẽ bất ngờ “nổi bật” trong mắt người khác phái. Cơ hội tình cảm xuất hiện trong các buổi gặp gỡ bạn bè, sự kiện xã hội hay thậm chí qua mạng xã hội.
+
+Ngũ hành xung khắc nhắc nhở bạn cọi trong cơ thể mình, thúc đẩy sự cân bằng trong thói quen chăm sóc sức khỏe của bạn. Hãy duy trì các nghi thức thư giãn, tránh gắng sức quá mức và lắng nghe nhu cầu nghỉ ngơi của cơ thể.
+
+Vận số của từng tuổi Thân trong ngày:
+
+- Tử vi tuổi Nhâm Thân (1992 - Kim): Một người xa lạ nào đó có thể vô tình gặp và hỗ trợ bạn nhiệt tình trong hôm nay. Đó cũng là lý do mà bạn cảm thấy xúc động vì tấm lòng của họ.
+- Tử vi tuổi Canh Thân (1980 - Mộc): Tài chính tốt mang lại cảm giác tự tin hơn cho bạn, điều quan trọng là bạn có khoản tiền để đảm bảo an toàn khi rủi ro. Bạn không quá tin vào vận may nên chăm chỉ tích lũy từng ngày.
+- Tử vi tuổi Giáp Thân (1944, 2004 - Thủy): Cảm nhận chung về ai đó không sai nhưng cũng đừng vì thế mà để mặc họ. Có thể người ta đang cần nhận được sự giúp đỡ, hỗ trợ.
+- Tử vi tuổi Mậu Thân (1968 - Thổ): Nếu ai đó cần giúp đỡ hãy hỗ trợ hết mình bạn nhé, không phải khi nào bạn cũng có cơ hội để giúp đỡ người khác đâu.
+- Tử vi tuổi Bính Thân (1956, 2016 - Hỏa): Tránh nóng vội, không đưa ra quyết định khi mọi thứ đang rối ren, hãy đợi bạn đủ bình tĩnh để đánh giá lại tình hình một lần nữa nhé.
+
+Các chỉ số trong ngày:
+
+- Sự nghiệp: ★★★★
+- Tài lộc: ★★★★
+- Sức khỏe: ★★★
+- Tình cảm: ★★★★
+- Giờ tốt: 7h-9h
+- Màu sắc cát tường: Vàng, đen
+- Quý nhân phù trợ: Thìn, Sửu

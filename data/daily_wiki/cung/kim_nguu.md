@@ -1,1 +1,9 @@
-Kim Ngưu (20/4-20/5) Thứ 6 của Kim Ngưu (10/4/2026) Ngày thứ 6 này mang đến cho Kim Ngưu một nhịp điệu sống rất đỗi nhẹ nhàng và thư thái. Bạn cảm thấy mình có đủ thời gian và sự tĩnh lặng để nhìn nhận lại chặng đường đã qua cũng như thiết lập các mục tiêu dài hạn cho tương lai. -  Sự nghiệp: Tại nơi làm việc, bạn không cần phải vội vã chạy đua với bất kỳ ai mà chỉ cần hoàn thành nhiệm vụ theo đúng phương pháp và kế hoạch đã đề ra. Sự tỉ mỉ và tính kỷ luật của bạn sẽ được cấp trên ghi nhận và đánh giá cao dù kết quả không xuất hiện ngay lập tức. Hãy cứ tin tưởng vào tiến trình của mình vì sự kiên trì chắc chắn sẽ mang lại quả ngọt xứng đáng. -  Tình cảm: Trong mối quan hệ tình cảm, bạn hãy bớt chút tính toán và học cách lắng nghe nhiều hơn để thấu hiểu sâu sắc tâm tư của đối phương. Sự bao dung và nhường nhịn chính là yếu tố sống còn giúp tình yêu của hai bạn vượt qua những sóng gió thường nhật. Những người độc thân sẽ có cơ hội gặp gỡ những đối tượng tiềm năng thông qua các cuộc trò chuyện nhẹ nhàng, tinh tế. - Tài chính: Tình hình tài chính của bạn đang ở trạng thái cân bằng và an toàn nhất trong tuần. Đây là lúc thích hợp để bạn cân nhắc việc đầu tư vào các sản phẩm tài chính có tính thanh khoản cao hoặc gửi tiết kiệm ngân hàng.
+### Tử vi ngày 11/04/2026 của Kim Ngưu
+
+Góc lục hợp giữa sao Hải Vương và Mặt Trăng khiến Kim Ngưu trở nên rất nhạy cảm và dễ tương tác về mặt cảm xúc với người khác, chú ý đến giấc mơ và cảm xúc của mình có thể giúp bạn hiểu rõ hơn trong cuộc sống hiện tại.
+
+- Sự nghiệp: Bạn cần đặt ra cho mình một mục tiêu mới, một mục tiêu đòi hỏi bạn phải phát huy tối đa khả năng của mình. Từ lâu bạn đã chỉ quanh quẩn trong giới hạn của bản thân, điều đó khiến bạn trở nên nhàm chán và uể oải. Hãy tự ép mình bước ra khỏi vùng an toàn.
+
+- Tình cảm: Bạn để cảm xúc lấn át lý trí, và điều đó có thể gây ra rắc rối trong vài ngày tới. Một thái độ khoan dung hơn sẽ giúp xoa dịu tình hình căng thẳng trong mối quan hệ yêu đương ngày này.
+
+- Sức khỏe: Thường xuyên ăn đồ cay nóng, nhiều dầu mỡ, đồ ngọt, hoặc thức khuya, căng thẳng làm gan quá tải, Ngưu nên uống nhiều nước ấm và điều chỉnh lại chế độ sinh hoạt.

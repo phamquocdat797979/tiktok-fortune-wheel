@@ -1,1 +1,9 @@
-Hổ Cáp (24/10-21/11) Thứ 6 của Hổ Cáp (10/4/2026) Hổ Cáp đón nhận ngày thứ 6 với một cái đầu lạnh và khả năng phán đoán sắc bén đã quay trở lại. Bạn cảm thấy mình đủ tỉnh táo để đưa ra những quyết định quan trọng mà trước đây còn đang phân vân, lo lắng. -  Sự nghiệp: Tại công sở, bạn nên tránh những cuộc đối đầu trực tiếp với đồng nghiệp hoặc cấp trên để bảo vệ quyền lợi của bản thân. Sử dụng các chiến lược gián tiếp và sự khôn ngoan sẽ giúp bạn đạt được mục tiêu một cách hiệu quả hơn là sự nóng nảy. Hãy tập trung vào những việc thực sự quan trọng và đừng lãng phí thời gian vào những nhiệm vụ không mang lại kết quả cụ thể. -  Tình cảm: Sự giao tiếp cởi mở là điều vô cùng cần thiết để bạn và người ấy có thể giải tỏa những hiểu lầm đang âm ỉ bấy lâu nay. Đừng chọn cách im lặng trốn tránh vì nó chỉ làm cho khoảng cách giữa hai bạn ngày càng xa thêm mà thôi. Đối với những người độc thân, hãy thật sự thận trọng trước những lời đường mật và đừng vội trao gửi tình cảm cho người thiếu chân thành. - Tài chính: Tài chính của bạn trong ngày hôm nay không có quá nhiều biến động và chỉ duy trì ở mức trung bình ổn định. Bạn cần phải học cách kiểm soát cảm xúc của mình để không dẫn đến những quyết định tiêu xài bốc đồng khi buồn phiền.
+### Tử vi ngày 11/04/2026 của Bọ Cạp
+
+Do sao Thủy thẳng hàng với tiểu hành tinh Pallas, Bọ Cạp sẽ bị thu hút bởi những hoạt động trí tuệ khơi dậy trí tưởng tượng và thử thách khả năng phân tích của bạn trong ngày mới này.
+
+- Sự nghiệp: Một bước nhảy vọt đầy mạo hiểm vào thời điểm này có thể thay đổi cuộc sống của bạn theo hướng tốt đẹp hơn. Đây cũng là lúc để đánh giá lại các mối quan hệ đồng nghiệp cũ và loại bỏ những điều không cần thiết.
+
+- Tình cảm: Hôm nay bạn cần thư giãn. Hãy tận hưởng những khoảnh khắc lãng mạn và niềm vui giản dị bên người yêu, và cố gắng quên đi những vấn đề nghiêm trọng trong ngày hôm nay gây ra tác động tiêu cực cho tinh thần của bạn.
+
+- Sức khỏe: Chòm sao này có lối sống khá lành mạnh nhưng thi thoảng vẫn có vài chiếc mụn làm phiền, đừng lo, chỉ là do không khí bị bẩn mà thôi chứ không phải do bạn.

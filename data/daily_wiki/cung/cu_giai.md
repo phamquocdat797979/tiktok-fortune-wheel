@@ -1,1 +1,9 @@
-Cự Giải (22/6-22/7) Thứ 6 của Cự Giải (10/4/2026) Cự Giải tìm thấy sự bình yên và ấm áp trong tâm hồn khi ngày thứ 6 này diễn ra êm đềm theo đúng ý bạn. Bạn có xu hướng muốn quay về với gia đình, tận hưởng những giây phút nghỉ ngơi sau những giờ làm việc căng thẳng. -  Sự nghiệp: Trong công việc, bạn hãy cố gắng gạt bỏ những suy nghĩ phức tạp và đừng để bản thân sa lầy vào những chi tiết nhỏ nhặt không quan trọng. Tập trung vào các nhiệm vụ cốt lõi sẽ giúp bạn tăng cao hiệu suất và giải quyết công việc nhanh chóng hơn dự kiến. Bạn nên học cách phân bổ thời gian hợp lý để tránh rơi vào tình trạng quá tải do ôm đồm quá nhiều việc cùng lúc. -  Tình cảm: Sự ngọt ngào và chân thành là những gì bạn sẽ cảm nhận được trong mối quan hệ tình cảm vào ngày hôm nay. Việc cùng nhau chuẩn bị bữa tối hay dọn dẹp nhà cửa tưởng chừng như đơn giản nhưng lại gắn kết hai bạn một cách kỳ diệu. Với những người độc thân, một cuộc trò chuyện chân tình sẽ là khởi đầu tốt đẹp cho một mối quan hệ sâu sắc trong tương lai. - Tài chính: Vận trình tài chính của bạn khá ổn định, tuy nhiên bạn cần phải kiềm chế thói quen mua sắm theo cảm hứng nhất thời. Các khoản chi tiêu cho gia đình nên được tính toán kỹ lưỡng để tối ưu hóa ngân sách và tránh lãng phí.
+### Tử vi ngày 11/04/2026 của Cự Giải
+
+Do Mặt Trăng quá cảnh trùng với sao Diêm Vương, hôm nay Cự Giải đang trải qua một giai đoạn cảm xúc mãnh liệt, có những thay đổi mạnh mẽ cho sự an toàn nội tâm và đời sống cảm xúc của bạn.
+
+- Sự nghiệp: Không ai có thể hoàn toàn thoát khỏi thử thách, sự tiến hóa và việc phải trưởng thành, cho dù bạn có nghĩ mình đã giác ngộ tâm linh đến mức nào đi chăng nữa. Sự quá cảnh của sao Diêm Vương nhắc nhở Cua nhoe rằng bạn không phải là người như bạn nghĩ, sự thay đổi sẽ mang lại may mắn cho bạn trong ngày này.
+
+- Tình cảm: Có vẻ như bạn quá chai lì để cảm nhận nỗi đau của người khác, nhưng hôm nay bạn sẽ thay đổi quan điểm sống và quan tâm hơn tới những người xung quanh, bạn cũng không quên yêu thương bản thân.
+
+- Sức khỏe: Tránh tự nặn mụn bằng tay để giảm viêm nhiễm, nếu có vấn đề về da, chỉ cần vệ sinh da sạch sẽ và thăm khám bác sĩ da liễu nếu bị mụn viêm nhé.

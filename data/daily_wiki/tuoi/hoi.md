@@ -1,1 +1,21 @@
-tuổi Hợi ngày 10/4/2026 Cục diện Phá Hợi nhắc nhở người tuổi Hợi rằng dù có nhiều ý tưởng sáng tạo nhưng nếu thiếu hành động thực tế thì mọi thứ cũng chỉ là viển vông. Tại nơi làm việc, bạn cần cảnh giác với những sự việc hoặc những người không đáng tin cậy có thể gây ảnh hưởng đến uy tín cá nhân của mình. Phương diện tài chính không mấy lý tưởng, đòi hỏi bạn phải có sự tỉnh táo cao độ để tránh sập bẫy các vụ lừa đảo tài chính tinh vi. Hãy đánh giá cẩn trọng tính khả thi của mọi dự án và không nên mạo hiểm với số tiền mồ hôi nước mắt của mình vào những lĩnh vực không chắc chắn. Trong tình yêu, hành động thiết thực luôn có giá trị hơn vạn lời nói suông để củng cố lòng tin và sự gắn kết giữa hai người. Hãy thể hiện sự quan tâm của bạn bằng những việc làm cụ thể thay vì chỉ hứa hẹn, điều này sẽ giúp mối quan hệ trở nên sâu sắc và bền chặt hơn. Vận số của từng tuổi Hợi trong ngày: Tử vi tuổi Ất Hợi (1995 - Hỏa): Chỉ có thái độ làm việc nghiêm túc, vững chắc và minh bạch mới giúp bạn xây dựng được nền tảng thành công lâu dài và tránh được các rắc rối. Tử vi tuổi Quý Hợi (1983 - Thủy): Bạn cần cảnh giác với những lời hứa hẹn thiếu căn cứ và tập trung vào những giá trị cốt lõi, bền vững trong cả công việc lẫn các mối quan hệ. Tử vi tuổi Tân Hợi (1971 - Kim): Sự vững vàng và thực tế sẽ giúp bạn vượt qua những bất ổn và tạo dựng được lòng tin với mọi người xung quanh. Tử vi tuổi Kỷ Hợi (1959 - Mộc): Việc duy trì một lối sống điều độ và tâm thế bình an sẽ giúp bạn bảo vệ được năng lượng và sự sáng suốt trong mọi quyết định. Tử vi tuổi Đinh Hợi (1947, 2007 - Thổ): Bạn trẻ đừng để những mơ mộng xa rời thực tế làm xao nhãng mục tiêu chính, hãy kiên trì thực hiện từng bước một để đạt được thành công.  Các chỉ số trong ngày:  Sự nghiệp: ★★★  Tài lộc: ★★★  Sức khỏe: ★★★  Tình cảm: ★★★  Giờ tốt: 5h đến 7h Màu sắc cát tường: Trắng, đen Quý nhân phù trợ: Mùi, Mão, DầnIII. Video
+### Tử vi ngày 11/4/2026 tuổi Hợi
+
+Tam Hợp ghé thăm giúp cho vận trình tình cảm của tuổi Hợi tốt đẹp lên trông thấy. Bản mệnh dễ nhận được sự quan tâm, chăm sóc từ nửa kia và có khả năng phát triển mối quan hệ hiện tại thành hôn nhân.  Bên cạnh đó có Chính Ấn giúp sức nên tuổi Hợi sẽ có nhiều dấu hiệu khởi sắc trong công việc. Những nỗ lực trước đó bắt đầu mang lại kết quả rõ rệt có thể gặp được cơ hội hợp tác hoặc nguồn thu mới.   Ngũ hành tương sinh mang tới ngày thứ 7 cuối tuần bình yên cho bản mệnh, bạn bớt đi những lo lắng, nhanh chóng sắp xếp xong công việc để trở về với tổ ấm nhỏ của mình.
+
+Vận số của từng tuổi Hợi trong ngày:
+
+- Tử vi tuổi Ất Hợi (1995 - Hỏa): Dù khía cạnh tiền bạc của bạn đã được cải thiện trong thời gian gần đây nhưng cũng không nên vì lý do đó mà bắt đầu tiêu xài hoang phí bạn nhé.
+- Tử vi tuổi Quý Hợi (1983 - Thủy): Bản mệnh khá thận trọng với một số kế hoạch gần đây và đó là điều cần thiết, tuy nhiên cũng đừng vì thế mà làm chậm cả tiến độ của mọi người bạn nhé.
+- Tử vi tuổi Tân Hợi (1971- Kim): Ngay lúc này đây bạn cảm thấy vô cùng tự tin và dồi dào sức sống khi có chỗ dựa vững chắc từ những người xung quanh. Bạn chấp nhận sự không hoàn hảo của chính mình và tất cả mọi người.
+- Tử vi tuổi Đinh Hợi (1947, 2007 - Thổ): Một số vấn đề bạn cố gắng né tránh nhưng hôm nay lại phải đối mặt, đó là cảm giác vô cùng khó chịu. Đó cũng là lý do khiến bạn cuối ngày rất nhanh chóng cẳm thấy mệt mỏi.
+- Tử vi tuổi Kỷ Hợi (1959 - Mộc): Khi bạn tập trung vào những điều tích cực thì cuộc sống của trở nên thoải mái hơn. Dường như bạn không cần phải cố gắng đưa ra quyết định khôn ngoan nữa mà chỉ cần thuận theo tự nhiên.
+
+Các chỉ số trong ngày:
+
+- Sự nghiệp: ★★★★
+- Tài lộc: ★★★★★
+- Sức khỏe: ★★★★
+- Tình cảm: ★★★★★
+- Giờ tốt: 17h-19h
+- Màu sắc cát tường: Vàng, đen
+- Quý nhân phù trợ: Mão, Sửu

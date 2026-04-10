@@ -1,1 +1,9 @@
-Sư Tử (23/7-22/8) Thứ 6 của Sư Tử (10/4/2026) Sư Tử sẽ có một ngày thứ 6 vô cùng rực rỡ khi sự tự tin và thần thái quyến rũ của bạn đạt đến đỉnh cao. Bạn đi đến đâu cũng trở thành tâm điểm của sự chú ý, khiến mọi người không thể rời mắt khỏi những màn trình diễn xuất sắc của mình. -  Sự nghiệp: Khả năng sáng tạo và biểu cảm mạnh mẽ giúp bạn dễ dàng chinh phục được những thử thách khó khăn nhất trong công việc. Bạn nên mạnh dạn nắm bắt những cơ hội mới để thể hiện bản thân vì đây là lúc sự nghiệp của bạn đang có dấu hiệu khởi sắc rõ rệt. Kết quả xuất sắc mà bạn đạt được hôm nay chính là tiền đề cho những bước tiến lớn trong tương lai gần. -  Tình cảm: Trong tình yêu, bạn hãy thử hạ thấp cái tôi và thể hiện khía cạnh dịu dàng, quan tâm hơn đối với người bạn đời của mình. Sự cân bằng giữa sức mạnh và sự mềm mỏng sẽ khiến mối quan hệ của hai bạn trở nên hài hòa và lãng mạn hơn bao giờ hết. Những Sư Tử độc thân sẽ nhận thấy sức hút của mình tăng vọt, dễ dàng lọt vào mắt xanh của nhiều người. - Tài chính: Bạn có thể sẽ nhận được một khoản tiền bất ngờ nhỏ, có thể là một món quà từ người thân hoặc thu nhập ngoài dự kiến từ một công việc phụ. Tuy nhiên, sự dư dả này không đồng nghĩa với việc bạn có thể chi tiêu một cách vung tay quá trán mà không có kế hoạch.
+### Tử vi ngày 11/04/2026 của Sư Tử
+
+Góc bán vuông giữa Mặt Trăng và sao Thủy khiến Sư Tử dễ tính và tò mò nhưng lại không giỏi trong việc xử lý những đòi hỏi cảm xúc nặng nề, hôm nay cảm xúc thường lấn át lý trí của bạn.
+
+- Sự nghiệp: Hôm nay có thể xảy ra một số chậm trễ nhỏ trong việc di chuyển, gây bất tiện cho công việc của bạn. Nếu bạn sắp có chuyến đi đi công tác quan trọng, hãy kiểm tra kỹ phương tiện di chuyển thay thế và chuẩn bị sẵn kế hoạch dự phòng
+
+- Tình cảm: Bạn cần gạt bỏ sự kìm nén cảm xúc và để những cảm xúc thật sự của mình được bộc lộ. Khi người khác thấy rằng bạn không lạnh lùng và khô khan trong suy nghĩ như họ từng nghĩ, họ sẽ nhanh chóng có thiện cảm với bạn.
+
+- Sức khỏe: Hãy hình thành những thói quen tốt cho sức khỏe như rửa tay sau khi ăn, bỏ thuốc lá, giảm cân trong ngày này.

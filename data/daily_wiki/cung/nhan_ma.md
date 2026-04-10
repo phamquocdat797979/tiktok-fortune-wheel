@@ -1,1 +1,9 @@
-Nhân Mã (22/11-21/12) Thứ 6 của Nhân Mã (10/4/2026) Một tinh thần sảng khoái và yêu đời là những gì mà Nhân Mã sẽ trải qua trong ngày thứ 6 đầy nắng này. Bạn có xu hướng muốn thoát ra khỏi không gian chật hẹp của văn phòng để tìm kiếm sự kết nối với thiên nhiên hoặc gặp gỡ bạn bè. -  Sự nghiệp: Trong công việc, bạn đừng nên tự tạo quá nhiều áp lực cho bản thân mà hãy để mọi thứ diễn ra một cách tự nhiên nhất có thể. Đôi khi, chính thái độ thư giãn và thoải mái lại giúp bạn nảy ra những ý tưởng đột phá và tìm thấy cơ hội ẩn giấu trong những cuộc trò chuyện xã giao. -  Tình cảm: Những cặp đôi đang yêu sẽ có một ngày tràn ngập sự thấu hiểu và những hành động quan tâm ấm áp dành cho nhau. Mối quan hệ của bạn dường như đang bước vào một giai đoạn mới đầy hứa hẹn và bền chặt hơn trước rất nhiều. Người độc thân có thể sẽ gặp được một người đặc biệt trong một chuyến đi ngắn ngày hoặc trong một sự kiện hoạt động ngoài trời. - Tài chính: Vận trình tài chính của bạn đang có những dấu hiệu rất khả quan khi bạn tìm thấy những cơ hội mua sắm thông minh với giá hời. Việc biết cách chi tiêu hợp lý không chỉ giúp bạn tiết kiệm được một khoản tiền mà còn mang lại niềm vui mua sắm thú vị.
+### Tử vi ngày 11/04/2026 của Nhân Mã
+
+Sao Thủy tạo thành bán vuông góc với tiểu hành tinh Ceres, Nhân Mã cảm thấy mình có nghĩa vụ phải chăm sóc mọi người, hoặc là bạn kiệt sức đến mức không thể tự chăm sóc bản thân mình.
+
+- Sự nghiệp: Đây là khoảng thời gian tồi tệ nhất từ ​​trước đến giờ, chòm sao này sẽ trải qua rất nhiều quá trình tự đối diện với bản thân, kèm theo đó là những cơn hoảng loạn liên tục, cảm giác cô lập, kiệt sức, thất vọng, lo lắng, trầm cảm, bạn cần có thời gian nghỉ ngơi để nạp năng lượng cho công việc.
+
+- Tình cảm: Mối quan hệ của hai bạn đang quá căng thẳng nên bạn khó có thể thư giãn. Hãy tận dụng ngày này để tham gia vào những hoạt động đơn giản và thú vị, và tận hưởng thời gian bên nhau để cả 2 được chữa lành.
+
+- Sức khỏe: Căng thẳng của bạn hoàn toàn có thể được kiểm soát tốt thông qua các phương pháp thư giãn như yoga, thiền hoặc các kỹ thuật thở đơn giản.

@@ -6,7 +6,9 @@
     "dev": "tsx watch server.ts",
     "build": "next build",
     "start": "NODE_ENV=production tsx server.ts",
-    "lint": "next lint"
+    "lint": "next lint",
+    "update:cung": "tsx scripts/update_cung.ts",
+    "update:tuoi": "tsx scripts/update_tuoi.ts"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
