@@ -54,6 +54,7 @@ function cleanTextString(txt: string) {
     return txt.replace(/\s+/g, ' ')
               .replace(/\(adsbygoogle=window\.adsbygoogle\|\|\[\]\)\.push\(\{\}\);/g, '')
               .replace(/arfAsync\.push\([^)]+\);/g, '')
+              .replace(/([.:!?”\)★])([A-Z])/g, '$1 $2')
               .trim();
 }
 
@@ -131,7 +132,10 @@ async function scrapeCungDaily() {
   const url = `https://lichngaytot.com/tu-vi-hang-ngay-${day}-${month}-${year}.html`;
   
   console.log(`Tiến hành cào 12 Cung tại: ${url}`);
-  const html = await fetchHtml(url);
+  const htmlRaw = await fetchHtml(url);
+  // Add spaces to HTML blocks to prevent text gluing when Cheerio extracts text
+  const html = htmlRaw.replace(/<\/(p|div|h1|h2|h3|h4|li|td|th)>/gi, ' </$1> ')
+                      .replace(/<br\s*\/?>/gi, ' ');
   const $ = cheerio.select ? cheerio.load(html) : (cheerio as any).load(html);
   
   // Xóa rác HTML
@@ -162,7 +166,10 @@ async function scrapeTuoiDaily() {
   if (!targetUrl.startsWith('http')) targetUrl = 'https://lichngaytot.com' + (!targetUrl.startsWith('/') ? '/' : '') + targetUrl;
 
   console.log(`Tiến hành cào 12 Giáp tại: ${targetUrl}`);
-  const html = await fetchHtml(targetUrl);
+  const htmlRaw = await fetchHtml(targetUrl);
+  // Add spaces to HTML blocks to prevent text gluing when Cheerio extracts text
+  const html = htmlRaw.replace(/<\/(p|div|h1|h2|h3|h4|li|td|th)>/gi, ' </$1> ')
+                      .replace(/<br\s*\/?>/gi, ' ');
   const $ = cheerio.select ? cheerio.load(html) : (cheerio as any).load(html);
   
   $('script, style, noscript, iframe, nav, header, footer').remove();
