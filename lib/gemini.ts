@@ -66,37 +66,10 @@ Bắt đầu phán:
     return result.response.text().trim();
   };
 
-  // LẦN 1: Gọi với prompt đầy đủ
   try {
     return await callGemini(prompt);
   } catch (err: any) {
-    console.error('❌ Gemini lần 1 thất bại:', err?.message || err);
+    console.error('❌ Gemini API Error:', err?.message || err);
+    return `Chào ${nickname}, vận số hôm nay của bạn tôi không đoán được. Hệ thống đang bảo trì, bạn hãy thử lại sau nhé!`;
   }
-
-  // LẦN 2: Retry với prompt rút gọn
-  const promptRetry = `
-Bạn là thầy tử vi. Hôm nay ${dateStr}, phán vận mệnh cho "${nickname}".
-${ragInstruction || 'Phán theo năng lượng tích cực ngày hôm nay.'}
-Viết 100-150 từ văn xuôi, không markdown, cuối nêu số và màu may mắn. Bắt đầu bằng tên "${nickname}":`;
-
-  try {
-    return await callGemini(promptRetry);
-  } catch (err2: any) {
-    console.error('❌ Gemini lần 2 thất bại:', err2?.message || err2);
-  }
-
-  // FALLBACK CUỐI: Đọc thẳng wiki nếu có, không dùng hardcode
-  if (dailyContext) {
-    const wikiSnippet = dailyContext
-      .split('\n')
-      .filter(l => l.trim().length > 20)
-      .slice(0, 3)
-      .join(' ')
-      .split(' ')
-      .slice(0, 100)
-      .join(' ');
-    return `Chào ${nickname}, hôm nay ${dateStr} vũ trụ nhắn gửi tới bạn: ${wikiSnippet}... Hệ thống AI đang bảo trì, bạn vui lòng thử lại sau nhé!`;
-  }
-
-  return `Chào ${nickname}, vận số hôm nay của bạn tôi không thể đoán được. Hệ thống AI đang gặp sự cố, bạn vui lòng thử lại sau nhé!`;
 }
