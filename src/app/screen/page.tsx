@@ -367,14 +367,19 @@ function DateDisplay() {
   const aN = String(lunar.getDay()).padStart(2, '0');
   const aT = String(lunar.getMonth()).padStart(2, '0');
   const aNyo = lunar.getYear();
+
+  // Tính Can Chi thuần Việt
+  const can = ['Canh', 'Tân', 'Nhâm', 'Quý', 'Giáp', 'Ất', 'Bính', 'Đinh', 'Mậu', 'Kỷ'][aNyo % 10];
+  const chi = ['Thân', 'Dậu', 'Tuất', 'Hợi', 'Tý', 'Sửu', 'Dần', 'Mão', 'Thìn', 'Tỵ', 'Ngọ', 'Mùi'][aNyo % 12];
+  const canChiViet = `${can} ${chi}`;
   
   return (
-    <div className="flex flex-col items-center gap-1 bg-black/60 backdrop-blur-md px-10 py-4 rounded-[30px] border-[2px] border-amber-500/30 text-center shadow-[0_0_30px_rgba(245,158,11,0.2)]">
-       <span className="text-white/90 font-bold text-[32px] tracking-wide uppercase flex items-center gap-2">
-          <span className="text-amber-400">☀️</span> Dương Lịch: <span className="text-amber-200">{hN}/{hT}/{hNyo}</span>
+    <div className="flex flex-col items-center gap-2 text-center drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)]">
+       <span className="text-white/95 font-bold text-[32px] tracking-wide uppercase flex items-center gap-2 drop-shadow-md">
+          <span className="text-amber-400">☀️</span> Dương Lịch: <span className="text-amber-300">{hN}/{hT}/{hNyo}</span>
        </span>
-       <span className="text-white/80 font-medium text-[24px] tracking-wider flex items-center gap-3 mt-1">
-          <span className="text-indigo-300">🌙</span> Âm Lịch: <span className="text-indigo-200">{aN}/{aT}/{aNyo}</span> <span className="text-amber-500/80 italic">({lunar.getYearInGanZhi()})</span>
+       <span className="text-white/90 font-medium text-[26px] tracking-wider flex items-center gap-3 drop-shadow-md">
+          <span className="text-indigo-300">🌙</span> Âm Lịch: <span className="text-indigo-200">{aN}/{aT}/{aNyo}</span> <span className="text-amber-400 italic">({canChiViet})</span>
        </span>
     </div>
   );
