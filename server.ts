@@ -53,6 +53,43 @@ app.prepare().then(() => {
 
   const CHAT_LOGS: any[] = []; // Lưu trữ log trên RAM Server liên tục
 
+  // --- QUẢN LÝ LƯU TRƯỢNG TOKEN (Persistence) ---
+  const USAGE_FILE = path.join(process.cwd(), 'data', 'llm_usage.json');
+  let totalTokensUsed = 0;
+  let lastLimits: any = null;
+
+  try {
+    if (!fs.existsSync(path.dirname(USAGE_FILE))) fs.mkdirSync(path.dirname(USAGE_FILE), { recursive: true });
+    if (fs.existsSync(USAGE_FILE)) {
+      const saved = JSON.parse(fs.readFileSync(USAGE_FILE, 'utf-8'));
+      totalTokensUsed = saved.totalTokensUsed || 0;
+    }
+  } catch (err) {
+    console.warn("⚠️ Không thể nạp llm_usage.json, bắt đầu từ 0.");
+  }
+
+  const saveUsage = () => {
+    try {
+      fs.writeFileSync(USAGE_FILE, JSON.stringify({ totalTokensUsed, lastUpdated: new Date().toISOString() }));
+    } catch (err) {
+      console.error("❌ Lỗi lưu llm_usage.json:", err);
+    }
+  };
+
+  // Lắng nghe stats từ worker
+  globalEventBus.on('llm_usage_update', (data: any) => {
+    if (data.usage && data.usage.total_tokens) {
+      totalTokensUsed += data.usage.total_tokens;
+      saveUsage();
+    }
+    lastLimits = data.limits;
+    io.emit('llm_stats_update', { 
+       totalTokensUsed, 
+       lastUsage: data.usage,
+       limits: data.limits 
+    });
+  });
+
   // Helper: gửi trạng thái hàng đợi cho tất cả client
   const emitQueueUpdate = (target: any) => {
     const preview = MOCK_QUEUE.slice(0, 5).map((d, i) => ({
@@ -74,6 +111,13 @@ app.prepare().then(() => {
     socket.emit('llm_status', { 
       status: hasGroqKey ? 'ready' : 'missing',
       keyPreview: hasGroqKey ? `${process.env.GROQ_API_KEY?.substring(0, 7)}...` : null
+    });
+
+    // Gửi thống kê hiện tại ngay khi vừa kết nối
+    socket.emit('llm_stats_update', { 
+        totalTokensUsed, 
+        lastUsage: null,
+        limits: lastLimits 
     });
     
     // Helpers defined in connection scope for access by all handlers

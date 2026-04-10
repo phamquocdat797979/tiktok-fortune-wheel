@@ -188,8 +188,13 @@ export function startSpinWorker(io: Server) {
         }).catch(err => console.error("Prisma error:", err));
 
         // --- BƯỚC 5: ĐỢI API VÀ VÒNG QUAY XONG ---
-        // Đợi Gemini nhả chữ ra (nếu Gemini failed thì nó trả về đoạn text dự phòng)
-        const fortuneText = await fortuneTextPromise;
+        const result = await fortuneTextPromise;
+        const fortuneText = result.text;
+        
+        // Đẩy dữ liệu thống kê về cho server chính thông qua EventBus
+        if (result.usage || result.limits) {
+          globalEventBus.emit('llm_usage_update', { usage: result.usage, limits: result.limits });
+        }
 
         // Phát text lên cho UI hiển thị và Control Panel đọc TTS
         io.emit('deliver_fortune_text', { jobId, fortuneText, donor: data });

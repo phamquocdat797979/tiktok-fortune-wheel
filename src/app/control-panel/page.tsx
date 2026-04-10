@@ -132,12 +132,17 @@ export default function ControlPanel() {
         setIsPinging(false);
     });
 
+    s.on('llm_stats_update', (data: any) => {
+        setLlmStats(data);
+    });
+
     setSocket(s);
     return () => { s.disconnect(); };
   }, [musicVolume]);
 
   const [llmStatus, setLlmStatus] = useState<{ status: 'ready' | 'missing', keyPreview: string | null }>({ status: 'missing', keyPreview: null });
   const [llmPingResult, setLlmPingResult] = useState<{ success?: boolean, message?: string, preview?: string, error?: string } | null>(null);
+  const [llmStats, setLlmStats] = useState<{ totalTokensUsed: number, lastUsage?: any, limits?: any } | null>(null);
   const [isPinging, setIsPinging] = useState(false);
 
   const testInjectMock = async () => {
@@ -341,6 +346,31 @@ export default function ControlPanel() {
                     ) : (
                       <div>
                         <strong>❌ Lỗi:</strong> {llmPingResult.error}
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {llmStats && (
+                  <div className="grid grid-cols-2 gap-2 mt-2">
+                    <div className="bg-slate-100 p-2 rounded border border-slate-200">
+                      <div className="text-[10px] text-slate-500 uppercase font-bold">Tổng Token Đã Dùng</div>
+                      <div className="text-sm font-black text-slate-700">{llmStats.totalTokensUsed.toLocaleString()}</div>
+                    </div>
+                    <div className="bg-blue-50 p-2 rounded border border-blue-100">
+                      <div className="text-[10px] text-blue-500 uppercase font-bold">Lượt Còn Lại (RPM)</div>
+                      <div className="text-sm font-black text-blue-700">
+                        {llmStats.limits?.remainingRequests || '--'} 
+                        <span className="text-[10px] font-normal ml-1 opacity-60">/{llmStats.limits?.resetRequests || '--'}</span>
+                      </div>
+                    </div>
+                    {llmStats.limits?.remainingTokens && (
+                      <div className="col-span-2 bg-amber-50 p-2 rounded border border-amber-100 flex justify-between items-center">
+                        <div className="text-[10px] text-amber-600 uppercase font-bold">Token Còn Lại (Phút)</div>
+                        <div className="text-xs font-bold text-amber-700">
+                          {Number(llmStats.limits.remainingTokens).toLocaleString()} 
+                          <span className="text-[9px] font-normal ml-1 opacity-60">reset in {llmStats.limits.resetTokens || '--'}</span>
+                        </div>
                       </div>
                     )}
                   </div>

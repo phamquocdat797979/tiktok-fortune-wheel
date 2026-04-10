@@ -14,7 +14,7 @@ function getGroq() {
   return groq;
 }
 
-export async function generateFortuneText(astro: AstrologyData, nickname: string = 'bạn', dailyContext: string = ''): Promise<string> {
+export async function generateFortuneText(astro: AstrologyData, nickname: string = 'bạn', dailyContext: string = ''): Promise<{ text: string, usage?: any, limits?: any }> {
   const modelName = process.env.GROQ_MODEL || "llama-3.3-70b-versatile";
   const groqInstance = getGroq();
 
@@ -34,7 +34,7 @@ export async function generateFortuneText(astro: AstrologyData, nickname: string
     : '';
 
   if (!dailyContext && !astro.conGiap && !astro.cungHoangDao) {
-    return `Chào ${nickname}, vận số hôm nay của bạn tôi không thể đoán được do thiếu dữ liệu tử vi. Hệ thống đang kiểm tra lại nguồn dữ liệu, bạn vui lòng thử lại sau nhé!`;
+    return { text: `Chào ${nickname}, vận số hôm nay của bạn tôi không thể đoán được do thiếu dữ liệu tử vi. Hệ thống đang kiểm tra lại nguồn dữ liệu, bạn vui lòng thử lại sau nhé!` };
   }
 
   const prompt = `
@@ -57,16 +57,30 @@ Bắt đầu phán:
 `;
 
   try {
-    const chatCompletion = await groqInstance.chat.completions.create({
+    const { data, response } = await groqInstance.chat.completions.create({
       messages: [{ role: 'user', content: prompt }],
       model: modelName,
       temperature: 0.7,
       max_tokens: 500,
-    });
+    }).withResponse();
     
-    return chatCompletion.choices[0]?.message?.content?.trim() || `Chào ${nickname}, vận số hôm nay của bạn tôi không đoán được.`;
+    const text = data.choices[0]?.message?.content?.trim() || `Chào ${nickname}, vận số hôm nay của bạn tôi không đoán được.`;
+    
+    // Bóc tách hạn mức từ Headers
+    const limits = {
+      remainingRequests: response.headers.get('x-ratelimit-remaining-requests'),
+      remainingTokens: response.headers.get('x-ratelimit-remaining-tokens'),
+      resetRequests: response.headers.get('x-ratelimit-reset-requests'),
+      resetTokens: response.headers.get('x-ratelimit-reset-tokens'),
+    };
+
+    return { 
+      text, 
+      usage: data.usage, // { prompt_tokens, completion_tokens, total_tokens }
+      limits 
+    };
   } catch (err: any) {
     console.error('❌ Groq API Error:', err?.message || err);
-    return `Chào ${nickname}, vận số hôm nay của bạn tôi không đoán được.`;
+    return { text: `Chào ${nickname}, vận số hôm nay của bạn tôi không đoán được.` };
   }
 }
