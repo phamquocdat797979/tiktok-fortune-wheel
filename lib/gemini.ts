@@ -15,7 +15,8 @@ function getGenAI() {
 }
 
 export async function generateFortuneText(astro: AstrologyData, nickname: string = 'bạn', dailyContext: string = ''): Promise<string> {
-  const model = getGenAI().getGenerativeModel({ model: "gemini-2.0-flash" });
+  const modelName = process.env.GEMINI_MODEL || "gemini-2.0-flash";
+  const model = getGenAI().getGenerativeModel({ model: modelName });
 
   const today = new Date();
   const dateStr = `${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}`;
