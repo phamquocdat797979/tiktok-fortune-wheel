@@ -123,12 +123,12 @@ export default function ControlPanel() {
         setValidChats(logs); // Nạp đống lịch sử cũ từ Nodejs qua khi vừa kết nối
     });
 
-    s.on('gemini_status', (data: any) => {
-        setGeminiStatus(data);
+    s.on('llm_status', (data: any) => {
+        setLlmStatus(data);
     });
 
-    s.on('gemini_ping_result', (data: any) => {
-        setGeminiPingResult(data);
+    s.on('llm_ping_result', (data: any) => {
+        setLlmPingResult(data);
         setIsPinging(false);
     });
 
@@ -136,8 +136,8 @@ export default function ControlPanel() {
     return () => { s.disconnect(); };
   }, [musicVolume]);
 
-  const [geminiStatus, setGeminiStatus] = useState<{ status: 'ready' | 'missing', keyPreview: string | null }>({ status: 'missing', keyPreview: null });
-  const [geminiPingResult, setGeminiPingResult] = useState<{ success?: boolean, message?: string, preview?: string, error?: string } | null>(null);
+  const [llmStatus, setLlmStatus] = useState<{ status: 'ready' | 'missing', keyPreview: string | null }>({ status: 'missing', keyPreview: null });
+  const [llmPingResult, setLlmPingResult] = useState<{ success?: boolean, message?: string, preview?: string, error?: string } | null>(null);
   const [isPinging, setIsPinging] = useState(false);
 
   const testInjectMock = async () => {
@@ -287,18 +287,18 @@ export default function ControlPanel() {
             {/* Quản lý Dữ liệu Tử Vi (RAG) */}
             <div className="border-[2px] border-blue-400/40 rounded-xl p-4 bg-blue-50/60 shadow-sm">
               <div className="flex justify-between items-center mb-3">
-                <h2 className="text-base font-bold text-blue-800 flex items-center gap-2">📚 Trí Tuệ Nhân Tạo (LLM Wiki)</h2>
+                <h2 className="text-base font-bold text-blue-800 flex items-center gap-2">📚 Trí Tuệ Nhân Tạo (Groq AI)</h2>
                 <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase text-white ${
-                  geminiStatus.status === 'ready' ? 'bg-blue-500' : 'bg-rose-500 animate-pulse'
+                  llmStatus.status === 'ready' ? 'bg-emerald-500 animate-pulse' : 'bg-rose-500'
                 }`}>
-                  {geminiStatus.status === 'ready' ? `🟢 AI Sẵn Sàng (${geminiStatus.keyPreview})` : '🔴 AI Chưa Nạp Key'}
+                  {llmStatus.status === 'ready' ? `🟢 AI Sẵn Sàng (${llmStatus.keyPreview})` : '🔴 AI Chưa Nạp Key'}
                 </span>
               </div>
               <div className="flex flex-col gap-2 relative">
                 <div className="flex gap-2">
                   <button 
                     disabled={isPinging || !socket}
-                    onClick={() => { setIsPinging(true); socket?.emit('ping_gemini'); }}
+                    onClick={() => { setIsPinging(true); socket?.emit('ping_llm'); }}
                     className="flex-1 bg-amber-500 hover:bg-amber-600 disabled:bg-amber-300 text-white font-bold py-2 rounded-lg text-sm transition-all shadow"
                   >
                     {isPinging ? '⏳ Đang thử...' : '🔍 Kiểm Tra API'}
@@ -329,24 +329,24 @@ export default function ControlPanel() {
                   </button>
                 </div>
 
-                {geminiPingResult && (
+                {llmPingResult && (
                   <div className={`text-[11px] p-2 rounded border ${
-                    geminiPingResult.success ? 'bg-emerald-50 border-emerald-200 text-emerald-700' : 'bg-rose-50 border-rose-200 text-rose-700'
+                    llmPingResult.success ? 'bg-emerald-50 border-emerald-200 text-emerald-700' : 'bg-rose-50 border-rose-200 text-rose-700'
                   }`}>
-                    {geminiPingResult.success ? (
+                    {llmPingResult.success ? (
                       <div>
-                        <strong>✅ Kết nối OK!</strong> Model 2.0 đã phản hồi: 
-                        <em className="block mt-1 opacity-70">"{geminiPingResult.preview}"</em>
+                        <strong>✅ Kết nối OK!</strong> Groq đã phản hồi: 
+                        <em className="block mt-1 opacity-70">"{llmPingResult.preview}"</em>
                       </div>
                     ) : (
                       <div>
-                        <strong>❌ Lỗi:</strong> {geminiPingResult.error}
+                        <strong>❌ Lỗi:</strong> {llmPingResult.error}
                       </div>
                     )}
                   </div>
                 )}
                 <div className="text-xs text-blue-600/80 bg-blue-100 p-2 rounded text-justify">
-                  <strong>RAG Mode:</strong> Khi ấn nút này, Bot sẽ tự động lấy dữ liệu tử vi của 12 Cung và 12 Con Giáp cho ngày hôm nay từ các nguồn uy tín, ghi đè vào hệ thống (Daily Wiki). Gemini sẽ đọc các file này kết hợp với Cung/Mạng năm sinh tĩnh khi bói cho người xem!
+                  <strong>RAG Mode:</strong> Khi ấn nút này, Bot sẽ tự động lấy dữ liệu tử vi cho ngày hôm nay từ các nguồn uy tín, ghi đè vào hệ thống (Daily Wiki). Groq AI sẽ đọc các file này kết hợp với Cung/Mạng năm sinh tĩnh khi bói cho người xem!
                 </div>
               </div>
             </div>

@@ -5,7 +5,7 @@ import { EventEmitter } from 'events';
 import { DonorData } from '../lib/types';
 import { SLOTS } from '../lib/slotsData';
 import { calculateAstrology } from '../lib/astrology';
-import { generateFortuneText } from '../lib/gemini';
+import { generateFortuneText } from '../lib/llm';
 import * as https from 'https';
 import * as fs from 'fs';
 import * as path from 'path';

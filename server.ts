@@ -69,11 +69,11 @@ app.prepare().then(() => {
     emitQueueUpdate(socket);
     socket.emit('valid_chat_history', CHAT_LOGS);
     
-    // Kiểm tra trạng thái Gemini API
-    const hasGeminiKey = !!process.env.GEMINI_API_KEY;
-    socket.emit('gemini_status', { 
-      status: hasGeminiKey ? 'ready' : 'missing',
-      keyPreview: hasGeminiKey ? `${process.env.GEMINI_API_KEY?.substring(0, 6)}...` : null
+    // Kiểm tra trạng thái LLM (Groq)
+    const hasGroqKey = !!process.env.GROQ_API_KEY;
+    socket.emit('llm_status', { 
+      status: hasGroqKey ? 'ready' : 'missing',
+      keyPreview: hasGroqKey ? `${process.env.GROQ_API_KEY?.substring(0, 7)}...` : null
     });
     
     // Helpers defined in connection scope for access by all handlers
@@ -114,14 +114,14 @@ app.prepare().then(() => {
        }
     });
 
-    socket.on('ping_gemini', async () => {
-        console.log('[Gemini] Đang kiểm tra kết nối API...');
+    socket.on('ping_llm', async () => {
+        console.log('[Groq AI] Đang kiểm tra kết nối API...');
         try {
             const testText = await generateFortuneText({ canChi: 'Giáp Thân' }, 'Admin', 'Đây là bản tin test kết nối.');
-            socket.emit('gemini_ping_result', { success: true, message: 'Kết nối thành công!', preview: testText.substring(0, 50) + '...' });
+            socket.emit('llm_ping_result', { success: true, message: 'Kết nối Groq thành công!', preview: testText.substring(0, 50) + '...' });
         } catch (err: any) {
-            console.error('[Gemini] Ping thất bại:', err);
-            socket.emit('gemini_ping_result', { success: false, error: err.message || 'Lỗi không xác định' });
+            console.error('[Groq AI] Ping thất bại:', err);
+            socket.emit('llm_ping_result', { success: false, error: err.message || 'Lỗi không xác định' });
         }
     });
 
