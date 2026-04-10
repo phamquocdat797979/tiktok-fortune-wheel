@@ -51,32 +51,49 @@ async function fetchHtml(url: string): Promise<string> {
 }
 
 function extractSections(text: string, arr: {name: string, key: string}[], dir: string, isGiap: boolean) {
+   let searchOffset = 0;
+   
    for (let i = 0; i < arr.length; i++) {
      const current = arr[i];
      const next = arr[i + 1];
      
-     // Build finding anchor
-     let anchorCurrent = isGiap ? `tuổi ${current.name}` : current.name;
-     let anchorNext = next ? (isGiap ? `tuổi ${next.name}` : next.name) : (isGiap ? 'Mời các bạn đón đọc' : 'Mời các bạn đón đọc');
+     // Từ khóa nhận diện đầu mục
+     let anchorCurrent = isGiap ? `tuổi ${current.name}` : `${current.name} (`;
+     let anchorNext = next ? (isGiap ? `tuổi ${next.name}` : `${next.name} (`) : '';
      
-     // Do văn bản rất hỗn tạp, ta lấy vị trí cuồi cùng xuất hiện của (ví dụ: "Bạch Dương (" -> để lấy đúng khúc horoscope)
-     let startIdx = text.lastIndexOf(isGiap ? `Tuổi ${current.name} (` : `${current.name} (`);
-     if (startIdx === -1) startIdx = text.lastIndexOf(anchorCurrent);
-     
-     let endIdx = text.length;
-     if (next) {
-       let tempEnd = text.lastIndexOf(isGiap ? `Tuổi ${next.name} (` : `${next.name} (`);
-       if (tempEnd === -1) tempEnd = text.lastIndexOf(anchorNext);
-       if (tempEnd > startIdx) {
-         endIdx = tempEnd;
-       }
+     // Tìm vị trí bắt đầu
+     let startIdx = text.indexOf(anchorCurrent, searchOffset);
+     if (startIdx === -1) {
+         startIdx = text.indexOf(current.name, searchOffset);
      }
      
-     if (startIdx !== -1) {
-       let sectionText = text.substring(startIdx, endIdx).trim();
-       if (sectionText.length > 50) {
-          fs.writeFileSync(path.join(dir, `${current.key}.md`), sectionText, 'utf8');
-       }
+     // Bỏ qua các mục lục (Menu/Navigation) bằng cách kiểm tra khoảng cách tới mục tiếp theo
+     let endIdx = -1;
+     while (startIdx !== -1) {
+         let tempEnd = -1;
+         if (next) {
+             tempEnd = text.indexOf(anchorNext, startIdx + 10);
+             if (tempEnd === -1) tempEnd = text.indexOf(next.name, startIdx + 10);
+         }
+         
+         // Nếu là mục cuối hoặc khoảng cách giữa 2 mục lớn hơn 100 ký tự thì đây chính là bài viết thật
+         if (!next || (tempEnd !== -1 && (tempEnd - startIdx) > 100)) {
+             endIdx = next ? tempEnd : text.indexOf('(adsbygoogle', startIdx);
+             if (endIdx === -1 && !next) endIdx = text.length; // Fallback cho giáp cuối
+             break;
+         }
+         
+         // Nếu không, tìm kết quả `anchorCurrent` ở đoạn tiếp theo
+         startIdx = text.indexOf(anchorCurrent, startIdx + 1);
+         if (startIdx === -1) startIdx = text.indexOf(current.name, startIdx + 1);
+     }
+     
+     if (startIdx !== -1 && endIdx > startIdx) {
+         let sectionText = text.substring(startIdx, endIdx).trim();
+         if (sectionText.length > 50) {
+            fs.writeFileSync(path.join(dir, `${current.key}.md`), sectionText, 'utf8');
+            searchOffset = endIdx; // Đẩy offset tới phần tiếp theo
+         }
      }
    }
 }
