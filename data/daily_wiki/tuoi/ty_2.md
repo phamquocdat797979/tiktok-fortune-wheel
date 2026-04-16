@@ -1,21 +1,25 @@
-### Tử vi ngày 11/4/2026 tuổi Tị
+### Tử vi ngày 17/4/2026 tuổi Tị
 
-Dự báo con giáp tuổi Tị có thể bị ai đó làm tổn thương trong ngày có Thương Quan xuất hiện như hôm nay. Hãy hiểu rằng người kia đang tìm nơi để trút giận và bạn không may trở thành người đó. Nếu bạn có thể hiểu và bao dung thì căng thẳng qua đi nhanh thôi. Đối với khía cạnh tình cảm của tuổi Tị thời gian này lời khuyên cho bản mệnh là cần tránh nóng vội trong các mối quan hệ mới. Còn chuyện trong gia đình, vợ chồng không đồng quan điểm nên dễ xảy ra tranh cãi.  Ngũ hành tương sinh mang lại điều kiện tốt để làm ăn sinh lời, nhất là những ai có lượng khách hàng ổn định. Nếu biết nắm bắt đúng thời điểm, con giáp này hoàn toàn có thể “bứt tốc”, tài chính tăng trưởng nhanh chóng.
+Ngày có Tam Hợp chống lưng, người tuổi Tị đón nhận một vận trình đầy năng lượng tích cực. Tử vi khuyên bạn nên giữ vững sự chủ động, mạnh dạn đối mặt với các nhiệm vụ mới thay vì né tránh hay trì hoãn. Mọi nỗ lực thực tâm trong ngày hôm nay đều sẽ được đền đáp bằng những kết quả cụ thể và danh tiếng cá nhân ngày càng được nâng cao.
+
+Tài lộc rất rực rỡ, việc kiếm tiền trở nên thuận lợi và dễ dàng hơn hẳn so với thời gian trước. Những dự án đầu tư hoặc kinh doanh của bạn bắt đầu mang lại nguồn lợi nhuận đáng kể, giúp túi tiền luôn rủng rỉnh.
+
+Phương diện tình cảm đang có những bước tiến triển rất tích cực nhờ sự chân thành và nỗ lực làm mới mối quan hệ của bạn. Việc giữ gìn sự tươi mới trong tình yêu không chỉ giúp hai bạn gắn kết hơn mà còn xua tan những nhàm chán thường nhật. Bạn và người ấy sẽ có những giây phút ngọt ngào, cùng nhau chia sẻ những dự định lớn trong tương lai với sự tin tưởng tuyệt đối.
 
 Vận số của từng tuổi Tị trong ngày:
 
-- Tử vi tuổi Kỷ Tị (1989 - Mộc): Nhiều người tuổi này có được thành tích tốt trong công việc khi bạn lựa chọn đúng hướng, tuy nhiên, đừng vội ăn mừng, hãy có thêm những phương án thay thế ngay khi có thể vì thành công hiện tại không kéo dài lâu.
-- Tử vi tuổi Đinh Tị (1977 - Thổ): Hôm nay bạn cần nghiêm túc nhìn lại vấn đề của mình vì càng trốn tránh bạn sẽ càng gặp rắc rối lớn hơn. Hãy đơn giản xem mọi thứ là trò chơi và bạn cần hiểu rõ luật chơi để tìm ra con đường chiến thắng cho mình.
-- Tử vi tuổi Tân Tị (1941, 2001 - Kim): Bạn đang hoàn thành tốt từng mục tiêu nhỏ mà bản thân đã đề ra, điều này sẽ đảm bảo cho thành công lớn hơn nữa sẽ đến trong tương lai.
-- Tử vi tuổi Ất Tị (1965 - Hỏa): Một số việc bạn muốn trì hoãn trong ngày hôm nay là có lý do riêng nhưng không tiện giải thích. Tuy nhiên vì một số người không hiểu nên họ muốn đôi co với bạn.
-- Tử vi tuổi Quý Tị (1953, 2013 - Thủy): Tâm trạng của bản mệnh hôm nay khá thất thường vì nhiều việc nằm ngoài tầm kiểm soát. Hãy tránh xa đám đông, nên dành thời gian cho riêng mình ngay lúc này.
+- Tử vi tuổi Tân Tị (1941, 2001 - Kim): Sự nghiệp đang trên đà thăng hoa nhờ vào sự nhạy bén và tinh thần quyết đoán của bạn trong công việc.
+- Tử vi tuổi Kỷ Tị (1989 - Mộc): Bạn không chỉ hoàn thành xuất sắc các nhiệm vụ được giao mà còn chủ động đề xuất nhiều giải pháp cải tiến mang lại hiệu quả cao cho tập thể.
+- Tử vi tuổi Đinh Tị (1977 - Thổ): Đây chính là thời điểm vàng để bạn khẳng định năng lực lãnh đạo và tạo bước đệm quan trọng cho việc thăng quan tiến chức.
+- Tử vi tuổi Ất Tị (1965 - Hỏa): Cuộc sống của bạn hiện tại rất bình yên, hãy dành thời gian để tham gia các hoạt động thiện nguyện hoặc chia sẻ kiến thức cho con cháu.
+- Tử vi tuổi Quý Tị (1953 - Thủy): Tài chính ổn định giúp bạn an tâm hưởng thụ tuổi già và thực hiện những sở thích cá nhân đã ấp ủ từ lâu.
 
 Các chỉ số trong ngày:
 
-- Sự nghiệp: ★★★
-- Tài lộc: ★★★★
+- Sự nghiệp: ★★★★★
+- Tài lộc: ★★★★★
 - Sức khỏe: ★★★★
-- Tình cảm: ★★★★
-- Giờ tốt: 13h-15h
-- Màu sắc cát tường: Trắng, tím
-- Quý nhân phù trợ: Mão, Dần
+- Tình cảm: ★★★★★
+- Giờ tốt: 17h-19h
+- Màu sắc cát tường: Tím, đỏ
+- Quý nhân phù trợ: Sửu, Thân, Dậu

@@ -1,21 +1,25 @@
-### Tử vi ngày 11/4/2026 tuổi Sửu
+### Tử vi ngày 17/4/2026 tuổi Sửu
 
-Hôm nay Thiên Tài mang đến tin vui về thành tựu về tiền bạc cho tuổi Sửu. Thực ra không phải món hời từ trên trời rơi xuống mà đó là những khoản tưởng chừng nhỏ lẻ lại tích lũy thành con số đáng kể.   Kết quả này đến từ sự bền bỉ và khả năng theo đuổi mục tiêu đến cùng nhờ vậy, bản mệnh đã có thể thoải mái hơn trong chi tiêu, thậm chí còn có dư để tiết kiệm. Hãy tiếp tục duy trì thói quen tốt về tài chính mà bạn đã cố gắng thực hiện trong thời gian qua.  Ngũ hành xung khắc nhắc nhở bản mệnh lưu ý về sức khỏe. Hãy uống đủ nước, ăn những thực phẩm bổ dưỡng và tập trung vào các hoạt động nhẹ nhàng như đi bộ hoặc bơi lội để duy trì sự cân bằng và năng lượng.
+Nhờ cục diện Tam Hợp hỗ trợ, tuổi Sửu đón nhận một ngày tràn đầy năng lượng hanh thông trong mọi việc. Bạn thể hiện được bản lĩnh quyết đoán, sự sáng suốt trong suy nghĩ giúp mọi dự định đều đi đúng quỹ đạo mong muốn. Hãy tin tưởng vào trực giác của bản thân và mạnh dạn thực hiện những kế hoạch đã ấp ủ từ lâu.
+
+Vận tài lộc đang có xu hướng tăng trưởng rõ rệt, mang lại cho bạn cảm giác an tâm về mặt kinh tế. Tuy nhiên, bạn vẫn nên giữ thói quen tính toán cẩn trọng và lập kế hoạch chi tiêu chi tiết trước khi rút hầu bao. Việc quản lý tài chính thông minh sẽ giúp bạn tích lũy được nguồn vốn vững chắc cho những dự định lớn trong tương lai gần.
+
+Phương diện tình duyên trong ngày Tân Dậu này vô cùng ấm áp, bạn biết cách yêu thương bản thân đồng thời lan tỏa năng lượng đó đến người khác. Những mâu thuẫn nhỏ nhặt trước đây đều được giải quyết êm đẹp thông qua sự thấu hiểu và nhường nhịn lẫn nhau. Bạn sẽ cảm nhận được giá trị của sự gắn kết và niềm hạnh phúc khi có người đồng hành sẻ chia.
 
 Vận số của từng tuổi Sửu trong ngày:
 
-- Tử vi tuổi Ất Sửu (1985 - Kim): Bạn khai thông được bế tắc tài chính trong thời gian gần đây. Chính điều này giúp các khoản tưởng như "đóng băng" bắt đầu quay trở lại.
-- Tử vi tuổi Đinh Sửu (1997 - Thủy): Khôn ngoan hơn trong lĩnh vực tiền bạc nên bản mệnh cũng thận trọng hơn. Dòng tiền vì thế cũng trở nên dồi dào, ổn định hơn trước
-- Tử vi tuổi Quý Sửu (1973 - Mộc): Những món ăn ngon trong ngày hôm nay cũng đủ khiến bạn cảm thấy vui và hài lòng. Bạn đủ thấy mình may mắn để có được hiện tại sau khi vượt qua không ít khó khăn trong cuộc sống.
-- Tử vi tuổi Tân Sửu (1961 - Thổ): Cân nhắc lại một số quyết định của bạn trong thời gian gần đây. Bản mệnh có nhiều kinh nghiệm nhưng điều đó cũng không đảm bảo rằng bạn luôn đúng.
-- Tử vi tuổi Kỷ Sửu (1949, 2009 - Hỏa): Nên để tâm tới sức khỏe vì một số vấn đề đau nhức ở hiện tại có thể liên quan đến bệnh cũ đang tái phát, đi thăm khám sớm để tìm ra nguyên nhân nhé.
+- Tử vi tuổi Đinh Sửu (1997 - Thủy): Sự nghiệp đang có bước tiến nhảy vọt nhờ sự kiên định và khả năng thuyết phục người khác một cách tài tình.
+- Tử vi tuổi Ất Sửu (1985 - Kim): Môi trường làm việc hôm nay rất thuận lợi, không có sự bất đồng quan điểm gay gắt, giúp các nhiệm vụ được hoàn thành sớm hơn dự kiến.
+- Tử vi tuổi Quý Sửu (1973 - Mộc): Bạn đang tạo dựng được uy tín rất tốt trong mắt đồng nghiệp và lãnh đạo nhờ phong cách làm việc chuyên nghiệp.
+- Tử vi tuổi Tân Sửu (1961 - Thổ): Đừng quên chú ý đến an toàn giao thông khi di chuyển để tránh những va chạm không đáng có gây ảnh hưởng sức khỏe.
+- Tử vi tuổi Kỷ Sửu (2009, 1949 - Hỏa): Sức khỏe cần được lưu ý, tránh vận động quá sức và nên kiểm tra định kỳ các vấn đề về xương khớp.
 
 Các chỉ số trong ngày:
 
-- Sự nghiệp: ★★★
+- Sự nghiệp: ★★★★★
 - Tài lộc: ★★★★★
 - Sức khỏe: ★★★★
-- Tình cảm: ★★★
-- Giờ tốt: 13h-15h
-- Màu sắc cát tường: Vàng, hồng
-- Quý nhân phù trợ: Mùi, Thân
+- Tình cảm: ★★★★★
+- Giờ tốt: 17h-19h
+- Màu sắc cát tường: Nâu, vàng
+- Quý nhân phù trợ: Tý, Dậu, Hợi

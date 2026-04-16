@@ -1,9 +1,9 @@
-### Tử vi ngày 11/04/2026 của Bọ Cạp
+### Tử vi ngày 17/04/2026 của Bọ Cạp
 
-Do sao Thủy thẳng hàng với tiểu hành tinh Pallas, Bọ Cạp sẽ bị thu hút bởi những hoạt động trí tuệ khơi dậy trí tưởng tượng và thử thách khả năng phân tích của bạn trong ngày mới này.
+Bọ Cạp bước vào ngày thứ Sáu với một tinh thần quyết tâm cao độ và sự tập trung tuyệt đối vào các mục tiêu cá nhân. Bạn hiểu rằng để đạt được thành công, trước hết cần phải có một lộ trình rõ ràng và sự nỗ lực không ngừng nghỉ để hiện thực hóa những khát vọng đó.
 
-- Sự nghiệp: Một bước nhảy vọt đầy mạo hiểm vào thời điểm này có thể thay đổi cuộc sống của bạn theo hướng tốt đẹp hơn. Đây cũng là lúc để đánh giá lại các mối quan hệ đồng nghiệp cũ và loại bỏ những điều không cần thiết.
+- Sự nghiệp: Trong sự nghiệp, Bọ Cạp đang nhận được sự chỉ dẫn từ những người tiền bối hoặc cấp trên khá nghiêm khắc nhưng vô cùng có tâm. Nếu bạn muốn nhận được sự hỗ trợ và nguồn lực từ họ, bạn tuyệt đối không được phép lơ là hay có thái độ làm việc hời hợt.
 
-- Tình cảm: Hôm nay bạn cần thư giãn. Hãy tận hưởng những khoảnh khắc lãng mạn và niềm vui giản dị bên người yêu, và cố gắng quên đi những vấn đề nghiêm trọng trong ngày hôm nay gây ra tác động tiêu cực cho tinh thần của bạn.
+- Tình cảm: Mối quan hệ tình cảm của Bọ Cạp đang ở trạng thái rất ổn định và tràn đầy sự thấu hiểu lẫn nhau giữa hai người. Bạn và đối phương đều biết cách bao dung cho những khuyết điểm của nhau và không để những chuyện nhỏ nhặt làm ảnh hưởng đến tình cảm chung.
 
-- Sức khỏe: Chòm sao này có lối sống khá lành mạnh nhưng thi thoảng vẫn có vài chiếc mụn làm phiền, đừng lo, chỉ là do không khí bị bẩn mà thôi chứ không phải do bạn.
+- Tài chính: Về phương diện đầu tư, Bọ Cạp nên bắt đầu với những dự án thuộc lĩnh vực mà bạn thực sự am hiểu và có kinh nghiệm thực chiến. Việc đạt được những thành tựu bước đầu trong lĩnh vực sở trường sẽ giúp bạn tăng thêm tự tin và tạo đà cho những kế hoạch lớn hơn trong tương lai.

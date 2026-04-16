@@ -171,8 +171,8 @@ app.prepare().then(() => {
     socket.on('ping_llm', async () => {
         console.log('[Groq AI] Đang kiểm tra kết nối API...');
         try {
-            const testText = await generateFortuneText({ canChi: 'Giáp Thân' }, 'Admin', 'Đây là bản tin test kết nối.');
-            socket.emit('llm_ping_result', { success: true, message: 'Kết nối Groq thành công!', preview: testText.substring(0, 50) + '...' });
+            const testResult = await generateFortuneText({ canChi: 'Giáp Thân' }, 'Admin', 'Đây là bản tin test kết nối.');
+            socket.emit('llm_ping_result', { success: true, message: 'Kết nối Groq thành công!', preview: testResult.text.substring(0, 50) + '...' });
         } catch (err: any) {
             console.error('[Groq AI] Ping thất bại:', err);
             socket.emit('llm_ping_result', { success: false, error: err.message || 'Lỗi không xác định' });

@@ -1,21 +1,25 @@
-### Tử vi ngày 11/4/2026 tuổi Tý
+### Tử vi ngày 17/4/2026 tuổi Tý
 
-Tử vi hàng ngày 11/4/2026 của 12 con giáp, ảnh hưởng của Hình hại vô lễ khiến con giáp tuổi Tý hôm nay dễ có hiểu lầm hoặc mâu thuẫn nhỏ, nếu không khéo léo sẽ ảnh hưởng đến tình cảm. Tốt hơn hết là nên khiêm tốn, tránh cãi cọ trong ngày hôm nay.  Thiên Ấn ghé thăm dự báo công việc thuận lợi năng động và ai càng dám thử thách càng có kết quả nổi bật, đây chính là thời điểm mà bản mệnh có thể bắt đầu gặt hái thành quả. Tuy nhiên, đừng ngủ quên trên chiến thắng, hãy lập kế hoạch mới để có những bước tiến quan trọng tiếp theo.  Ngũ hành tương sinh hỗ trợ để bản mệnh cải thiện tình hình tài chính của mình ngay lúc này. Đây là thời điểm lý tưởng để xem xét, đánh giá và ra quyết định cho các cơ hội đầu tư mới.  .
+Xem tử vi hàng ngày 17/4/2026, tuổi Tý được nhắc nhở cần hành động thận trọng để tránh những rắc rối tự thân phát sinh trong ngày Tương Phá tác động. Rất may là sự nghiệp vẫn ổn định nhờ sự tập trung cao độ và khả năng xử lý tình huống linh hoạt. Những phản hồi tích cực từ đồng nghiệp hoặc cấp trên trong ngày hôm nay sẽ là nguồn động lực to lớn giúp bạn củng cố vị thế.
+
+Phương diện tài lộc trong ngày có dấu hiệu may mắn bất ngờ từ các mối quan hệ xã giao. Bạn có thể nhận được lời mời dùng bữa hoặc những món quà nhỏ từ bạn bè khi đi ra ngoài, giúp tiết kiệm được một khoản chi phí sinh hoạt. Đây là thời điểm tốt để thắt chặt tình cảm với đối tác mà không cần quá lo lắng về việc thâm hụt ngân sách cá nhân.
+
+Đây cũng là một ngày tuyệt vời để tuổi Tý hâm nóng tình cảm và thu hẹp khoảng cách với người thương. Nếu bạn đang có những tâm tư chưa nói, hãy dũng cảm bày tỏ ngay lập tức vì tỉ lệ thành công và nhận được sự đồng cảm là rất cao. Những người độc thân cũng có cơ hội gặp gỡ đối tượng tiềm năng thông qua các cuộc hội họp hoặc giới thiệu từ người thân.
 
 Vận số của từng tuổi Tý trong ngày:
 
-- Tử vi tuổi Bính Tý (1996 - Thủy): Đừng cố chứng minh điều gì vì những ai muốn lắng nghe bạn đã hiểu tình hình, còn những ai không muốn nghe thì họ vẫn luôn phủ định những gì bạn nói.
-- Tử vi tuổi Giáp Tý (1984 - Kim): Một số quyết định khôn ngoan của bạn gần đây đang giúp thu nhập tăng lên rõ rệt. Hãy ăn mừng chút thành công này của bạn một cách kín đáo, đừng quá khoe khoang nhé.
-- Tử vi tuổi Nhâm Tý (1972 - Mộc): Có được sức khỏe tốt và tận hưởng niềm vui với các thành viên trong nhà ngày hôm nay. Lưu ý tránh xa việc bao đồng, lo cho những người không liên quan tới mình.
-- Tử vi tuổi Canh Tý (1960 - Thổ): Hãy gạt đi những lo lắng trong lòng vì xem ra suy nghĩ nhiều không có ích gì lúc này. Tốt hơn hết bản mệnh nên tập trung chăm sóc sức khỏe của mình.
-- Tử vi tuổi Mậu Tý (1948, 2008 - Hỏa): Một lời nhắc nhở cho các thành viên trong gia đình là điều nên làm lúc này. Có thể vì thiếu kinh nghiệm nên con cháu có vẻ hoang mang với con đường mình đã chọn.
+- Tử vi tuổi Bính Tý (1996 - Thủy): Bạn nên tận dụng thời điểm này để hoàn thiện các dự án dang dở và đề xuất những ý tưởng sáng tạo mới.
+- Tử vi tuổi Giáp Tý (1984 - Kim): Hãy tập trung vào những giá trị thực tại, đừng quá lo lắng về những việc chưa xảy ra để tâm thế luôn được nhẹ nhàng.
+- Tử vi tuổi Nhâm Tý (1972 - Mộc): Bạn đang đứng trước những cơ hội thăng tiến rõ rệt nhưng đòi hỏi sự quyết đoán và không ngại khó khăn.
+- Tử vi tuổi Canh Tý (1960 - Thổ): Hãy tin tưởng vào kinh nghiệm tích lũy bấy lâu nay để đưa ra những quyết định đúng đắn trong kinh doanh hoặc quản lý.
+- Tử vi tuổi Mậu Tý (1948, 2008 - Hỏa): Tài chính ổn định giúp bạn có thể tự tin thực hiện các kế hoạch mua sắm hoặc đầu tư cho gia đình.
 
 Các chỉ số trong ngày:
 
 - Sự nghiệp: ★★★★
-- Tài lộc: ★★★★★
+- Tài lộc: ★★★★
 - Sức khỏe: ★★★★
-- Tình cảm: ★★★★
-- Giờ tốt: 13h-15h
-- Màu sắc cát tường: Trắng, xanh lam
-- Quý nhân phù trợ: Tị, Ngọ
+- Tình cảm: ★★★★★
+- Giờ tốt: 15h-17h
+- Màu sắc cát tường: Đen, xanh da trời
+- Quý nhân phù trợ: Sửu, Thân, Thìn

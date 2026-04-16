@@ -1,21 +1,25 @@
-### Tử vi ngày 11/4/2026 tuổi Hợi
+### Tử vi ngày 17/4/2026 tuổi Hợi
 
-Tam Hợp ghé thăm giúp cho vận trình tình cảm của tuổi Hợi tốt đẹp lên trông thấy. Bản mệnh dễ nhận được sự quan tâm, chăm sóc từ nửa kia và có khả năng phát triển mối quan hệ hiện tại thành hôn nhân.  Bên cạnh đó có Chính Ấn giúp sức nên tuổi Hợi sẽ có nhiều dấu hiệu khởi sắc trong công việc. Những nỗ lực trước đó bắt đầu mang lại kết quả rõ rệt có thể gặp được cơ hội hợp tác hoặc nguồn thu mới.   Ngũ hành tương sinh mang tới ngày thứ 7 cuối tuần bình yên cho bản mệnh, bạn bớt đi những lo lắng, nhanh chóng sắp xếp xong công việc để trở về với tổ ấm nhỏ của mình.
+Ngày có Thương Quan nhập mệnh, người tuổi Hợi có cơ hội tích lũy thêm nhiều kinh nghiệm quý báu cùng một khoản tài chính tiết kiệm đáng kể cho tương lai. Việc tích lũy bền bỉ bấy lâu nay đã bắt đầu cho thấy những quả ngọt đầu tiên, mang lại sự an tâm tuyệt đối về mặt kinh tế cho gia đình.
+
+Đừng bằng lòng với những gì đang có, hãy chủ động học hỏi thêm những kỹ năng mới và quan sát cách làm việc của những người thành công xung quanh. Sự chuẩn bị kỹ lưỡng về mặt kiến thức sẽ giúp bạn tự tin hơn khi đối mặt với những thử thách lớn sắp tới.
+
+Phương diện tình cảm có phần ảm đạm do sự thay đổi thất thường trong cảm xúc của bạn khiến người ấy đôi khi cảm thấy bối rối và mệt mỏi. Một chút lãng mạn và những lời nói ngọt ngào sẽ là chìa khóa giúp hâm nóng tình yêu lứa đôi trong ngày hôm nay.
 
 Vận số của từng tuổi Hợi trong ngày:
 
-- Tử vi tuổi Ất Hợi (1995 - Hỏa): Dù khía cạnh tiền bạc của bạn đã được cải thiện trong thời gian gần đây nhưng cũng không nên vì lý do đó mà bắt đầu tiêu xài hoang phí bạn nhé.
-- Tử vi tuổi Quý Hợi (1983 - Thủy): Bản mệnh khá thận trọng với một số kế hoạch gần đây và đó là điều cần thiết, tuy nhiên cũng đừng vì thế mà làm chậm cả tiến độ của mọi người bạn nhé.
-- Tử vi tuổi Tân Hợi (1971- Kim): Ngay lúc này đây bạn cảm thấy vô cùng tự tin và dồi dào sức sống khi có chỗ dựa vững chắc từ những người xung quanh. Bạn chấp nhận sự không hoàn hảo của chính mình và tất cả mọi người.
-- Tử vi tuổi Đinh Hợi (1947, 2007 - Thổ): Một số vấn đề bạn cố gắng né tránh nhưng hôm nay lại phải đối mặt, đó là cảm giác vô cùng khó chịu. Đó cũng là lý do khiến bạn cuối ngày rất nhanh chóng cẳm thấy mệt mỏi.
-- Tử vi tuổi Kỷ Hợi (1959 - Mộc): Khi bạn tập trung vào những điều tích cực thì cuộc sống của trở nên thoải mái hơn. Dường như bạn không cần phải cố gắng đưa ra quyết định khôn ngoan nữa mà chỉ cần thuận theo tự nhiên.
+- Tử vi tuổi Ất Hợi (1995 - Hỏa): Hãy giữ cho tinh thần luôn ổn định, tránh những thay đổi thất thường trong tính cách để vận trình được diễn ra suôn sẻ và bình yên nhất.
+- Tử vi tuổi Quý Hợi (1983 - Thủy): Sự chín chắn và điềm tĩnh giúp bạn xử lý tốt các mối quan hệ xã hội, tạo dựng được uy tín lớn trong lòng đồng nghiệp và bạn bè.
+- Tử vi tuổi Tân Hợi (1971 - Kim): Hãy tiếp tục duy trì lối sống giản dị và chỉ đầu tư vào những lĩnh vực mang tính bền vững để bảo vệ nguồn vốn của mình.
+- Tử vi tuổi Kỷ Hợi (1959 - Mộc): Bạn cần hết sức lưu ý đến vấn đề sức khỏe, đặc biệt là nguy cơ cảm cúm do thay đổi thời tiết đột ngột trong ngày Tân Dậu này.
+- Tử vi tuổi Đinh Hợi (1947, 2007 - Thổ): Hạnh phúc của bạn lúc này chính là sự bình yên trong tâm trí và một cơ thể khỏe mạnh, dẻo dai.
 
 Các chỉ số trong ngày:
 
 - Sự nghiệp: ★★★★
 - Tài lộc: ★★★★★
 - Sức khỏe: ★★★★
-- Tình cảm: ★★★★★
-- Giờ tốt: 17h-19h
-- Màu sắc cát tường: Vàng, đen
-- Quý nhân phù trợ: Mão, Sửu
+- Tình cảm: ★★★
+- Giờ tốt: 5h-7h
+- Màu sắc cát tường: Đen, xanh dương
+- Quý nhân phù trợ: Sửu, Dần, Mùi
