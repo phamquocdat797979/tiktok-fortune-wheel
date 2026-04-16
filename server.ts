@@ -142,16 +142,16 @@ app.prepare().then(() => {
     };
 
     const updatePriorityInQueue = (uniqueId: string, state: any) => {
-       let priority = 0;
-       if (state.totalCoins > 0) priority = 1000000 + state.totalCoins;
-       else if (state.isShared) priority = 100000;
-       else if (state.likes >= 20) priority = 50000 + state.likes;
+       // Thứ tự hàng đợi CHỈ dựa vào số xu đã tặng (có thể tích lũy dần khi còn đang chờ)
+       // Share/Like KHÔNG ảnh hưởng thứ tự, chỉ xu mới quyết định
+       const priority = state.totalCoins > 0 ? state.totalCoins : 0;
 
        const existingJobIndex = MOCK_QUEUE.findIndex(job => job.uniqueId === uniqueId);
        if (existingJobIndex > -1) {
            MOCK_QUEUE[existingJobIndex].priority = priority;
            MOCK_QUEUE.sort((a, b) => (b.priority || 0) - (a.priority || 0));
            emitQueueUpdate(io);
+           console.log(`[Queue] Cập nhật thứ tự @${uniqueId}: ${priority} xu → vị trí ${MOCK_QUEUE.findIndex(j => j.uniqueId === uniqueId) + 1}/${MOCK_QUEUE.length}`);
        }
        return priority;
     };
@@ -400,14 +400,13 @@ app.prepare().then(() => {
                 if (CHAT_LOGS.length > 50) CHAT_LOGS.pop();
                 io.emit('valid_chat_log', logItem);
 
-                let priority = 0;
-                if (state.totalCoins > 0) priority = 1000000 + state.totalCoins;
-                else if (state.isShared) priority = 100000;
-                else if (state.likes >= 20) priority = 50000 + state.likes;
+                // Priority khi vào hàng = số xu đã tặng trước đó (nếu có)
+                // Xu tặng SAU khi vào sẽ tự động cập nhật qua updatePriorityInQueue
+                const priority = state.totalCoins > 0 ? state.totalCoins : 0;
 
-                // LIMIT: Hàng đợi rác
+                // LIMIT: Chặn spam nếu hàng quá đông (>100) và không có xu
                 if (MOCK_QUEUE.length > 100 && priority === 0) {
-                   return; // Chặn comment thường nếu nghẽn
+                   return;
                 }
 
                 const donorData = {
