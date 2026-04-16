@@ -9,6 +9,28 @@ const TRACKS = [
   { id: 3, name: 'Star Sky', file: 'Two Steps From Hell - Star Sky (Zoru Beat Remix).mp3', emoji: '🚀' },
 ];
 
+const CAN = ['Canh', 'Tân', 'Nhâm', 'Quý', 'Giáp', 'Ất', 'Bính', 'Đinh', 'Mậu', 'Kỷ'];
+const CHI = ['Thân', 'Dậu', 'Tuất', 'Hợi', 'Tý', 'Sửu', 'Dần', 'Mão', 'Thìn', 'Tỵ', 'Ngọ', 'Mùi'];
+
+const getLunarVN = (date: Date) => {
+  try {
+    const lunar = Lunar.fromDate(date);
+    const y = lunar.getYear();
+    const can = ['Canh', 'Tân', 'Nhâm', 'Quý', 'Giáp', 'Ất', 'Bính', 'Đinh', 'Mậu', 'Kỷ'][y % 10];
+    const chi = ['Thân', 'Dậu', 'Tuất', 'Hợi', 'Tý', 'Sửu', 'Dần', 'Mão', 'Thìn', 'Tỵ', 'Ngọ', 'Mùi'][y % 12];
+    const aN = String(lunar.getDay()).padStart(2, '0');
+    const aT = String(lunar.getMonth()).padStart(2, '0');
+    return `${aN}/${aT}/${y} (${can} ${chi})`;
+  } catch(e) { return ''; }
+};
+
+const getSolarVN = (date: Date) => {
+  const hN = String(date.getDate()).padStart(2, '0');
+  const hT = String(date.getMonth() + 1).padStart(2, '0');
+  const hNyo = date.getFullYear();
+  return `${hN}/${hT}/${hNyo}`;
+};
+
 export default function ControlPanel() {
   const [socket, setSocket] = useState<Socket | null>(null);
   const [injectStatus, setInjectStatus] = useState<string>('');
@@ -234,18 +256,21 @@ export default function ControlPanel() {
         {/* Quick Status Minibar & Date */}
         <div className="flex items-center gap-4">
             {mounted ? (
-              <div className="flex flex-col text-right mr-3 hidden md:flex">
-                <span className="text-xl font-black text-amber-300 tracking-tight drop-shadow-md">
+              <div className="flex items-center gap-3 mr-2 hidden lg:flex">
+                <span className="text-2xl font-black text-amber-300 tracking-tight drop-shadow-md">
                   {now.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
                 </span>
-                <span className="text-xs text-slate-200 font-bold mt-0.5">
-                  Dương: <span className="text-white">{now.toLocaleDateString('vi-VN')}</span> | Âm: <span className="text-amber-100">{Lunar.fromDate(now).getDay()}/{Lunar.fromDate(now).getMonth()} ({Lunar.fromDate(now).getYearInGanZhi()} {Lunar.fromDate(now).getYearShengXiao()})</span>
+                <span className="text-sm text-slate-200 font-bold whitespace-nowrap bg-black/40 px-3 py-1.5 rounded-lg border border-white/5 uppercase flex items-center gap-2">
+                  <span className="text-amber-400">☀️</span> Dương Lịch: <span className="text-white">{getSolarVN(now)}</span>
+                </span>
+                <span className="text-sm text-amber-200 font-bold whitespace-nowrap bg-amber-500/10 px-3 py-1.5 rounded-lg border border-amber-500/20 uppercase flex items-center gap-2">
+                  <span className="text-indigo-300">🌙</span> Âm Lịch: <span className="text-amber-100 italic">{getLunarVN(now)}</span>
                 </span>
               </div>
             ) : (
-              <div className="flex flex-col text-right mr-3 hidden md:flex opacity-0">
-                <span className="text-xl font-black tracking-tight drop-shadow-md">00:00:00</span>
-                <span className="text-xs font-bold mt-0.5">Đang tải ngày giờ...</span>
+              <div className="flex items-center gap-3 mr-2 hidden lg:flex opacity-0">
+                <span className="text-2xl font-black tracking-tight drop-shadow-md">00:00:00</span>
+                <span className="text-sm font-bold bg-black/40 px-3 py-1.5 rounded-lg">Đang tải...</span>
               </div>
             )}
             
