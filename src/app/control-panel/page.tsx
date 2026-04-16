@@ -150,6 +150,34 @@ export default function ControlPanel() {
     return () => { s.disconnect(); };
   }, [musicVolume]);
 
+  const [llmStatus, setLlmStatus] = useState<{ status: 'ready' | 'missing', keyCount?: number, keyPreview: string | null }>({ status: 'missing', keyPreview: null });
+  const [llmPingResult, setLlmPingResult] = useState<{ success?: boolean, message?: string, preview?: string, error?: string } | null>(null);
+  const [llmStats, setLlmStats] = useState<{ totalTokensUsed: number, lastUsage?: any, limits?: any, totalKeys?: number } | null>(null);
+  const [isPinging, setIsPinging] = useState(false);
+  const [wikiAutoMsg, setWikiAutoMsg] = useState<{ message: string; time: string } | null>(null);
+
+  const testInjectMock = async () => {
+    if (!socket) return;
+    setInjectStatus('Đang gửi...');
+    try {
+      socket.emit('mock_inject_gift', { nickname, dobString });
+      setInjectStatus(`✅ Bắn thành công cho ${nickname} (Ngày: ${dobString})`);
+    } catch (err: any) {
+      setInjectStatus('❌ Lỗi kết nối: ' + err.message);
+    }
+  };
+
+  const handleConnectTikTok = () => {
+    if (!socket || !tiktokUsername.trim()) return;
+    setTiktokError('');
+    socket.emit('connect_tiktok', { username: tiktokUsername.replace('@', '').trim() });
+  };
+
+  const handleDisconnectTikTok = () => {
+    if (!socket) return;
+    socket.emit('disconnect_tiktok');
+  };
+
   const [activeTab, setActiveTab] = useState<'live' | 'system'>('live');
 
   return (
