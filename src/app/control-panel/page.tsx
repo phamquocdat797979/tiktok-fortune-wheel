@@ -78,7 +78,6 @@ export default function ControlPanel() {
     s.on('start_spin', () => {
         if (musicAudioRef.current) {
             musicAudioRef.current.volume = 0.10;
-            setMusicVolume(10);
         }
     });
 
@@ -86,7 +85,6 @@ export default function ControlPanel() {
     s.on('hide_popup', () => {
         if (musicAudioRef.current) {
             musicAudioRef.current.volume = musicVolumeRef.current / 100;
-            setMusicVolume(musicVolumeRef.current);
         }
     });
 
@@ -113,7 +111,6 @@ export default function ControlPanel() {
             console.log(`[Control Panel TTS] Phát ${chunks.length} chunk(s)...`);
             if (musicAudioRef.current) {
                 musicAudioRef.current.volume = 0.10;
-                setMusicVolume(10);
             }
             let idx = 0;
             const playNext = () => {
@@ -122,7 +119,6 @@ export default function ControlPanel() {
                     s.emit('spin_completed', { jobId, donor });
                     if (musicAudioRef.current) {
                         musicAudioRef.current.volume = musicVolumeRef.current / 100;
-                        setMusicVolume(musicVolumeRef.current);
                     }
                     return;
                 }
@@ -187,7 +183,7 @@ export default function ControlPanel() {
 
     setSocket(s);
     return () => { s.disconnect(); };
-  }, [musicVolume]);
+  }, []);
 
   const [llmStatus, setLlmStatus] = useState<{ status: 'ready' | 'missing', keyCount?: number, keyPreview: string | null }>({ status: 'missing', keyPreview: null });
   const [llmPingResult, setLlmPingResult] = useState<{ success?: boolean, message?: string, preview?: string, error?: string } | null>(null);
