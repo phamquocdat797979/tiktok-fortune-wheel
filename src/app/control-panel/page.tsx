@@ -78,6 +78,7 @@ export default function ControlPanel() {
     s.on('start_spin', () => {
         if (musicAudioRef.current) {
             musicAudioRef.current.volume = 0.10;
+            setMusicVolume(10);
         }
     });
 
@@ -85,6 +86,7 @@ export default function ControlPanel() {
     s.on('hide_popup', () => {
         if (musicAudioRef.current) {
             musicAudioRef.current.volume = musicVolumeRef.current / 100;
+            setMusicVolume(musicVolumeRef.current);
         }
     });
 
@@ -109,13 +111,19 @@ export default function ControlPanel() {
                 return;
             }
             console.log(`[Control Panel TTS] Phát ${chunks.length} chunk(s)...`);
-            if (musicAudioRef.current) musicAudioRef.current.volume = 0.10;
+            if (musicAudioRef.current) {
+                musicAudioRef.current.volume = 0.10;
+                setMusicVolume(10);
+            }
             let idx = 0;
             const playNext = () => {
                 if (idx >= chunks.length) { 
                     console.log('[Control Panel TTS] Đọc xong! Emit spin_completed.');
                     s.emit('spin_completed', { jobId, donor });
-                    if (musicAudioRef.current) musicAudioRef.current.volume = musicVolumeRef.current / 100;
+                    if (musicAudioRef.current) {
+                        musicAudioRef.current.volume = musicVolumeRef.current / 100;
+                        setMusicVolume(musicVolumeRef.current);
+                    }
                     return;
                 }
                 const audio = new Audio('data:audio/mp3;base64,' + chunks[idx].base64);
