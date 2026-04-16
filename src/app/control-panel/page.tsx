@@ -19,6 +19,8 @@ export default function ControlPanel() {
   const [selectedTrack, setSelectedTrack] = useState<number>(1);
   const [isMusicPlaying, setIsMusicPlaying] = useState<boolean>(false);
   const [musicVolume, setMusicVolume] = useState<number>(70);
+  // Sync ref mỗi khi state thay đổi
+  useEffect(() => { musicVolumeRef.current = musicVolume; }, [musicVolume]);
   const [musicProgress, setMusicProgress] = useState<number>(0);
   const [musicDuration, setMusicDuration] = useState<number>(0);
 
@@ -35,6 +37,8 @@ export default function ControlPanel() {
   const [tiktokError, setTiktokError] = useState<string>('');
   
   const musicAudioRef = useRef<HTMLAudioElement | null>(null);
+  // Ref luôn trỏ tới giá trị volume mới nhất (tránh closure cũ bên trong useEffect)
+  const musicVolumeRef = useRef<number>(70);
 
   useEffect(() => {
     const s = io(process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000');
@@ -49,7 +53,7 @@ export default function ControlPanel() {
     // Phục hồi nhạc nền sau khi đọc xong
     s.on('hide_popup', () => {
         if (musicAudioRef.current) {
-            musicAudioRef.current.volume = musicVolume / 100;
+            musicAudioRef.current.volume = musicVolumeRef.current / 100;
         }
     });
 
@@ -80,7 +84,7 @@ export default function ControlPanel() {
                 if (idx >= chunks.length) { 
                     console.log('[Control Panel TTS] Đọc xong! Emit spin_completed.');
                     s.emit('spin_completed', { jobId, donor });
-                    if (musicAudioRef.current) musicAudioRef.current.volume = musicVolume / 100;
+                    if (musicAudioRef.current) musicAudioRef.current.volume = musicVolumeRef.current / 100;
                     return;
                 }
                 const audio = new Audio('data:audio/mp3;base64,' + chunks[idx].base64);
