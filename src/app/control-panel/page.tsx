@@ -136,6 +136,12 @@ export default function ControlPanel() {
         setLlmStats(data);
     });
 
+    s.on('wiki_auto_updated', (data: any) => {
+        setWikiAutoMsg(data);
+        // Tự ẩn sau 10 giây
+        setTimeout(() => setWikiAutoMsg(null), 10000);
+    });
+
     setSocket(s);
     return () => { s.disconnect(); };
   }, [musicVolume]);
@@ -144,6 +150,7 @@ export default function ControlPanel() {
   const [llmPingResult, setLlmPingResult] = useState<{ success?: boolean, message?: string, preview?: string, error?: string } | null>(null);
   const [llmStats, setLlmStats] = useState<{ totalTokensUsed: number, lastUsage?: any, limits?: any, totalKeys?: number } | null>(null);
   const [isPinging, setIsPinging] = useState(false);
+  const [wikiAutoMsg, setWikiAutoMsg] = useState<{ message: string; time: string } | null>(null);
 
   const testInjectMock = async () => {
     if (!socket) return;
@@ -385,8 +392,13 @@ export default function ControlPanel() {
                   </div>
                 )}
                 <div className="text-xs text-blue-600/80 bg-blue-100 p-2 rounded text-justify">
-                  <strong>RAG Mode:</strong> Khi ấn nút này, Bot sẽ tự động lấy dữ liệu tử vi cho ngày hôm nay từ các nguồn uy tín, ghi đè vào hệ thống (Daily Wiki). Groq AI sẽ đọc các file này kết hợp với Cung/Mạng năm sinh tĩnh khi bói cho người xem!
+                  <strong>Nguồn dữ liệu:</strong> lichngaytot.com — Tử vi hàng ngày của 12 Con Giáp và 12 Cung Hoàng Đạo được cào tự động mỗi ngày lúc <strong>6:00 sáng</strong>. Bạn cũng có thể nhấn nút bên trên để cập nhật thủ công bất cứ lúc nào.
                 </div>
+                {wikiAutoMsg && (
+                  <div className={`text-xs p-2 rounded font-semibold flex items-center gap-2 mt-1 ${wikiAutoMsg.message.startsWith('✅') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+                    <span>🤖 Tự động:</span> {wikiAutoMsg.message}
+                  </div>
+                )}
               </div>
             </div>
 

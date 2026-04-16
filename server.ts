@@ -8,6 +8,9 @@ import { WebcastPushConnection } from 'tiktok-live-connector';
 import { spinQueue, MOCK_QUEUE } from './lib/queue';
 import { calculateAstrology } from './lib/astrology';
 import { generateFortuneText } from './lib/llm';
+import { scrapeCung } from './scripts/update_cung';
+import { scrapeTuoi } from './scripts/update_tuoi';
+import cron from 'node-cron';
 import path from 'path';
 import fs from 'fs';
 
@@ -451,5 +454,33 @@ app.prepare().then(() => {
 
   httpServer.listen(port, () => {
     console.log(`> Ready on http://localhost:${port}`);
+
+    // ===== TỰ ĐỘNG CÀO WIKI HÀNG NGÀY lúc 6:00 SÁNG (giờ Việt Nam UTC+7) =====
+    // Cron: 0 23 * * * = 23:00 UTC = 06:00 sáng Việt Nam
+    cron.schedule('0 23 * * *', async () => {
+      const now = new Date();
+      console.log(`[CRON] ⏰ Bắt đầu tự động cập nhật Wiki lúc ${now.toLocaleString('vi-VN')}`);
+      try {
+        await scrapeCung();
+        console.log('[CRON] ✅ Hoàn tất cào 12 Cung Hoàng Đạo');
+        await scrapeTuoi();
+        console.log('[CRON] ✅ Hoàn tất cào 12 Con Giáp');
+        // Thông báo cho tất cả admin đang xem control panel
+        io.emit('wiki_auto_updated', {
+          message: '✅ Wiki đã được tự động cập nhật lúc ' + now.toLocaleString('vi-VN'),
+          time: now.toISOString()
+        });
+      } catch (err: any) {
+        console.error('[CRON] ❌ Lỗi tự động cập nhật wiki:', err.message);
+        io.emit('wiki_auto_updated', {
+          message: '❌ Lỗi tự động cập nhật wiki: ' + err.message,
+          time: now.toISOString()
+        });
+      }
+    }, {
+      timezone: 'UTC' // Railway chạy UTC, ta dùng 23:00 UTC = 06:00 sáng VN
+    });
+
+    console.log('[CRON] 📅 Đã đặt lịch tự động cập nhật Wiki: 6:00 sáng mỗi ngày (giờ Việt Nam)');
   });
 });
