@@ -291,11 +291,11 @@ export default function ControlPanel() {
               </div>
 
               {/* Nhạc nền */}
-              <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-5 shadow-2xl relative group flex-1 flex flex-col">
+              <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-5 shadow-2xl relative group flex flex-col">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500/0 via-purple-500 to-purple-500/0 opacity-50 group-hover:opacity-100 transition-opacity"></div>
                 <h2 className="text-sm font-bold text-purple-300 mb-4 flex items-center gap-2 uppercase tracking-wide">🎵 Media Game</h2>
                 
-                <div className="flex flex-col gap-2 mb-4 flex-1 overflow-y-auto custom-scrollbar pr-1">
+                <div className="flex flex-col gap-2 mb-4 pr-1 max-h-[150px] overflow-y-auto custom-scrollbar">
                   {TRACKS.map(track => (
                     <button key={track.id}
                       onClick={() => setSelectedTrack(track.id)}
@@ -456,10 +456,10 @@ export default function ControlPanel() {
 
         {/* ===================== TAB 2: SYSTEM & DEV ===================== */}
         {activeTab === 'system' && (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full min-h-0 animate-[fadeScaleIn_0.3s_ease-out_forwards]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full min-h-0 animate-[fadeScaleIn_0.3s_ease-out_forwards] content-start overflow-y-auto custom-scrollbar pb-10">
             
             {/* Cột 1: Cấu hình Data & Mock */}
-            <div className="flex flex-col gap-6 h-full min-h-0">
+            <div className="flex flex-col gap-6">
               
               {/* Mô phỏng Input (Chuyển sang dev/system) */}
               <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 shadow-2xl relative shrink-0">
@@ -486,12 +486,12 @@ export default function ControlPanel() {
               </div>
 
               {/* RAG Wiki */}
-              <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 shadow-2xl relative flex-1 min-h-0 flex flex-col">
+              <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 shadow-2xl relative flex flex-col">
                 <h2 className="text-sm font-bold text-amber-300 mb-5 flex items-center gap-2 uppercase tracking-wide shrink-0">
                   📚 Cơ Sở Dữ Liệu RAG (Tử vi Ngày Mới)
                 </h2>
                 
-                <div className="text-sm text-slate-400 leading-loose flex-1 bg-black/20 rounded-2xl border border-white/5 p-5 mb-5 flex flex-col justify-center">
+                <div className="text-sm text-slate-400 leading-loose bg-black/20 rounded-2xl border border-white/5 p-5 mb-5 flex flex-col justify-center">
                   <div className="flex items-center justify-between mb-4 pb-4 border-b border-white/5">
                     <span className="font-medium text-slate-500">Nguồn trích xuất gốc:</span>
                     <span className="font-bold text-slate-300 select-all">lichngaytot.com</span>
@@ -545,7 +545,7 @@ export default function ControlPanel() {
             </div>
 
             {/* Cột 2: AI Dashboard */}
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 shadow-2xl relative group h-full flex flex-col">
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 shadow-2xl relative group flex flex-col">
               <div className="absolute top-0 right-0 w-1/2 h-1 bg-gradient-to-l from-cyan-500/0 via-cyan-500 to-cyan-500/0 opacity-50 group-hover:opacity-100 transition-opacity"></div>
               
               <div className="flex justify-between items-center mb-6 shrink-0">
@@ -579,7 +579,7 @@ export default function ControlPanel() {
               )}
 
               {llmStats ? (
-                <div className="grid grid-cols-2 gap-4 flex-1">
+                <div className="grid grid-cols-2 gap-4">
                   <div className="bg-black/40 p-5 rounded-3xl border border-white/5 relative overflow-hidden group/card hover:border-white/10 transition-colors flex flex-col justify-center">
                     <div className="text-[10px] text-slate-500 uppercase font-black tracking-widest mb-2 flex items-center gap-2"><span className="text-white text-base">🪙</span> Tokens <span className="lowercase font-normal opacity-50 text-[9px]">(Tích luỹ)</span></div>
                     <div className="text-2xl font-black text-white tracking-tight">{llmStats.totalTokensUsed.toLocaleString()}</div>
