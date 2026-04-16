@@ -238,7 +238,7 @@ export default function ControlPanel() {
         
         {/* ===================== TAB 1: LIVE MONITOR ===================== */}
         {activeTab === 'live' && (
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 h-full animate-[fadeScaleIn_0.3s_ease-out_forwards]">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 animate-[fadeScaleIn_0.3s_ease-out_forwards]">
             
             {/* Cột Trái: Cấu hình nhanh Live (3/12) */}
             <div className="lg:col-span-3 flex flex-col gap-6">
@@ -295,7 +295,7 @@ export default function ControlPanel() {
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500/0 via-purple-500 to-purple-500/0 opacity-50 group-hover:opacity-100 transition-opacity"></div>
                 <h2 className="text-sm font-bold text-purple-300 mb-4 flex items-center gap-2 uppercase tracking-wide">🎵 Media Game</h2>
                 
-                <div className="flex flex-col gap-2 mb-4 pr-1 max-h-[150px] overflow-y-auto custom-scrollbar">
+                <div className="flex flex-col gap-2 mb-4 pr-1 overflow-y-auto custom-scrollbar">
                   {TRACKS.map(track => (
                     <button key={track.id}
                       onClick={() => setSelectedTrack(track.id)}
@@ -368,7 +368,8 @@ export default function ControlPanel() {
             </div>
 
             {/* Cột Phải: Hàng đợi & Log (9/12) */}
-            <div className="lg:col-span-9 flex flex-col lg:flex-row gap-6 h-full min-h-0">
+            <div className="lg:col-span-9 relative min-h-[500px]">
+              <div className="absolute inset-0 flex flex-col lg:flex-row gap-6">
                {/* Danh sách chờ khổng lồ */}
                <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl flex flex-col flex-[3] relative overflow-hidden group min-h-0">
                   <div className="absolute top-0 right-0 w-1/2 h-1 bg-gradient-to-l from-emerald-500/0 via-emerald-500 to-emerald-500/0 opacity-30 group-hover:opacity-100 transition-opacity"></div>
@@ -449,6 +450,7 @@ export default function ControlPanel() {
                     )}
                   </div>
                </div>
+              </div>
             </div>
 
           </div>
