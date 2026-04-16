@@ -236,9 +236,9 @@ export default function GameScreen() {
                      <span className="text-white">⚡</span> Thứ tự ưu tiên hàng đợi
                   </h3>
                   <div className="flex flex-col gap-[6px] text-[20px]">
-                     <span className="text-yellow-300 font-semibold">🎁 Tặng quà</span>
-                     <span className="text-cyan-300 font-semibold">🔁 Share livestream</span>
-                     <span className="text-pink-300 font-semibold">❤️ Thả tim {'>'} 20</span>
+                     <span className="text-yellow-300 font-semibold">🎁 Tặng xu <span className="text-yellow-200/60 text-[16px] font-normal">(ưu tiên cao nhất, tích lũy được)</span></span>
+                     <span className="text-cyan-300 font-semibold">🔁 Share livestream <span className="text-cyan-200/60 text-[16px] font-normal">(tương đương 100 ❤️)</span></span>
+                     <span className="text-pink-300 font-semibold">❤️ Thả tim <span className="text-pink-200/60 text-[16px] font-normal">(vượt share nếu &gt; 100 ❤️)</span></span>
                      <span className="text-slate-300">💬 Bình luận thường</span>
                   </div>
                </div>
