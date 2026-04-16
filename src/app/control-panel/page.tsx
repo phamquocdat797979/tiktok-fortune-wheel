@@ -77,7 +77,7 @@ export default function ControlPanel() {
     // Giảm nhạc nền + chờ để TTS phát
     s.on('start_spin', () => {
         if (musicAudioRef.current) {
-            musicAudioRef.current.volume = 0.15;
+            musicAudioRef.current.volume = 0.10;
         }
     });
 
@@ -109,7 +109,7 @@ export default function ControlPanel() {
                 return;
             }
             console.log(`[Control Panel TTS] Phát ${chunks.length} chunk(s)...`);
-            if (musicAudioRef.current) musicAudioRef.current.volume = 0.15;
+            if (musicAudioRef.current) musicAudioRef.current.volume = 0.10;
             let idx = 0;
             const playNext = () => {
                 if (idx >= chunks.length) { 
@@ -367,6 +367,7 @@ export default function ControlPanel() {
                     onChange={e => {
                       const vol = Number(e.target.value);
                       setMusicVolume(vol);
+                      musicVolumeRef.current = vol;
                       if (musicAudioRef.current) musicAudioRef.current.volume = vol / 100;
                     }}
                     className="flex-1 accent-purple-500 h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer" />
