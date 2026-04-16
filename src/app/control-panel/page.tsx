@@ -226,7 +226,7 @@ export default function ControlPanel() {
                   : 'text-slate-400 hover:text-slate-200 hover:bg-white/5 border border-transparent'
               }`}
             >
-              ⚙️ Hệ Thống & Dev
+              ⚙️ Hệ Thống
             </button>
           </div>
         </div>
@@ -234,18 +234,18 @@ export default function ControlPanel() {
         {/* Quick Status Minibar & Date */}
         <div className="flex items-center gap-4">
             {mounted ? (
-              <div className="flex flex-col text-right mr-2 hidden md:flex">
-                <span className="text-sm font-black text-amber-300 tracking-tight">
+              <div className="flex flex-col text-right mr-3 hidden md:flex">
+                <span className="text-xl font-black text-amber-300 tracking-tight drop-shadow-md">
                   {now.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
                 </span>
-                <span className="text-[10px] text-slate-400 font-medium">
-                  Dương: {now.toLocaleDateString('vi-VN')} | Âm: {Lunar.fromDate(now).getDay()}/{Lunar.fromDate(now).getMonth()} ({Lunar.fromDate(now).getYearInGanZhi()} {Lunar.fromDate(now).getYearShengXiao()})
+                <span className="text-xs text-slate-200 font-bold mt-0.5">
+                  Dương: <span className="text-white">{now.toLocaleDateString('vi-VN')}</span> | Âm: <span className="text-amber-100">{Lunar.fromDate(now).getDay()}/{Lunar.fromDate(now).getMonth()} ({Lunar.fromDate(now).getYearInGanZhi()} {Lunar.fromDate(now).getYearShengXiao()})</span>
                 </span>
               </div>
             ) : (
-              <div className="flex flex-col text-right mr-2 hidden md:flex opacity-0">
-                <span className="text-sm font-black tracking-tight">00:00:00</span>
-                <span className="text-[10px] font-medium">Loading Date...</span>
+              <div className="flex flex-col text-right mr-3 hidden md:flex opacity-0">
+                <span className="text-xl font-black tracking-tight drop-shadow-md">00:00:00</span>
+                <span className="text-xs font-bold mt-0.5">Đang tải ngày giờ...</span>
               </div>
             )}
             
@@ -318,7 +318,7 @@ export default function ControlPanel() {
               {/* Nhạc nền */}
               <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-5 shadow-2xl relative group flex flex-col">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500/0 via-purple-500 to-purple-500/0 opacity-50 group-hover:opacity-100 transition-opacity"></div>
-                <h2 className="text-sm font-bold text-purple-300 mb-4 flex items-center gap-2 uppercase tracking-wide">🎵 Media Game</h2>
+                <h2 className="text-sm font-bold text-purple-300 mb-4 flex items-center gap-2 uppercase tracking-wide">🎵 Nhạc Nền Lan Toả</h2>
                 
                 <div className="flex flex-col gap-2 mb-4 pr-1 overflow-y-auto custom-scrollbar">
                   {TRACKS.map(track => (
@@ -337,7 +337,7 @@ export default function ControlPanel() {
                 </div>
 
                 <div className="flex items-center gap-3 mb-5 bg-black/20 px-3 py-2.5 rounded-xl border border-white/5 shrink-0">
-                  <span className="text-slate-400 text-[10px] font-bold">VOL</span>
+                  <span className="text-slate-400 text-[10px] font-bold">Âm lượng</span>
                   <input type="range" min={0} max={100} value={musicVolume}
                     onChange={e => {
                       const vol = Number(e.target.value);
@@ -380,13 +380,13 @@ export default function ControlPanel() {
                       musicAudioRef.current.play().catch(e => console.error("Play error:", e));
                       setIsMusicPlaying(true);
                     }}
-                    className="flex-[2] bg-purple-600/40 hover:bg-purple-600/70 border border-purple-500/40 text-purple-100 font-bold py-2.5 rounded-xl text-sm transition-all shadow-[0_0_20px_rgba(168,85,247,0.2)]">▶ Play</button>
+                    className="flex-[2] bg-purple-600/40 hover:bg-purple-600/70 border border-purple-500/40 text-purple-100 font-bold py-2.5 rounded-xl text-sm transition-all shadow-[0_0_20px_rgba(168,85,247,0.2)]">▶ Phát Nhạc</button>
                     
                     <button onClick={() => { 
                       if (musicAudioRef.current) musicAudioRef.current.pause();
                       setIsMusicPlaying(false); 
                     }}
-                    className="flex-1 bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 font-bold py-2.5 rounded-xl text-sm transition-all">⏸ Pause</button>
+                    className="flex-1 bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 font-bold py-2.5 rounded-xl text-sm transition-all">⏸ Tạm Dừng</button>
                   </div>
                 </div>
               </div>
