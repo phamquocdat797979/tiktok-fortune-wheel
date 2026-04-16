@@ -13,8 +13,10 @@ export default function ControlPanel() {
   const [socket, setSocket] = useState<Socket | null>(null);
   const [injectStatus, setInjectStatus] = useState<string>('');
   const [now, setNow] = useState(new Date());
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const timer = setInterval(() => setNow(new Date()), 1000);
     return () => clearInterval(timer);
   }, []);
@@ -231,14 +233,21 @@ export default function ControlPanel() {
         
         {/* Quick Status Minibar & Date */}
         <div className="flex items-center gap-4">
-            <div className="flex flex-col text-right mr-2 hidden md:flex">
-              <span className="text-sm font-black text-amber-300 tracking-tight">
-                {now.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
-              </span>
-              <span className="text-[10px] text-slate-400 font-medium">
-                Dương: {now.toLocaleDateString('vi-VN')} | Âm: {Lunar.fromDate(now).getDay()}/{Lunar.fromDate(now).getMonth()} ({Lunar.fromDate(now).getYearInGanZhi()} {Lunar.fromDate(now).getYearShengXiao()})
-              </span>
-            </div>
+            {mounted ? (
+              <div className="flex flex-col text-right mr-2 hidden md:flex">
+                <span className="text-sm font-black text-amber-300 tracking-tight">
+                  {now.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
+                </span>
+                <span className="text-[10px] text-slate-400 font-medium">
+                  Dương: {now.toLocaleDateString('vi-VN')} | Âm: {Lunar.fromDate(now).getDay()}/{Lunar.fromDate(now).getMonth()} ({Lunar.fromDate(now).getYearInGanZhi()} {Lunar.fromDate(now).getYearShengXiao()})
+                </span>
+              </div>
+            ) : (
+              <div className="flex flex-col text-right mr-2 hidden md:flex opacity-0">
+                <span className="text-sm font-black tracking-tight">00:00:00</span>
+                <span className="text-[10px] font-medium">Loading Date...</span>
+              </div>
+            )}
             
             <div className={`px-3 py-1.5 rounded-lg border flex items-center gap-2 text-xs font-bold ${tiktokStatus === 'connected' ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400' : 'bg-slate-800/50 border-white/5 text-slate-500'}`}>
                <span className="text-sm">📱</span> {tiktokStatus === 'connected' ? 'TikTok: Đang lấy data' : 'TikTok: Tắt'}
