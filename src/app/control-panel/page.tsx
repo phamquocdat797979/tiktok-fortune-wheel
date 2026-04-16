@@ -508,7 +508,7 @@ export default function ControlPanel() {
 
         {/* ===================== TAB 2: SYSTEM & DEV ===================== */}
         {activeTab === 'system' && (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full min-h-0 animate-[fadeScaleIn_0.3s_ease-out_forwards] content-start overflow-y-auto custom-scrollbar pb-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full min-h-0 animate-[fadeScaleIn_0.3s_ease-out_forwards] content-start overflow-y-auto pb-10 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
             
             {/* Cột 1: Cấu hình Data & Mock */}
             <div className="flex flex-col gap-6">
