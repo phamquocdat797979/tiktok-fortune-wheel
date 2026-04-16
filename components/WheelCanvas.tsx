@@ -97,7 +97,7 @@ function buildOffscreenWheel(segments: WheelSegment[]): HTMLCanvasElement {
     ctx.shadowOffsetX = 0;
     ctx.shadowOffsetY = 0;
     ctx.fillStyle = '#fff8e7';
-    ctx.font = 'bold 13px "Inter", sans-serif';
+    ctx.font = 'bold 17px "Inter", sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
 
