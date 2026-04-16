@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import { io, Socket } from 'socket.io-client';
+import { Lunar, Solar } from 'lunar-javascript';
 
 const TRACKS = [
   { id: 1, name: 'Despair', file: 'Despair - Looked At Her For _ Limitless (Despair) - SeVen.13.mp3', emoji: '😢' },
@@ -11,6 +12,12 @@ const TRACKS = [
 export default function ControlPanel() {
   const [socket, setSocket] = useState<Socket | null>(null);
   const [injectStatus, setInjectStatus] = useState<string>('');
+  const [now, setNow] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => setNow(new Date()), 1000);
+    return () => clearInterval(timer);
+  }, []);
   
   // Data for mock injection
   const [nickname, setNickname] = useState<string>('TestUser');
@@ -222,8 +229,17 @@ export default function ControlPanel() {
           </div>
         </div>
         
-        {/* Quick Status Minibar */}
-        <div className="flex gap-4">
+        {/* Quick Status Minibar & Date */}
+        <div className="flex items-center gap-4">
+            <div className="flex flex-col text-right mr-2 hidden md:flex">
+              <span className="text-sm font-black text-amber-300 tracking-tight">
+                {now.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
+              </span>
+              <span className="text-[10px] text-slate-400 font-medium">
+                Dương: {now.toLocaleDateString('vi-VN')} | Âm: {Lunar.fromDate(now).getDay()}/{Lunar.fromDate(now).getMonth()} ({Lunar.fromDate(now).getYearInGanZhi()} {Lunar.fromDate(now).getYearShengXiao()})
+              </span>
+            </div>
+            
             <div className={`px-3 py-1.5 rounded-lg border flex items-center gap-2 text-xs font-bold ${tiktokStatus === 'connected' ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400' : 'bg-slate-800/50 border-white/5 text-slate-500'}`}>
                <span className="text-sm">📱</span> {tiktokStatus === 'connected' ? 'TikTok: Đang lấy data' : 'TikTok: Tắt'}
             </div>
@@ -466,23 +482,23 @@ export default function ControlPanel() {
               {/* Mô phỏng Input (Chuyển sang dev/system) */}
               <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 shadow-2xl relative shrink-0">
                 <h2 className="text-sm font-bold text-blue-300 mb-5 flex items-center gap-2 uppercase tracking-wide">
-                  🛠 Test Dev: Mô Phỏng Bắn Lệnh Ưu Tiên
+                  🛠 Công cụ giả lập bình luận (Chạy thử AI)
                 </h2>
                 <div className="flex flex-col lg:flex-row gap-4 mb-5">
                   <div className="flex-1">
-                     <label className="text-[11px] font-bold text-slate-500 mb-2 block uppercase tracking-wider pl-1">Tên Người Xem Giả Lập</label>
+                     <label className="text-[11px] font-bold text-slate-500 mb-2 block uppercase tracking-wider pl-1">Tên Người Chơi Giả Lập</label>
                      <input type="text" value={nickname} onChange={e => setNickname(e.target.value)}
-                       className="w-full bg-black/20 border border-white/10 p-3.5 rounded-xl text-white text-sm focus:outline-none focus:border-blue-500/50 transition-all placeholder:text-slate-600" placeholder="VD: Khách 001" />
+                       className="w-full bg-black/20 border border-white/10 p-3.5 rounded-xl text-white text-sm focus:outline-none focus:border-blue-500/50 transition-all placeholder:text-slate-600" placeholder="VD: Khách V.I.P" />
                   </div>
                   <div className="flex-1">
-                     <label className="text-[11px] font-bold text-slate-500 mb-2 block uppercase tracking-wider pl-1">Ngày Sinh Giả Lập</label>
+                     <label className="text-[11px] font-bold text-slate-500 mb-2 block uppercase tracking-wider pl-1">Ngày Tháng Năm Sinh (Mẫu)</label>
                      <input type="text" value={dobString} onChange={e => setDobString(e.target.value)}
                        className="w-full bg-black/20 border border-white/10 p-3.5 rounded-xl text-white text-sm focus:outline-none focus:border-blue-500/50 transition-all placeholder:text-slate-600" placeholder="VD: 15/08/1995" />
                   </div>
                 </div>
                 <button onClick={testInjectMock}
                   className="w-full bg-blue-600/20 hover:bg-blue-600/50 border border-blue-500/30 hover:border-blue-400 text-blue-300 hover:text-white font-bold py-3.5 px-4 rounded-xl text-sm transition-all shadow-[0_0_15px_rgba(59,130,246,0.1)]">
-                  🚀 Kích Hoạt Lệnh Mồi (Bắn thẳng vào Top 1 Hàng Đợi)
+                  🚀 Bắn tin nhắn giả lập vào Hàng Đợi (Test)
                 </button>
                 {injectStatus && <div className={`mt-4 p-3 rounded-xl text-xs text-center border ${injectStatus.includes('✅') ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' : injectStatus.includes('❌') ? 'bg-rose-500/10 border-rose-500/20 text-rose-400' : 'bg-slate-800 border-slate-700 text-slate-300'}`}>{injectStatus}</div>}
               </div>
@@ -490,7 +506,7 @@ export default function ControlPanel() {
               {/* RAG Wiki */}
               <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 shadow-2xl relative flex flex-col">
                 <h2 className="text-sm font-bold text-amber-300 mb-5 flex items-center gap-2 uppercase tracking-wide shrink-0">
-                  📚 Cơ Sở Dữ Liệu RAG (Tử vi Ngày Mới)
+                  📚 Cơ Sở Dữ Liệu Trả Lời (Tử Vi Hàng Ngày)
                 </h2>
                 
                 <div className="text-sm text-slate-400 leading-loose bg-black/20 rounded-2xl border border-white/5 p-5 mb-5 flex flex-col justify-center">
@@ -499,11 +515,11 @@ export default function ControlPanel() {
                     <span className="font-bold text-slate-300 select-all">lichngaytot.com</span>
                   </div>
                   <div className="flex items-center justify-between mb-4 pb-4 border-b border-white/5">
-                    <span className="font-medium text-slate-500">Chạy Cron tự động vào lúc:</span>
+                    <span className="font-medium text-slate-500">Tự động cập nhật web lúc:</span>
                     <span className="font-bold text-amber-200 bg-amber-500/20 px-3 py-1 rounded-xl">6:00 Sáng VN</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="font-medium text-slate-500">Log Đồng bộ Tự động gần nhất:</span>
+                    <span className="font-medium text-slate-500">Lịch sử cập nhật gần nhất:</span>
                     {wikiAutoMsg ? (
                        <span className={`font-bold px-3 py-1 rounded-xl ${wikiAutoMsg.message.startsWith('✅') ? 'text-emerald-300 bg-emerald-500/20' : 'text-rose-300 bg-rose-500/20'}`}>{wikiAutoMsg.message.replace('✅ ', '').replace('❌ ', '')}</span>
                     ) : (
@@ -533,14 +549,14 @@ export default function ControlPanel() {
                         btn.innerHTML = '❌ LỖI KẾT NỐI SERVER TRỰC TIẾP';
                       }
                       setTimeout(() => { 
-                        btn.innerHTML = '🔄 Force Sync: Cào Lại Dữ Liệu Ngày Mới'; 
+                        btn.innerHTML = '🔄 Cập Nhật Bằng Tay: Quét Lại Nguồn Lịch Ngày Tốt'; 
                         btn.disabled = false;
                         btn.classList.remove('!bg-emerald-600/30', '!border-emerald-500/50', '!text-emerald-200', '!bg-rose-600/30', '!border-rose-500/50', '!text-rose-200');
                       }, 4000);
                     }}
                     className="w-full bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 hover:border-amber-500/60 text-amber-200/90 hover:text-amber-200 font-bold py-4 rounded-xl transition-all shadow-[0_0_15px_rgba(245,158,11,0.1)]"
                   >
-                    🔄 Force Sync: Cào Lại Dữ Liệu Ngày Mới
+                    🔄 Cập Nhật Bằng Tay: Quét Lại Nguồn Lịch Ngày Tốt
                   </button>
                 </div>
               </div>
@@ -551,7 +567,7 @@ export default function ControlPanel() {
               <div className="absolute top-0 right-0 w-1/2 h-1 bg-gradient-to-l from-cyan-500/0 via-cyan-500 to-cyan-500/0 opacity-50 group-hover:opacity-100 transition-opacity"></div>
               
               <div className="flex justify-between items-center mb-6 shrink-0">
-                <h2 className="text-base font-black text-cyan-300 uppercase tracking-widest leading-none">🧠 Lõi Xử Lý Thuật Toán Groq AI</h2>
+                <h2 className="text-base font-black text-cyan-300 uppercase tracking-widest leading-none">🧠 Bảng Đo Trạng Thái Sever AI (Groq)</h2>
                 <div className={`w-3 h-3 rounded-full ${llmStatus.status === 'ready' ? 'bg-emerald-400 shadow-[0_0_15px_rgba(52,211,153,0.9)] animate-pulse' : 'bg-rose-500 shadow-[0_0_15px_rgba(244,63,94,0.9)]'}`}></div>
               </div>
 
@@ -561,7 +577,7 @@ export default function ControlPanel() {
                   onClick={() => { setIsPinging(true); socket?.emit('ping_llm'); }}
                   className="w-full bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/20 hover:border-cyan-500/40 text-cyan-200 font-bold py-4 rounded-xl text-sm transition-all flex items-center justify-center gap-2"
                 >
-                  {isPinging ? <span className="animate-pulse">⏳ Chờ chẩn đoán máy chủ AI...</span> : '⚡ Ping Gửi Yêu Cầu Chẩn Đoán (Health Check)'}
+                  {isPinging ? <span className="animate-pulse">⏳ Đang gửi tín hiệu kiểm tra...</span> : '⚡ Nhấn để Kiểm Tra Tốc Độ Trả Lời Của AI'}
                 </button>
               </div>
 
@@ -583,20 +599,20 @@ export default function ControlPanel() {
               {llmStats ? (
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-black/40 p-5 rounded-3xl border border-white/5 relative overflow-hidden group/card hover:border-white/10 transition-colors flex flex-col justify-center">
-                    <div className="text-[10px] text-slate-500 uppercase font-black tracking-widest mb-2 flex items-center gap-2"><span className="text-white text-base">🪙</span> Tokens <span className="lowercase font-normal opacity-50 text-[9px]">(Tích luỹ)</span></div>
+                    <div className="text-[10px] text-slate-500 uppercase font-black tracking-widest mb-2 flex items-center gap-2"><span className="text-white text-base">🪙</span> Ký Tự Đã Dùng <span className="lowercase font-normal opacity-50 text-[9px]">(Từ khi mở web)</span></div>
                     <div className="text-2xl font-black text-white tracking-tight">{llmStats.totalTokensUsed.toLocaleString()}</div>
                   </div>
                   
                   <div className="bg-cyan-950/20 p-5 rounded-3xl border border-cyan-500/10 relative overflow-hidden group/card hover:border-cyan-500/30 transition-colors flex flex-col justify-center">
-                    <div className="text-[10px] text-cyan-500/70 uppercase font-black tracking-widest mb-2 flex items-center gap-2"><span className="text-cyan-400 text-base">🔑</span> Cọc API Active</div>
+                    <div className="text-[10px] text-cyan-500/70 uppercase font-black tracking-widest mb-2 flex items-center gap-2"><span className="text-cyan-400 text-base">🔑</span> Kênh API Đang Chạy</div>
                     <div className="text-2xl font-black text-cyan-100 flex items-baseline gap-1">
-                      #{llmStats.limits?.activeKeyIndex || 1}
+                      Kênh {llmStats.limits?.activeKeyIndex || 1}
                       <span className="text-sm font-medium text-cyan-600/70">/ {llmStats.totalKeys || llmStatus.keyCount || 3}</span>
                     </div>
                   </div>
                   
                   <div className="bg-blue-950/20 p-5 rounded-3xl border border-blue-500/10 relative overflow-hidden group/card hover:border-blue-500/30 transition-colors flex flex-col justify-center">
-                    <div className="text-[10px] text-blue-500/70 uppercase font-black tracking-widest mb-2 flex items-center gap-2"><span className="text-blue-400 text-base">⚡</span> Limit Calls (RPM)</div>
+                    <div className="text-[10px] text-blue-500/70 uppercase font-black tracking-widest mb-2 flex items-center gap-2"><span className="text-blue-400 text-base">⚡</span> Lượt Bình Luận Giới Hạn / Phút</div>
                     <div className="text-2xl font-black text-blue-100 flex items-baseline gap-1">
                       {llmStats.limits?.remainingRequests || '--'} 
                       <span className="text-sm font-medium text-blue-600/70">/ {llmStats.limits?.resetRequests || '--'}</span>
@@ -604,7 +620,7 @@ export default function ControlPanel() {
                   </div>
 
                   <div className="bg-indigo-950/20 p-5 rounded-3xl border border-indigo-500/10 relative overflow-hidden group/card hover:border-indigo-500/30 transition-colors flex flex-col justify-center">
-                    <div className="text-[10px] text-indigo-500/70 uppercase font-black tracking-widest mb-2 flex items-center gap-2"><span className="text-indigo-400 text-base">🧠</span> Limit Tokens (TPM)</div>
+                    <div className="text-[10px] text-indigo-500/70 uppercase font-black tracking-widest mb-2 flex items-center gap-2"><span className="text-indigo-400 text-base">🧠</span> Độ Dài Phản Hồi Tối Đa / Phút</div>
                     <div className="text-2xl font-black text-indigo-100">
                       {llmStats.limits?.remainingTokens ? Number(llmStats.limits.remainingTokens).toLocaleString() : '--'}
                     </div>
