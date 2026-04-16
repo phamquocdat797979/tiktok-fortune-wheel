@@ -142,16 +142,34 @@ app.prepare().then(() => {
     };
 
     const updatePriorityInQueue = (uniqueId: string, state: any) => {
-       // Thứ tự hàng đợi CHỈ dựa vào số xu đã tặng (có thể tích lũy dần khi còn đang chờ)
-       // Share/Like KHÔNG ảnh hưởng thứ tự, chỉ xu mới quyết định
-       const priority = state.totalCoins > 0 ? state.totalCoins : 0;
+       /**
+        * ⚡ THỨ TỰ ƯỢU TIÊN HÀNG ĐỢI:
+        * 1️⃣  Tặng xu (cao nhất)        : 1,000,000 + số_xu
+        * 2️⃣  Share + Tim hỗn hợp      : effectiveLikes = likes + (share ? 100 : 0)
+        *     Share = 100 tim ương đương | nếu tim thực tế > 100 → vượt share
+        * 3️⃣  Bình luận thường (thấp nhất): 0 (FIFO theo thời gian vào hàng)
+        */
+       let priority = 0;
+       if (state.totalCoins > 0) {
+         priority = 1000000 + state.totalCoins; // Xu: luôn đứng đầu
+       } else {
+         // Không có xu: tính theo tim + share (share = 100 tim)
+         const effectiveLikes = state.likes + (state.isShared ? 100 : 0);
+         priority = effectiveLikes; // 0 nếu không thả tim/share
+       }
 
        const existingJobIndex = MOCK_QUEUE.findIndex(job => job.uniqueId === uniqueId);
        if (existingJobIndex > -1) {
            MOCK_QUEUE[existingJobIndex].priority = priority;
            MOCK_QUEUE.sort((a, b) => (b.priority || 0) - (a.priority || 0));
            emitQueueUpdate(io);
-           console.log(`[Queue] Cập nhật thứ tự @${uniqueId}: ${priority} xu → vị trí ${MOCK_QUEUE.findIndex(j => j.uniqueId === uniqueId) + 1}/${MOCK_QUEUE.length}`);
+           const newPos = MOCK_QUEUE.findIndex(j => j.uniqueId === uniqueId) + 1;
+           const label = state.totalCoins > 0
+             ? `${state.totalCoins} xu`
+             : state.isShared || state.likes > 0
+               ? `${state.likes} tim${state.isShared ? ' + share' : ''}`
+               : 'bình luận';
+           console.log(`[Queue] ⚡ Cập nhật @${uniqueId}: ${label} → vị trí ${newPos}/${MOCK_QUEUE.length}`);
        }
        return priority;
     };
@@ -400,11 +418,16 @@ app.prepare().then(() => {
                 if (CHAT_LOGS.length > 50) CHAT_LOGS.pop();
                 io.emit('valid_chat_log', logItem);
 
-                // Priority khi vào hàng = số xu đã tặng trước đó (nếu có)
-                // Xu tặng SAU khi vào sẽ tự động cập nhật qua updatePriorityInQueue
-                const priority = state.totalCoins > 0 ? state.totalCoins : 0;
+                // Priority khi vào hàng theo thứ tự ưu tiên:
+                // 1. Xu (cao nhất) | 2. Tim + Share | 3. Bình luận thường (FIFO)
+                let priority = 0;
+                if (state.totalCoins > 0) {
+                  priority = 1000000 + state.totalCoins;
+                } else {
+                  priority = state.likes + (state.isShared ? 100 : 0);
+                }
 
-                // LIMIT: Chặn spam nếu hàng quá đông (>100) và không có xu
+                // LIMIT: Chặn spam nếu hàng quá đông (>100) và không có xu/tim/share
                 if (MOCK_QUEUE.length > 100 && priority === 0) {
                    return;
                 }
