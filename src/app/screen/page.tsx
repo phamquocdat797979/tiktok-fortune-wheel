@@ -21,6 +21,8 @@ export default function GameScreen() {
   const wheelVideoRef = useRef<HTMLVideoElement>(null);
   const titleVideoRef = useRef<HTMLVideoElement>(null);
   const wheelStatusRef = useRef(wheelStatus);
+  // Chong phat dup TTS: theo doi cac jobId da emit request_tts_play roi
+  const ttsEmittedRef = useRef<Set<string>>(new Set());
 
   useEffect(() => { wheelStatusRef.current = wheelStatus; }, [wheelStatus]);
 
@@ -131,7 +133,8 @@ export default function GameScreen() {
              };
              
              // Nếu kết quả đã về khi đang quay -> Quay xong phát lệnh đọc ngay
-             if (updated.fortuneText) {
+             if (updated.fortuneText && !ttsEmittedRef.current.has(data.jobId)) {
+                ttsEmittedRef.current.add(data.jobId);
                 console.log('[Screen] Cử quẻ sẵn có, phát lệnh đọc TTS.');
                 socketInstance.emit('request_tts_play', { 
                    jobId: data.jobId, 
@@ -157,6 +160,8 @@ export default function GameScreen() {
        setLastResult(prev => {
            // Trường hợp 1: Spin đã dừng rồi mới có text (Gemini chậm hơn 7s xoay)
            if (prev && (prev as any).lastResultJobId === data.jobId && (prev as any).donor) {
+               if (ttsEmittedRef.current.has(data.jobId)) { return { ...prev, fortuneText: data.fortuneText }; }
+               ttsEmittedRef.current.add(data.jobId);
                console.log('[Screen] Spin đã dừng, phát lệnh đọc TTS ngay.');
                socketInstance.emit('request_tts_play', { 
                   jobId: data.jobId, 
