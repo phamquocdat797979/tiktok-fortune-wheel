@@ -492,6 +492,29 @@ app.prepare().then(() => {
   httpServer.listen(port, () => {
     console.log(`> Ready on http://localhost:${port}`);
 
+    // ===== CÀO WIKI NGAY KHI KHỞI ĐỘNG (dành cho Railway/Production) =====
+    // Đảm bảo dữ liệu luôn mới ngay sau khi deploy, không cần chờ 6h sáng
+    if (process.env.NODE_ENV === 'production') {
+      console.log('[STARTUP] 🚀 Production mode: Tự động cào Wiki ngay khi khởi động...');
+      (async () => {
+        try {
+          await scrapeCung();
+          await scrapeTuoi();
+          console.log('[STARTUP] ✅ Đã cào xong Wiki khởi động.');
+          // Đọc lại ngày từ file vừa cào và thông báo cho tất cả client
+          try {
+            const tuoiLine = fs.readFileSync(path.join(process.cwd(), 'data/daily_wiki/tuoi/dan.md'), 'utf-8').split('\n')[0];
+            const cungLine  = fs.readFileSync(path.join(process.cwd(), 'data/daily_wiki/cung/bach_duong.md'), 'utf-8').split('\n')[0];
+            const tuoiDate = (tuoiLine.match(/ngày\s+([0-9/]+)/i) || [])[1] || 'KXD';
+            const cungDate  = (cungLine.match(/ngày\s+([0-9/]+)/i) || [])[1] || 'KXD';
+            io.emit('wiki_auto_updated', { tuoiDate, cungDate });
+          } catch { /* client chưa kết nối lúc này, không sao */ }
+        } catch (err: any) {
+          console.error('[STARTUP] ❌ Lỗi cào Wiki khởi động:', err.message);
+        }
+      })();
+    }
+
     // ===== TỰ ĐỘNG CÀO WIKI HÀNG NGÀY lúc 6:00 SÁNG (giờ Việt Nam UTC+7) =====
     // Cron: 0 23 * * * = 23:00 UTC = 06:00 sáng Việt Nam
     cron.schedule('0 23 * * *', async () => {
