@@ -47,8 +47,9 @@ export async function scrapeTuoi() {
   const indexUrl = `https://lichngaytot.com/boi-vui-12-con-giap-c277-p0.html`;
   const htmlIndex = await fetchHtml(indexUrl);
   const $index = cheerio.load(htmlIndex);
-  const d = new Date();
-  const dateSnippet = `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`;
+  // Railway chạy UTC → cộng +7 giờ để ra đúng ngày Việt Nam
+  const d = new Date(Date.now() + 7 * 60 * 60 * 1000);
+  const dateSnippet = `${d.getUTCDate()}/${d.getUTCMonth() + 1}/${d.getUTCFullYear()}`;
   let targetUrl = '';
 
   $index('a').each((_, el) => {

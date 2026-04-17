@@ -26,10 +26,11 @@ async function fetchHtml(url: string): Promise<string> {
 }
 
 export async function scrapeCung() {
-  const d = new Date();
-  const day = d.getDate().toString().padStart(2, '0');
-  const month = (d.getMonth() + 1).toString().padStart(2, '0');
-  const year = d.getFullYear();
+  // Railway chạy UTC → cộng +7 giờ để ra đúnh ngày Việt Nam
+  const d = new Date(Date.now() + 7 * 60 * 60 * 1000);
+  const day = d.getUTCDate().toString().padStart(2, '0');
+  const month = (d.getUTCMonth() + 1).toString().padStart(2, '0');
+  const year = d.getUTCFullYear();
   const url = `https://lichngaytot.com/tu-vi-hang-ngay-${day}-${month}-${year}.html`;
   const dateStr = `${day}/${month}/${year}`;
 
