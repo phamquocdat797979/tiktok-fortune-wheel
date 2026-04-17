@@ -10,11 +10,6 @@ dist
 build
 dev.db
 
-# Large media files that exceed GitHub limits (100MB+)
-public/rain.mp4
-public/diamond.mp4
-public/medium.mp4
-
 # Temporary/Cache files
 *.tsbuildinfo
 dump.txt
