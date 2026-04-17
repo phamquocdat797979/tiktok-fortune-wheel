@@ -565,7 +565,7 @@ export default function ControlPanel() {
                     <span className="font-bold text-amber-200 bg-amber-500/20 px-3 py-1 rounded-xl">6:00 Sáng VN</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="font-medium text-slate-500">Lịch sử cập nhật gần nhất:</span>
+                    <span className="font-medium text-slate-500">Nội dung được cập nhật:</span>
                     {wikiAutoMsg ? (
                        <span className={`font-bold px-3 py-1 rounded-xl ${wikiAutoMsg.message.startsWith('✅') ? 'text-emerald-300 bg-emerald-500/20' : 'text-rose-300 bg-rose-500/20'}`}>{wikiAutoMsg.message.replace('✅ ', '').replace('❌ ', '')}</span>
                     ) : (

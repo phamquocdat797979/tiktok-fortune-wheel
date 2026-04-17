@@ -110,6 +110,17 @@ app.prepare().then(() => {
     // Gửi ngay trạng thái hiện tại khi client mới join
     emitQueueUpdate(socket);
     socket.emit('valid_chat_history', CHAT_LOGS);
+
+    try {
+      const danFile = fs.readFileSync(path.join(process.cwd(), 'data/daily_wiki/tuoi/dan.md'), 'utf-8');
+      const firstLine = danFile.split('\n')[0];
+      const match = firstLine.match(/ngày\s+([0-9/]+)/i);
+      const wikiDate = match ? match[1] : 'Chưa xác định';
+      socket.emit('wiki_auto_updated', { message: `✅ Cung và tuổi đã cập nhật ngày (${wikiDate})` });
+    } catch (e) {
+      socket.emit('wiki_auto_updated', { message: `❌ Chưa có dữ liệu Wiki` });
+    }
+
     
     // Kiểm tra trạng thái LLM (3 Groq Keys)
     const groqKeys = [
