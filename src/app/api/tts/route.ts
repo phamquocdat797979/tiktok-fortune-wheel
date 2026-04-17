@@ -30,6 +30,36 @@ interface GeminiAudio {
 }
 
 // -------------------------------------------------------------
+//  Chuyển dữ liệu PCM thô (audio/L16) sang file WAV có header
+//  Trình duyệt không thể phát PCM thẩng, phải bọc WAV bên ngoài.
+// -------------------------------------------------------------
+function pcmToWav(pcmBase64: string, sampleRate: number, numChannels = 1, bitsPerSample = 16): string {
+  const pcmBuffer = Buffer.from(pcmBase64, 'base64');
+  const dataLength = pcmBuffer.length;
+  const byteRate = sampleRate * numChannels * (bitsPerSample / 8);
+  const blockAlign = numChannels * (bitsPerSample / 8);
+
+  // WAV header là 44 bytes
+  const header = Buffer.alloc(44);
+  header.write('RIFF', 0);                              // ChunkID
+  header.writeUInt32LE(36 + dataLength, 4);             // ChunkSize
+  header.write('WAVE', 8);                              // Format
+  header.write('fmt ', 12);                             // Subchunk1ID
+  header.writeUInt32LE(16, 16);                         // Subchunk1Size (PCM = 16)
+  header.writeUInt16LE(1, 20);                          // AudioFormat (PCM = 1)
+  header.writeUInt16LE(numChannels, 22);                // NumChannels
+  header.writeUInt32LE(sampleRate, 24);                 // SampleRate
+  header.writeUInt32LE(byteRate, 28);                   // ByteRate
+  header.writeUInt16LE(blockAlign, 32);                 // BlockAlign
+  header.writeUInt16LE(bitsPerSample, 34);              // BitsPerSample
+  header.write('data', 36);                             // Subchunk2ID
+  header.writeUInt32LE(dataLength, 40);                 // Subchunk2Size
+
+  const wavBuffer = Buffer.concat([header, pcmBuffer]);
+  return wavBuffer.toString('base64');
+}
+
+// -------------------------------------------------------------
 //  Gọi Gemini TTS với 1 key và 1 model cụ thể
 // -------------------------------------------------------------
 async function callGeminiTTS(text: string, apiKey: string, model: string): Promise<GeminiAudio | null> {
@@ -49,7 +79,7 @@ async function callGeminiTTS(text: string, apiKey: string, model: string): Promi
         }
       }
     }),
-    signal: AbortSignal.timeout(25000), // 25s timeout cho văn bản tử vi dài
+    signal: AbortSignal.timeout(25000),
   });
 
   if (!res.ok) {
@@ -67,10 +97,20 @@ async function callGeminiTTS(text: string, apiKey: string, model: string): Promi
     return null;
   }
 
-  return {
-    base64: part.data,
-    mimeType: part.mimeType || 'audio/wav', // Lấy MIME type thực tế từ API
-  };
+  let audioBase64 = part.data;
+  let mimeType: string = part.mimeType || 'audio/wav';
+
+  // Nếu Gemini trả PCM thô (audio/L16), cần bọc WAV header để trình duyệt phát được
+  if (mimeType.startsWith('audio/L16') || mimeType.startsWith('audio/pcm')) {
+    // Đọc sample rate từ mimeType. VD: "audio/L16;codec=pcm;rate=24000" → 24000
+    const rateMatch = mimeType.match(/rate=(\d+)/);
+    const sampleRate = rateMatch ? parseInt(rateMatch[1], 10) : 24000;
+    console.log(`[Gemini TTS] Phát hiện PCM thô (rate=${sampleRate}Hz). Đang chử WAV header...`);
+    audioBase64 = pcmToWav(audioBase64, sampleRate);
+    mimeType = 'audio/wav';
+  }
+
+  return { base64: audioBase64, mimeType };
 }
 
 // -------------------------------------------------------------
