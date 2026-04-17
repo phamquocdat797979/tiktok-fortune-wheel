@@ -103,12 +103,14 @@ export default function ControlPanel() {
         .then(res => res.json())
         .then(resData => {
             const chunks = resData.chunks;
+            const source = resData.source || 'google-fallback';
+            
             if (!chunks || chunks.length === 0) {
                 console.warn('[Control Panel TTS] API không trả về audio:', resData);
                 s.emit('spin_completed', { jobId, donor });
                 return;
             }
-            console.log(`[Control Panel TTS] Phát ${chunks.length} chunk(s)...`);
+            console.log(`[Control Panel TTS] Phát ${chunks.length} chunk(s) [source=${source}]...`);
             if (musicAudioRef.current) {
                 musicAudioRef.current.volume = 0.10;
             }
@@ -122,11 +124,20 @@ export default function ControlPanel() {
                     }
                     return;
                 }
-                const audio = new Audio('data:audio/mp3;base64,' + chunks[idx].base64);
-                audio.playbackRate = 1.3; 
-                if ('preservesPitch' in audio) (audio as any).preservesPitch = true;
+                const chunk = chunks[idx];
+                // Dùng mimeType thực tế từ API (audio/wav từ Gemini, audio/mp3 từ Google)
+                const mimeType = chunk.mimeType || (source === 'gemini' ? 'audio/wav' : 'audio/mp3');
+                const audio = new Audio(`data:${mimeType};base64,` + chunk.base64);
+                // Chỉ tăng tốc giọng Google Dịch (vốn chậm), Gemini đọc tự nhiên rồi
+                if (source !== 'gemini') {
+                    audio.playbackRate = 1.3;
+                    if ('preservesPitch' in audio) (audio as any).preservesPitch = true;
+                }
                 audio.onended = () => { idx++; playNext(); };
-                audio.onerror  = () => { idx++; playNext(); };
+                audio.onerror  = () => { 
+                    console.warn(`[Control Panel TTS] Chunk ${idx} lỗi phát, bỏ qua...`);
+                    idx++; playNext(); 
+                };
                 audio.play().catch(e => {
                     console.error('[Control Panel TTS] Lỗi play:', e);
                     idx++; playNext();

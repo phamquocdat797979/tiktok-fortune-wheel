@@ -17,12 +17,22 @@ const GEMINI_KEYS = [
 // Chỉ số key hiện tại (xoay vòng theo từng request)
 let currentKeyIndex = 0;
 
+// Tên model Gemini TTS — thử lần lượt nếu model mới không tồn tại
+const GEMINI_TTS_MODELS = [
+  'gemini-2.5-flash-preview-tts',
+  'gemini-2.0-flash-exp',  // fallback model name
+];
+
+// Kiểu trả về của hàm Gemini TTS
+interface GeminiAudio {
+  base64: string;
+  mimeType: string; // Lấy thực tế từ API (audio/wav, audio/pcm...)
+}
+
 // -------------------------------------------------------------
-//  Gọi Gemini TTS với 1 key cụ thể
-//  Model: gemini-2.5-flash-preview-tts (miễn phí cho Developer)
+//  Gọi Gemini TTS với 1 key và 1 model cụ thể
 // -------------------------------------------------------------
-async function callGeminiTTS(text: string, apiKey: string): Promise<string | null> {
-  const model = 'gemini-2.5-flash-preview-tts';
+async function callGeminiTTS(text: string, apiKey: string, model: string): Promise<GeminiAudio | null> {
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
 
   const res = await fetch(url, {
@@ -34,74 +44,97 @@ async function callGeminiTTS(text: string, apiKey: string): Promise<string | nul
         responseModalities: ['AUDIO'],
         speechConfig: {
           voiceConfig: {
-            prebuiltVoiceConfig: { voiceName: 'Kore' } // Giọng nữ tự nhiên, phù hợp Tiếng Việt
+            prebuiltVoiceConfig: { voiceName: 'Kore' } // Giọng nữ tự nhiên, hỗ trợ Tiếng Việt
           }
         }
       }
     }),
-    // Timeout 20s vì văn bản tử vi dài
-    signal: AbortSignal.timeout(20000),
+    signal: AbortSignal.timeout(25000), // 25s timeout cho văn bản tử vi dài
   });
 
   if (!res.ok) {
     const errBody = await res.text().catch(() => '');
-    const err: any = new Error(`Gemini API HTTP ${res.status}`);
+    const err: any = new Error(`Gemini HTTP ${res.status}: ${errBody.substring(0, 200)}`);
     err.statusCode = res.status;
-    err.body = errBody;
     throw err;
   }
 
   const data = await res.json();
-  // Gemini trả về audio dưới dạng base64 inline
-  const audioBase64 = data?.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
-  return audioBase64 ?? null;
+  const part = data?.candidates?.[0]?.content?.parts?.[0]?.inlineData;
+
+  if (!part?.data) {
+    console.warn(`[Gemini TTS] Model ${model} trả về response nhưng không có audio data.`);
+    return null;
+  }
+
+  return {
+    base64: part.data,
+    mimeType: part.mimeType || 'audio/wav', // Lấy MIME type thực tế từ API
+  };
 }
 
 // -------------------------------------------------------------
-//  Xoay vòng qua tất cả Gemini keys
-//  - Nếu key bị Rate Limit (429) → thử key kế tiếp
-//  - Nếu tất cả keys đều thất bại → trả về null (kích hoạt Google Fallback)
+//  Xoay vòng qua tất cả Gemini keys + thử các model khác nhau
+//  Luồng xử lý:
+//   Key #1 + Model A  →  thành công ✅
+//   Key #1 + Model A  →  429 Rate Limit  →  thử Key #2 + Model A
+//   Key #1 + Model A  →  404 Not Found   →  thử Model B với Key #1
+//   Tất cả đều thất bại → trả về null → kích hoạt Google Fallback
 // -------------------------------------------------------------
-async function tryGeminiWithRotation(text: string): Promise<string | null> {
+async function tryGeminiWithRotation(text: string): Promise<GeminiAudio | null> {
   if (GEMINI_KEYS.length === 0) {
-    console.warn('[Gemini TTS] Chưa cấu hình Gemini API Key nào, dùng Google Fallback.');
+    console.warn('[Gemini TTS] Chưa cấu hình Gemini API Key nào → dùng Google Fallback.');
     return null;
   }
 
   const startIndex = currentKeyIndex;
 
-  for (let i = 0; i < GEMINI_KEYS.length; i++) {
-    const keyIndex = (startIndex + i) % GEMINI_KEYS.length;
-    const key = GEMINI_KEYS[keyIndex];
+  // Thử từng model
+  for (const model of GEMINI_TTS_MODELS) {
+    // Thử từng key với model này
+    for (let i = 0; i < GEMINI_KEYS.length; i++) {
+      const keyIndex = (startIndex + i) % GEMINI_KEYS.length;
+      const key = GEMINI_KEYS[keyIndex];
 
-    try {
-      console.log(`[Gemini TTS] Đang dùng Key #${keyIndex + 1}...`);
-      const result = await callGeminiTTS(text, key);
+      try {
+        console.log(`[Gemini TTS] Thử Key #${keyIndex + 1} + Model: ${model}...`);
+        const result = await callGeminiTTS(text, key, model);
 
-      // Thành công → cập nhật vị trí key để lần sau bắt đầu từ đây (tránh key 1 gánh hết)
-      currentKeyIndex = (keyIndex + 1) % GEMINI_KEYS.length;
-      console.log(`[Gemini TTS] ✅ Key #${keyIndex + 1} thành công.`);
-      return result;
+        if (result) {
+          // Thành công → cập nhật key để lần sau bắt đầu từ key kế tiếp (tránh key 1 gánh hết)
+          currentKeyIndex = (keyIndex + 1) % GEMINI_KEYS.length;
+          console.log(`[Gemini TTS] ✅ Key #${keyIndex + 1} + Model ${model} thành công. mimeType: ${result.mimeType}`);
+          return result;
+        }
 
-    } catch (err: any) {
-      if (err?.statusCode === 429) {
-        console.warn(`[Gemini TTS] ⚠️  Key #${keyIndex + 1} bị Rate Limit (429). Thử key tiếp theo...`);
+      } catch (err: any) {
+        const code = err?.statusCode;
+
+        if (code === 429) {
+          console.warn(`[Gemini TTS] ⚠️  Key #${keyIndex + 1} bị Rate Limit (429). Thử key tiếp...`);
+          continue; // Thử key kế tiếp với cùng model
+        }
+
+        if (code === 404) {
+          console.warn(`[Gemini TTS] Model "${model}" không tồn tại (404). Thử model dự phòng...`);
+          break; // Thoát vòng key, thử model tiếp theo
+        }
+
+        // Lỗi khác: 500, network, timeout... → ghi log và thử key tiếp
+        console.error(`[Gemini TTS] ❌ Key #${keyIndex + 1} lỗi [${code ?? 'network/timeout'}]:`, err?.message?.substring(0, 150));
         continue;
       }
-      // Lỗi khác (500, network...) → vẫn thử key tiếp, ghi log lại
-      console.error(`[Gemini TTS] ❌ Key #${keyIndex + 1} lỗi [${err?.statusCode ?? 'network'}]:`, err?.message);
-      continue;
     }
   }
 
-  console.warn('[Gemini TTS] Tất cả Keys đã thất bại. Chuyển sang Google Dự Phòng...');
+  console.warn('[Gemini TTS] Tất cả Keys + Models đều thất bại → dùng Google Dự Phòng.');
   return null;
 }
 
 // -------------------------------------------------------------
 //  DỰ PHÒNG: Google Translate TTS (không cần API Key)
-//  Giọng robot, nhưng không bao giờ bị rate limit trong dự án nhỏ.
-//  Mỗi chunk tối đa 180 ký tự (giới hạn của Google Dịch).
+//  Giọng robot nhưng độ ổn định cao, không bao giờ bị rate limit
+//  Mỗi chunk tối đa 180 ký tự (giới hạn của Google Dịch)
 // -------------------------------------------------------------
 async function useGoogleFallback(text: string): Promise<string[]> {
   const rawChunks = text.match(/[^.!?]+[.!?]*/g) || [text];
@@ -127,7 +160,7 @@ async function useGoogleFallback(text: string): Promise<string[]> {
         host: 'https://translate.google.com',
         timeout: 10000,
       }).catch(err => {
-        console.error('[Google TTS Fallback] Lỗi chunk:', err);
+        console.error('[Google TTS Fallback] Lỗi chunk:', err?.message);
         return null;
       })
     );
@@ -139,8 +172,8 @@ async function useGoogleFallback(text: string): Promise<string[]> {
 // =============================================================
 //  🚀 MAIN HANDLER
 //  Thứ tự ưu tiên:
-//    1. Gemini TTS (Key 1 → Key 2 → Key 3 xoay vòng)
-//    2. Google Translate TTS (dự phòng cuối cùng)
+//    1. Gemini TTS (Key 1 ~ Key 3 xoay vòng, thử nhiều model)
+//    2. Google Translate TTS (dự phòng cuối cùng, luôn hoạt động)
 // =============================================================
 export async function POST(req: Request) {
   try {
@@ -151,10 +184,10 @@ export async function POST(req: Request) {
     const geminiAudio = await tryGeminiWithRotation(text);
 
     if (geminiAudio) {
-      // Gemini trả về 1 đoạn audio duy nhất cho toàn bộ văn bản (không cần chunk)
       return NextResponse.json({
-        chunks: [{ base64: geminiAudio }],
+        chunks: [{ base64: geminiAudio.base64, mimeType: geminiAudio.mimeType }],
         source: 'gemini',
+        mimeType: geminiAudio.mimeType,
       });
     }
 
@@ -162,9 +195,15 @@ export async function POST(req: Request) {
     console.log('[TTS] Dùng Google Translate TTS dự phòng...');
     const fallbackChunks = await useGoogleFallback(text);
 
+    if (fallbackChunks.length === 0) {
+      // Cả 2 đường đều thất bại — emit spin_completed để game không bị treo
+      console.error('[TTS] Google Fallback cũng thất bại! Trả về mảng rỗng.');
+    }
+
     return NextResponse.json({
-      chunks: fallbackChunks.map(b => ({ base64: b })),
+      chunks: fallbackChunks.map(b => ({ base64: b, mimeType: 'audio/mp3' })),
       source: 'google-fallback',
+      mimeType: 'audio/mp3',
     });
 
   } catch (error: any) {
