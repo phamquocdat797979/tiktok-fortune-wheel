@@ -223,11 +223,18 @@ export default function ControlPanel() {
       {/* HEADER & TABS NAVIGATION */}
       <div className="relative z-10 flex items-center justify-between px-6 lg:px-8 py-5 border-b border-white/5 bg-black/40 backdrop-blur-md shrink-0">
         <div className="flex items-center gap-6">
-          <div>
-            <h1 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-purple-300 to-emerald-300 tracking-tight">
-              🎮 Sinh Thần Vận Mệnh
-            </h1>
-            <p className="text-[11px] text-slate-500 font-medium mt-1 tracking-wider uppercase">Control Panel v2.0</p>
+          <div className="flex items-center gap-4">
+            <img 
+              src="/logo.png" 
+              alt="Logo" 
+              className="w-12 h-12 rounded-xl object-cover shadow-[0_0_15px_rgba(99,102,241,0.5)] border border-indigo-500/30"
+            />
+            <div>
+              <h1 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-purple-300 to-emerald-300 tracking-tight">
+                Sinh Thần Vận Mệnh
+              </h1>
+              <p className="text-[11px] text-slate-500 font-medium mt-1 tracking-wider uppercase">Control Panel v2.0</p>
+            </div>
           </div>
           
           <div className="h-10 w-px bg-white/10 mx-2"></div>
