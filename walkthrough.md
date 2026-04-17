@@ -1,49 +1,59 @@
-# Hoàn tất Tái cấu trúc Game Sinh Thần Vận Mệnh 🔮
+# Kiến Trúc Dưới Mái Tôn Của Game Tâm Linh 🕵️‍♂️ (Dành cho Developer)
 
-Chào bạn, hệ thống tương tác bằng AI dành cho **Game Sinh Thần Vận Mệnh** (phiên bản mới) đã chính thức được thay máu toàn bộ cấu trúc và giao diện. Tôi đã lược bỏ hết các thành phần thừa gốc và trang bị trí tuệ nhân tạo (Gemini) để game hoạt động đúng chuẩn một "thầy phán" trên sóng livestream.
+Chào bạn, tài liệu này tóm tắt cấu trúc code và luồng dữ liệu (Data Pipeline) của dự án **TikTok Fortune Wheel**. Nếu bạn muốn bảo trì hệ thống, bảo dưỡng API hoặc bổ sung tính năng mới, thì đây là bản đồ chỉ đường dành riêng cho bạn.
+
+Hiện tại game đã loại bỏ hoàn toàn các chức năng rườm rà dư thừa về thuật toán ngẫu nhiên cũ (random seeds, boss, idle). Trọng tâm giờ đây là: **Dữ liệu mộc cào từ website, kết hợp với AI Tốc Độ Cao (Groq), và Hệ thống hàng đợi WebSocket.**
 
 > [!TIP]
-> **Nhật ký thay đổi**
-> Game hiện tại không còn sử dụng dữ liệu tĩnh 32 ô và cấp bậc tier quà tặng. Chúng đã được thay thế bằng một giao diện 12 ô bản mệnh cực kỳ gọn gàng với thuật toán dự đoán AI.
+> **Về việc chọn AI**
+> Thay vì sử dụng Gemini có phần chậm chạp như các phiên bản cũ, hệ thống đang dùng model thuộc Llama 3 chạy nền tảng mạng lưới LPU của Groq để sinh ra text trong thời gian siêu tưởng (chỉ dưới 2 giây). Giúp dòng thời gian "spin" bánh xe luôn liền mạch.
 
-## Các Thay Đổi Chính Đã Thực Hiện
+---
 
-### 1. Phân Tích Thông Tin Từ Dữ Liệu Ngày Sinh (Astrology Logic)
-- Xóa bỏ module random tĩnh dư thừa `slotsData`, `tierMapping`, `idle`, `dailySeed`, `bossEvent`.
-- Viết mới `lib/astrology.ts` thực hiện regex trích xuất Ngày/Tháng/Năm từ luồng Chat.
-- Thuật toán nhanh: Tính Ngũ Hành (Kim, Mộc, Thủy, Hỏa, Thổ), tìm Con Giáp (Dựa trên hàng Can Chi), và Cung Hoàng Đạo Dương Lịch.
+## Các Thành Phần Hệ Thống (Mô Hình 4 Mảnh Ghép)
 
-### 2. Tích Hợp Gemini 1.5 Text-generation Cấp Tốc
-- Sinh Prompt động dựa trên dữ kiện đã lọc được từ Astrology `lib/gemini.ts`.
-- Nếu AI bị lỗi hoặc nghẽn mạng, cơ chế **Circuit Breaker** (phương án Fallback) sẽ tự động kích hoạt để nhả ra một mẫu text cứu cánh, đảm bảo dòng chảy livestream không bị kẹt cứng (không bao giờ bị tắc nghẽn queue phòng chờ).
+### 1. `server.ts` (Sự Kiện Trung Tâm & WebSocket)
+Đây là cầu nối mạng giữa Tiktok, Game và Control Panel.
+- Sử dụng `tiktok-live-connector` để lắng nghe mọi comment, gift, share.
+- Tích hợp bộ chặn Spam và kiểm tra Ngày Sinh Tương Lai.
+- Quản lý **Hàng đợi Ưu tiên (Priority Queue)**:
+   - Hệ thống đánh giá dựa trên mức độ Support (Quy đổi 1 XU đập thẳng lên VIP).
+   - Truyền tải list Queue về Frontend liên tục.
 
-### 3. Hệ Thống Xếp Hàng Ưu Tiên (Priority Queue chống nghẽn)
-- Mod lại `server.ts` đóng vai trò bộ đệm tương tác trực tiếp (`Live User State`).
-- Lắng nghe event `like`, `share`, `gift` và **cộng dồn điểm VIP ưu tiên**.
-- Khi một comment ngày sinh được ném vào:
-   - VIP sẽ nhảy lên số 1 ngay lập tức nhờ `queue.ts` sort ưu tiên cao nhất.
-   - User không được spam liên tục (Bị limit Cooldown 5 phút nội bộ).
-- `spinWorker.ts` tự động chích Job và thực thi Gemini ngầm trong 7 giây chờ bánh xe xoay để tối ưu triệt để thời gian Delay.
+### 2. `workers/spinWorker.ts` (Xử Lý Ngầm Không Lỗi Nhịp)
+Nhận data ngày sinh trực tiếp từ Queue của Server, và thực hiện việc nặng:
+- **Tập hợp lá số tử vi (`lib/astrology.ts`)**: Tính toán Cung Hoàng Đạo & Cung Con Giáp.
+- **Tiêu thụ dữ liệu (`Cào Data Offline`)**: Ghép vào nội dung tử vi đã cào chuẩn bị sẵn từ thư mục `data/daily_wiki/`.
+- **Hỏi AI (`lib/llm.ts`)**: Gọi Groq Llama3 tóm tắt lá số sao cho gọn, đậm chất thầy bói. Nó sẽ xoay vòng tự động 3 key API nếu có bị lỗi rate-limit.
+- Bộ máy đếm giờ Timer (Circuit breaker 60s): Đảm bảo không bị "treo" hay kẹt 1 ai đó, luồng game luôn diễn ra.
 
-### 4. Thiết Kế Lại Vòng Quay 12 Ô Ngũ Hành
-- Lược bỏ 32 ô xám cũ trong `WheelCanvas.tsx`.
-- Sơn đè màu chia theo 5 tông **Ngũ Hành**: Bạc (Kim), Xanh Lá (Mộc), Xanh Dương (Thủy), Đỏ tươi (Hỏa), Nâu Vàng (Thổ).
-- Layout 12 ô xen kẽ đủ 12 Con Giáp và 12 Cung Hoàng Đạo. Hệ thống luôn đảm bảo mũi tên chỉ đúng vào một ô có Con Giáp hoặc Cung Hoàng Đạo tương ứng nếu hệ thống bắt được ngày sinh đầy đủ.
+### 3. `src/app/api/tts/route.ts` (Cỗ Máy Chuyển Ngữ Google TTS)
+Hoạt động cực kỳ ổn định phục vụ cho việc đọc kết quả:
+- Để lách luật và không bị block từ Google Dịch, hệ thống dùng code server proxy chia text thành từng đoạn nhỏ dưới 180 ký tự.
+- Gửi xuống client cục Buffer định dạng `base64`.
+- Tránh trình duyệt bị tràn bộ nhớ khi chơi một file Base64 siêu bự, các đoạn văn được chia nhỏ thành nhạc MP3 mượt mà.
 
-### 5. Lược Bỏ Hiệu Ứng Tier, Focus vào Vận Mệnh
-- Hủy bỏ `TierEffectCanvas` gây rối mắt.
-- Thay thế Popup hiện kết quả ở `page.tsx` thành màn Cẩm nang bí kíp với chữ Vàng Hoàng Kim ma mị. Nội dung text của Gemini sau khi fetch xong sẽ tự động hiện lên màn hình và Chị Google TTS sẽ tự động đọc.
-- Bố trí lại bảng **Control Panel** cho Admin test ngày sinh bằng tay cực dễ dàng.
+### 4. Giao Diện (Vòng quay & Control Panel)
+- **`src/app/control-panel/page.tsx`**: Bảng tổng phím nóng điều phối nhạc nền (`music volume ducking`), cài API Key và chạy lệnh vòng quay. Bản thân Control Panel chịu trách nhiệm bắn API TTS, phát audio và thông báo Game Đã Hoàn Thành (`spin_completed`).
+- **`src/app/screen/page.tsx`**: Dùng `Html5 Canvas` để Render bánh xe Ngũ Hành chia 12 ô bản mệnh cực đẹp và hiện thông báo bí kíp hoàng kim. Hệ thống chống đọc đúp bằng `ttsEmittedRef` ở trang này.
 
-## Hướng Dẫn Kiểm Thử
+---
 
-> [!IMPORTANT]
-> Bạn đừng quên chuẩn bị 1 API Key của Gemini nếu muốn test nhé!
+## 🛠 Bộ Cào Dữ Liệu Offline (Web Scraper)
+Hệ thống sử dụng Cheerio để hằng ngày lên cào lá số tử vi nhằm cung cấp tư liệu "giữ lửa" liên tục cho hệ thống AI khỏi bị "bí lời giải".
 
-1. Tạo file `.env` chứa `GEMINI_API_KEY=AIzaSy...`.
-2. Khởi chạy bằng `npm run dev`.
-3. Mở Control Panel (`http://localhost:3000/control-panel`).
-4. Nhập tên và Ngày sinh ngẫu nhiên ở phần Input Admin và ấn "Bắn".
-5. Bật một tab OBS (hay `/screen`) để chiêm ngưỡng vòng quay xoay và kết quả do AI sinh ra!
+> [!WARNING]
+> Mọi tệp sinh ra từ quá trình cào này đều được bỏ vào thư mục `data/daily_wiki/*`.
 
-Nếu gặp lỗi build hãy chạy `npm install` một lần nữa để cài thêm thư viện liên quan của Gemini nếu cần! Giai đoạn tái cấu trúc toàn diện này đã kết thúc, bạn có thể kiểm thử.
+Có 2 kịch bản (Script):
+- `npm run fetch:tuoi` - Cào vận mệnh 12 con giáp hằng ngày.
+- `npm run fetch:cung` - Cào vận mệnh 12 cung hoàng đạo.
+
+Trong mỗi Cron Job, file `scripts/update_....ts` sẽ tiến hành bóc tách HTML, chọn ra đúng phân đoạn ngày mới nhất, và lưu trữ dạng Markdown (`.md`).
+`spinWorker.ts` sẽ kết nối và rút thông tin này ra đưa chèn vào Text của LLM.
+
+## Trạng Thái Dự Án
+
+- Cấu trúc hệ thống ở thời điểm hiện tại là gọn nhẹ, zero-fluff, loại trừ tối đa rác lưu trữ (`scratch`, `dump`), mọi tính năng đã được kiểm thử vững chãi theo cơ chế tự đứng lên sau sai sót (auto fallback). Các lỗi bộ đệm và lỗi vòng đai API đều đã khép kín hoàn hảo.
+
+Chúc bạn có một chặng đường bảo trì suôn sẻ trong tương lai!
