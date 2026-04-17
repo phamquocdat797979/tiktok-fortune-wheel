@@ -103,14 +103,12 @@ export default function ControlPanel() {
         .then(res => res.json())
         .then(resData => {
             const chunks = resData.chunks;
-            const source = resData.source || 'google-fallback';
-            
             if (!chunks || chunks.length === 0) {
                 console.warn('[Control Panel TTS] API không trả về audio:', resData);
                 s.emit('spin_completed', { jobId, donor });
                 return;
             }
-            console.log(`[Control Panel TTS] Phát ${chunks.length} chunk(s) [source=${source}]...`);
+            console.log(`[Control Panel TTS] Phát ${chunks.length} chunk(s)...`);
             if (musicAudioRef.current) {
                 musicAudioRef.current.volume = 0.10;
             }
@@ -124,44 +122,21 @@ export default function ControlPanel() {
                     }
                     return;
                 }
-                const chunk = chunks[idx];
-                const mimeType = chunk.mimeType || (source === 'gemini' ? 'audio/wav' : 'audio/mp3');
-                
-                // Dùng fetch để convert base64 sang Blob an toàn, chống crash trình duyệt
-                fetch(`data:${mimeType};base64,${chunk.base64}`)
-                   .then(res => res.blob())
-                   .then(blob => {
-                      const url = URL.createObjectURL(blob);
-                      const audio = new Audio(url);
-                      
-                      if (source !== 'gemini') {
-                          audio.playbackRate = 1.3;
-                          if ('preservesPitch' in audio) (audio as any).preservesPitch = true;
-                      }
-                      
-                      audio.onended = () => { URL.revokeObjectURL(url); idx++; playNext(); };
-                      audio.onerror  = () => { 
-                          console.warn(`[Control Panel TTS] Chunk ${idx} lỗi phát, bỏ qua...`);
-                          URL.revokeObjectURL(url);
-                          idx++; playNext(); 
-                      };
-                      audio.play().catch(e => {
-                          console.error('[Control Panel TTS] Lỗi play:', e);
-                          URL.revokeObjectURL(url);
-                          idx++; playNext();
-                      });
-                   })
-                   .catch(err => {
-                      console.error('[Control Panel TTS] Lỗi giải mã Base64:', err);
-                      idx++; playNext();
-                   });
+                const audio = new Audio('data:audio/mp3;base64,' + chunks[idx].base64);
+                audio.playbackRate = 1.3; 
+                if ('preservesPitch' in audio) (audio as any).preservesPitch = true;
+                audio.onended = () => { idx++; playNext(); };
+                audio.onerror  = () => { idx++; playNext(); };
+                audio.play().catch(e => {
+                    console.error('[Control Panel TTS] Lỗi play:', e);
+                    idx++; playNext();
+                });
             };
             playNext();
         })
         .catch(err => {
-             console.error('[Control Panel TTS] Lỗi fetch api:', err);
-             // Bắt buộc phải emit để thả queue 
-             s.emit('spin_completed', { jobId, donor });
+            console.error('[Control Panel TTS] Fetch error:', err);
+            s.emit('spin_completed', { jobId, donor }); 
         });
     });
 
