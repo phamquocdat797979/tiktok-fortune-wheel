@@ -1,4 +1,4 @@
-import { prisma } from '../lib/prisma';
+
 import { shiftMockQueue } from '../lib/queue';
 import { Server } from 'socket.io';
 import { EventEmitter } from 'events';
@@ -174,25 +174,7 @@ export function startSpinWorker(io: Server) {
         } else {
             const fortuneTextPromise = generateFortuneText(astroData, data.nickname || 'bạn', dailyContext);
 
-            // Lưu log lịch sử bói vào Prisma database (chạy bất đồng bộ)
-            prisma.giftRecord.create({
-              data: {
-                 viewer: {
-                    connectOrCreate: {
-                       where: { tiktokId: data.userId },
-                       create: {
-                          tiktokId: data.userId,
-                          uniqueId: data.uniqueId,
-                          nickname: data.nickname,
-                          dailyCoinCount: data.diamondCount || 0
-                       }
-                    }
-                 },
-                 giftName: `Donate: ${data.diamondCount}`,
-                 diamondCount: data.diamondCount || 0,
-                 tier: 'Đồng' // Fallback for DB schema if required
-              }
-            }).catch(err => console.error("Prisma error:", err));
+
 
             // --- BƯỚC 5: ĐỢI API VÀ VÒNG QUAY XONG ---
             const result = await fortuneTextPromise;
