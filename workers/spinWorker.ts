@@ -222,7 +222,7 @@ export function startSpinWorker(io: Server) {
                 globalEventBus.removeListener('spin_completed', onSpinComplete);
                 console.warn(`⏳ Job timeout for ${jobId} - skipped to prevent queue blocking`);
                 resolve();
-              }, 35000); // Popup chừng 25s, thêm 10s dự trù 
+              }, 60000); // Tăng lên 60s: Gemini có thể mất 15-20s để tạo audio + 20-30s để đọc xong
             });
         } // end else (có wiki)
      }

@@ -100,12 +100,14 @@ async function callGeminiTTS(text: string, apiKey: string, model: string): Promi
   let audioBase64 = part.data;
   let mimeType: string = part.mimeType || 'audio/wav';
 
+  console.log(`[Gemini TTS] Nhận file audio từ API, raw base64 length: ${audioBase64.length}`);
+
   // Nếu Gemini trả PCM thô (audio/L16), cần bọc WAV header để trình duyệt phát được
   if (mimeType.startsWith('audio/L16') || mimeType.startsWith('audio/pcm')) {
     // Đọc sample rate từ mimeType. VD: "audio/L16;codec=pcm;rate=24000" → 24000
     const rateMatch = mimeType.match(/rate=(\d+)/);
     const sampleRate = rateMatch ? parseInt(rateMatch[1], 10) : 24000;
-    console.log(`[Gemini TTS] Phát hiện PCM thô (rate=${sampleRate}Hz). Đang chử WAV header...`);
+    console.log(`[Gemini TTS] Phát hiện PCM thô (rate=${sampleRate}Hz). Đang chèn WAV header...`);
     audioBase64 = pcmToWav(audioBase64, sampleRate);
     mimeType = 'audio/wav';
   }
