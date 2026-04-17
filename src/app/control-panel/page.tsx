@@ -177,8 +177,7 @@ export default function ControlPanel() {
 
     s.on('wiki_auto_updated', (data: any) => {
         setWikiAutoMsg(data);
-        // Tự ẩn sau 10 giây
-        setTimeout(() => setWikiAutoMsg(null), 10000);
+        // Không tự ẩn vì đây là info trạng thái tĩnh
     });
 
     setSocket(s);
@@ -189,7 +188,7 @@ export default function ControlPanel() {
   const [llmPingResult, setLlmPingResult] = useState<{ success?: boolean, message?: string, preview?: string, error?: string } | null>(null);
   const [llmStats, setLlmStats] = useState<{ totalTokensUsed: number, lastUsage?: any, limits?: any, totalKeys?: number } | null>(null);
   const [isPinging, setIsPinging] = useState(false);
-  const [wikiAutoMsg, setWikiAutoMsg] = useState<{ message: string; time: string } | null>(null);
+  const [wikiAutoMsg, setWikiAutoMsg] = useState<{ tuoiDate?: string | null; cungDate?: string | null } | null>(null);
 
   const testInjectMock = async () => {
     if (!socket) return;
@@ -564,12 +563,22 @@ export default function ControlPanel() {
                     <span className="font-medium text-slate-500">Tự động cập nhật web lúc:</span>
                     <span className="font-bold text-amber-200 bg-amber-500/20 px-3 py-1 rounded-xl">6:00 Sáng VN</span>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <span className="font-medium text-slate-500">Nội dung được cập nhật:</span>
-                    {wikiAutoMsg ? (
-                       <span className={`font-bold px-3 py-1 rounded-xl ${wikiAutoMsg.message.startsWith('✅') ? 'text-emerald-300 bg-emerald-500/20' : 'text-rose-300 bg-rose-500/20'}`}>{wikiAutoMsg.message.replace('✅ ', '').replace('❌ ', '')}</span>
+                  {/* Hàng 1: Tuổi */}
+                  <div className="flex items-center justify-between mb-3 pb-3 border-b border-white/5">
+                    <span className="font-medium text-slate-500">🦎 Tuổi (Con Giáp) cập nhật ngày:</span>
+                    {wikiAutoMsg?.tuoiDate ? (
+                      <span className="font-bold text-emerald-300 bg-emerald-500/20 px-3 py-1 rounded-xl">{wikiAutoMsg.tuoiDate}</span>
                     ) : (
-                       <span className="font-medium text-slate-600 italic">Chưa có log</span>
+                      <span className="font-medium text-slate-600 italic">{wikiAutoMsg?.tuoiDate === null ? '❌ Lỗi đọc file' : 'Chưa có dữ liệu'}</span>
+                    )}
+                  </div>
+                  {/* Hàng 2: Cung */}
+                  <div className="flex items-center justify-between">
+                    <span className="font-medium text-slate-500">⭐ Cung (Hoàng Đạo) cập nhật ngày:</span>
+                    {wikiAutoMsg?.cungDate ? (
+                      <span className="font-bold text-emerald-300 bg-emerald-500/20 px-3 py-1 rounded-xl">{wikiAutoMsg.cungDate}</span>
+                    ) : (
+                      <span className="font-medium text-slate-600 italic">{wikiAutoMsg?.cungDate === null ? '❌ Lỗi đọc file' : 'Chưa có dữ liệu'}</span>
                     )}
                   </div>
                 </div>

@@ -113,12 +113,16 @@ app.prepare().then(() => {
 
     try {
       const danFile = fs.readFileSync(path.join(process.cwd(), 'data/daily_wiki/tuoi/dan.md'), 'utf-8');
-      const firstLine = danFile.split('\n')[0];
-      const match = firstLine.match(/ngày\s+([0-9/]+)/i);
-      const wikiDate = match ? match[1] : 'Chưa xác định';
-      socket.emit('wiki_auto_updated', { message: `✅ Cung và tuổi đã cập nhật ngày (${wikiDate})` });
+      const tuoiMatch = danFile.split('\n')[0].match(/ngày\s+([0-9/]+)/i);
+      const tuoiDate = tuoiMatch ? tuoiMatch[1] : 'Chưa xác định';
+
+      const cungFile = fs.readFileSync(path.join(process.cwd(), 'data/daily_wiki/cung/bach_duong.md'), 'utf-8');
+      const cungMatch = cungFile.split('\n')[0].match(/ngày\s+([0-9/]+)/i);
+      const cungDate = cungMatch ? cungMatch[1] : 'Chưa xác định';
+
+      socket.emit('wiki_auto_updated', { tuoiDate, cungDate });
     } catch (e) {
-      socket.emit('wiki_auto_updated', { message: `❌ Chưa có dữ liệu Wiki` });
+      socket.emit('wiki_auto_updated', { tuoiDate: null, cungDate: null });
     }
 
     
@@ -499,16 +503,18 @@ app.prepare().then(() => {
         await scrapeTuoi();
         console.log('[CRON] ✅ Hoàn tất cào 12 Con Giáp');
         // Thông báo cho tất cả admin đang xem control panel
-        io.emit('wiki_auto_updated', {
-          message: '✅ Wiki đã được tự động cập nhật lúc ' + now.toLocaleString('vi-VN'),
-          time: now.toISOString()
-        });
+        try {
+          const tuoiLine = fs.readFileSync(path.join(process.cwd(), 'data/daily_wiki/tuoi/dan.md'), 'utf-8').split('\n')[0];
+          const cungLine  = fs.readFileSync(path.join(process.cwd(), 'data/daily_wiki/cung/bach_duong.md'), 'utf-8').split('\n')[0];
+          const tuoiDate = (tuoiLine.match(/ngày\s+([0-9/]+)/i) || [])[1] || 'KXD';
+          const cungDate  = (cungLine.match(/ngày\s+([0-9/]+)/i) || [])[1] || 'KXD';
+          io.emit('wiki_auto_updated', { tuoiDate, cungDate });
+        } catch {
+          io.emit('wiki_auto_updated', { tuoiDate: null, cungDate: null });
+        }
       } catch (err: any) {
         console.error('[CRON] ❌ Lỗi tự động cập nhật wiki:', err.message);
-        io.emit('wiki_auto_updated', {
-          message: '❌ Lỗi tự động cập nhật wiki: ' + err.message,
-          time: now.toISOString()
-        });
+        io.emit('wiki_auto_updated', { tuoiDate: null, cungDate: null });
       }
     }, {
       timezone: 'UTC' // Railway chạy UTC, ta dùng 23:00 UTC = 06:00 sáng VN
